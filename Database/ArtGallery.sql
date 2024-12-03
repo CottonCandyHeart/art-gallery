@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2024 at 06:39 PM
+-- Generation Time: Dec 04, 2024 at 12:49 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `ArtGallery`
 --
+CREATE DATABASE IF NOT EXISTS `ArtGallery` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `ArtGallery`;
 
 -- --------------------------------------------------------
 
@@ -27,14 +29,40 @@ SET time_zone = "+00:00";
 -- Table structure for table `Artists`
 --
 
-CREATE TABLE `Artists` (
-  `artist_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Artists` (
+  `artist_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `surname` varchar(40) NOT NULL,
   `bio` text NOT NULL COMMENT 'Biografia',
-  `birth_date` date NOT NULL,
-  `death_date` date DEFAULT NULL COMMENT 'opcjonalne'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `birth_date` date DEFAULT NULL,
+  `death_date` date DEFAULT NULL COMMENT 'opcjonalne',
+  PRIMARY KEY (`artist_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Artists`
+--
+
+INSERT INTO `Artists` (`artist_id`, `name`, `surname`, `bio`, `birth_date`, `death_date`) VALUES
+(1, 'Salvador', 'Dalí', 'Salvador Dalí był hiszpańskim malarzem, rzeźbiarzem, pisarzem i jednym z najbardziej rozpoznawalnych przedstawicieli surrealizmu. Urodził się 11 maja 1904 roku w Figueres, w Katalonii. Od najmłodszych lat przejawiał talent artystyczny, a w wieku 17 lat rozpoczął studia w Akademii Sztuk Pięknych w Madrycie.\r\n\r\nJego prace cechowały się niezwykłą precyzją techniczną i wyrazistymi, niejednokrotnie groteskowymi motywami, które odzwierciedlały podświadomość i sny. Najbardziej znanym dziełem Dalíego jest Trwałość pamięci (1931), przedstawiająca surrealistyczne, „rozpływające się” zegary.\r\n\r\nDalí współpracował z wieloma artystami i intelektualistami, w tym Luisem Buñuelem i André Bretonem, choć jego ekscentryczny styl życia i umiłowanie do komercji budziły kontrowersje. Był też związany z Galą, swoją muzą i żoną, która miała ogromny wpływ na jego twórczość.\r\n\r\nZmarł 23 stycznia 1989 roku w swoim rodzinnym mieście. Dziś jego dorobek można podziwiać m.in. w Teatrze-Muzeum Dalí w Figueres, będącym hołdem dla tego niezwykłego artysty.', '1904-05-11', '1989-01-23'),
+(2, 'Józef', 'Chełmoński', 'Józef Chełmoński był polskim malarzem, przedstawicielem realizmu, znanym przede wszystkim z malowniczych scen wiejskich oraz obrazów ukazujących życie i krajobrazy polskiej wsi. Urodził się 7 listopada 1849 roku we wsi Boczki w zubożałej rodzinie szlacheckiej.\r\n\r\nStudiował w Warszawie w Klasie Rysunkowej, a następnie w Monachium, gdzie zetknął się z europejskim środowiskiem artystycznym. W latach 70. XIX wieku wyjechał do Paryża, gdzie jego prace, pełne ekspresji i dynamizmu, zdobyły uznanie. Obrazy takie jak Czwórka (1881) czy Powrót z balu (1879) zyskały popularność również w Europie Zachodniej.\r\n\r\nTwórczość Chełmońskiego cechowała głęboka więź z naturą i fascynacja codziennym życiem chłopów. Jego prace często odznaczały się bogatymi, żywymi barwami i starannym oddaniem szczegółów.\r\n\r\nPod koniec życia artysta osiadł w Kuklówce pod Grodziskiem Mazowieckim, gdzie kontynuował malowanie, pozostając wiernym tematyce wiejskiej. Zmarł 6 kwietnia 1914 roku, pozostawiając bogaty dorobek, który stał się jednym z symboli polskiego malarstwa realistycznego.', '1849-11-07', '1914-04-06'),
+(3, 'Zdzisław', 'Beksiński', 'Zdzisław Beksiński był polskim malarzem, rzeźbiarzem, fotografem i grafikiem, znanym z mrocznych, surrealistycznych wizji pełnych grozy i tajemniczości. Urodził się 24 lutego 1929 roku w Sanoku, gdzie spędził młodość i rozpoczął swoją przygodę z twórczością artystyczną.\r\n\r\nZ wykształcenia był architektem, jednak jego prawdziwą pasją była sztuka. Na początku tworzył fotografie i rzeźby, ale największą sławę przyniosły mu obrazy. Charakterystyczne dla jego twórczości są monumentalne pejzaże, zdeformowane postacie i oniryczne sceny, które łączą piękno z niepokojem. Beksiński unikał interpretacji swoich dzieł, twierdząc, że każdy powinien odbierać je na swój sposób.\r\n\r\nJego prace zyskały uznanie w Polsce i za granicą, a wystawy odbywały się w wielu krajach, w tym w Japonii, Francji i Stanach Zjednoczonych. Życie Beksińskiego naznaczone było osobistymi tragediami, w tym śmiercią jego żony Zofii w 1998 roku i samobójstwem syna Tomasza rok później.\r\n\r\nArtysta zginął tragicznie 21 lutego 2005 roku, zamordowany w swoim warszawskim mieszkaniu. Jego prace pozostają jednymi z najbardziej oryginalnych i przejmujących w historii współczesnej sztuki polskiej, a wiele z nich można zobaczyć w Muzeum Historycznym w Sanoku.', '1929-02-24', '2005-02-21'),
+(4, 'Auguste', 'Renoir', 'Auguste Renoir był francuskim malarzem, jednym z czołowych przedstawicieli impresjonizmu. Urodził się 25 lutego 1841 roku w Limoges, w rodzinie rzemieślniczej. W młodości pracował jako malarz porcelany, co wpłynęło na jego zainteresowanie kolorem i detalem.\r\n\r\nRenoir kształcił się w paryskiej École des Beaux-Arts i w pracowni Charlesa Gleyre’a, gdzie zaprzyjaźnił się z Claude’em Monetem, Alfredem Sisleyem i Frédérikiem Bazille’em. W latach 70. XIX wieku zaczął wystawiać swoje prace razem z impresjonistami, tworząc obrazy pełne światła i ruchu, takie jak Śniadanie wioślarzy (1881) czy Bal w Moulin de la Galette (1876).\r\n\r\nJego styl ewoluował z czasem – późniejsze prace, inspirowane klasycznymi mistrzami, cechują się większą dbałością o kontury i formy. Renoir słynął z portretów, scen rodzajowych, aktów oraz idyllicznych przedstawień życia codziennego, które emanowały radością i ciepłem.\r\n\r\nPod koniec życia artysta cierpiał na reumatoidalne zapalenie stawów, co jednak nie przeszkodziło mu malować – przymocowywał pędzel do dłoni i kontynuował twórczość. Zmarł 3 grudnia 1919 roku w Cagnes-sur-Mer, pozostawiając po sobie bogaty dorobek, który do dziś zachwyca swoją żywotnością i pięknem.', '1841-02-25', '1919-12-03'),
+(5, 'Aleksander', 'Gierymski', 'Aleksander Gierymski był wybitnym polskim malarzem, związanym z nurtem realizmu i prekursorem polskiego impresjonizmu. Urodził się 30 stycznia 1850 roku w Warszawie w rodzinie o artystycznych tradycjach – jego starszy brat, Maksymilian, również był cenionym malarzem.\r\n\r\nGierymski studiował w Akademii Sztuk Pięknych w Monachium, gdzie zdobył uznanie za swoje wczesne prace, m.in. Piaskarzy. Po powrocie do Warszawy stworzył jedne z najbardziej znanych dzieł, takie jak Żydówka z pomarańczami czy Święto Trąbek, w których realistycznie przedstawiał życie codzienne ubogich mieszkańców miasta. Jego prace wyróżniały się precyzją, subtelną grą światła oraz głębokim zrozumieniem ludzkich emocji.\r\n\r\nPod koniec życia Gierymski zmagał się z problemami finansowymi i psychicznymi, co doprowadziło do jego izolacji. Zmarł tragicznie 6 marca 1901 roku w Rzymie, pozostawiając po sobie dzieła, które stały się częścią kanonu polskiej sztuki XIX wieku i symbolem wrażliwości artystycznej na społeczne nierówności.', '1850-01-30', '1901-03-06'),
+(6, 'Olga', 'Boznańska', 'Olga Boznańska była wybitną polską malarką, jedną z najważniejszych postaci europejskiego modernizmu. Urodziła się 15 kwietnia 1865 roku w Krakowie w rodzinie inteligenckiej. Już w młodości przejawiała talent artystyczny, który rozwijała w Szkole Sztuk Pięknych dla Kobiet w Krakowie oraz podczas studiów w Monachium.\r\n\r\nBoznańska zasłynęła przede wszystkim jako portrecistka. Jej dzieła wyróżniają się subtelnością, mistrzowskim użyciem światła i koloru oraz psychologiczną głębią. Prace takie jak Portret dziewczynki w sukni komunijnej czy Dziewczynka z chryzantemami są doskonałymi przykładami jej kunsztu i zdolności uchwycenia delikatności ludzkich emocji.\r\n\r\nWiększość życia artystka spędziła w Paryżu, gdzie była ceniona w międzynarodowym środowisku artystycznym. Wyróżniono ją licznymi nagrodami, a jej obrazy wystawiano w najważniejszych galeriach Europy. Boznańska tworzyła także pejzaże i martwe natury, które charakteryzują się melancholijnym nastrojem.\r\n\r\nZmarła 26 października 1940 roku w Paryżu. Jej dorobek jest uznawany za jedno z najwybitniejszych osiągnięć polskiej sztuki, a jej portrety do dziś fascynują swoją nieuchwytną tajemniczością.', '1865-04-15', '1940-10-26'),
+(7, 'Józef', 'Mehoffer', 'Józef Mehoffer był jednym z czołowych polskich malarzy i grafików okresu Młodej Polski, znanym również jako wybitny twórca witraży. Urodził się 19 marca 1869 roku w Ropczycach, a dorastał w Krakowie, gdzie studiował na tamtejszej Akademii Sztuk Pięknych pod kierunkiem Jana Matejki. Kontynuował naukę w Wiedniu i Paryżu, co pozwoliło mu zetknąć się z najnowszymi trendami artystycznymi.\r\n\r\nMehoffer zasłynął przede wszystkim jako autor witraży do katedry św. Mikołaja we Fryburgu w Szwajcarii – monumentalnego dzieła, które łączy motywy religijne z symboliką i secesyjną dekoracyjnością. Tworzył również obrazy olejne, portrety, ilustracje książkowe oraz projekty użytkowe, takie jak polichromie i gobeliny. Jego prace, takie jak Dziwny ogród (1903), cechują się bogactwem kolorów, dekoracyjnością oraz subtelną symboliką.\r\n\r\nArtysta odegrał ważną rolę w polskim życiu artystycznym – był profesorem Akademii Sztuk Pięknych w Krakowie i członkiem Towarzystwa Artystów Polskich \"Sztuka\". Jego twórczość harmonijnie łączyła tradycję z nowoczesnością, zyskując uznanie w kraju i za granicą.\r\n\r\nZmarł 8 lipca 1946 roku w Wadowicach, pozostawiając po sobie bogaty dorobek, który do dziś zachwyca finezją i oryginalnością.', '1869-03-19', '1946-07-08'),
+(8, 'Tamara', 'Łempicka', 'Tamara Łempicka była polską malarką, jedną z najważniejszych przedstawicielek stylu art déco, znaną z eleganckich, geometrycznych portretów i aktów. Urodziła się 16 maja 1898 roku w Warszawie jako Tamara Rozalia Gurwik-Górska, w zamożnej rodzinie żydowsko-polskiej. W młodości kształciła się w Szwajcarii i Francji, a po rewolucji bolszewickiej, w której straciła majątek, zamieszkała w Paryżu.\r\n\r\nSwoją karierę malarską rozwijała pod wpływem kubizmu i neoklasycyzmu, co zaowocowało unikalnym stylem pełnym precyzji, blasku i nowoczesnego wdzięku. Jej prace, takie jak Portret Marjorie Ferry (1932) czy Kobieta w zieleni (1929), wyróżniają się wyrafinowaną estetyką i uwodzicielską atmosferą. Łempicka malowała głównie portrety zamożnych kobiet, co przyniosło jej międzynarodową sławę w latach 20. i 30. XX wieku.\r\n\r\nPo II wojnie światowej artystka przeniosła się do Stanów Zjednoczonych, gdzie jej twórczość spotkała się z różnym odbiorem, ale nigdy nie przestała tworzyć. Ostatnie lata życia spędziła w Meksyku, gdzie zmarła 18 marca 1980 roku. Dziś jej obrazy są symbolem luksusu i stylu epoki art déco, a ich wartość artystyczna i kolekcjonerska stale rośnie.', '1898-05-16', '1980-03-18'),
+(9, 'René', 'Magritte', 'René Magritte był belgijskim malarzem surrealistycznym, znanym z niezwykłych, tajemniczych obrazów, które w przewrotny sposób kwestionowały naszą percepcję rzeczywistości. Urodził się 21 listopada 1898 roku w Lessines, w rodzinie kupieckiej. Jego dzieciństwo naznaczyła tragedia – śmierć matki, która w wieku 13 lat odebrała sobie życie. To wydarzenie wywarło wpływ na jego późniejszą twórczość.\r\n\r\nMagritte studiował w Królewskiej Akademii Sztuk Pięknych w Brukseli, jednak dopiero w latach 20. XX wieku zaczął tworzyć w stylu surrealistycznym. Jego dzieła charakteryzują się precyzyjnym realizmem, który kontrastuje z dziwacznymi i paradoksalnymi motywami. Ikoniczne prace, takie jak Syn człowieczy (1946) – mężczyzna w meloniku z jabłkiem zasłaniającym twarz – czy Zdrada obrazów (1929), przedstawiająca fajkę z podpisem „To nie jest fajka”, eksplorują granice między obrazem a rzeczywistością.\r\n\r\nMagritte unikał wytłumaczeń swoich dzieł, zachęcając widzów do własnych interpretacji. Jego twórczość miała ogromny wpływ na rozwój pop-artu i sztuki konceptualnej w XX wieku. Zmarł 15 sierpnia 1967 roku w Brukseli, pozostawiając po sobie bogaty dorobek, który do dziś fascynuje swoją intelektualną głębią i estetycznym pięknem.', '1898-11-21', '1967-08-15'),
+(10, 'Auguste', 'Rodin', 'Auguste Rodin był francuskim rzeźbiarzem, uważanym za jednego z najwybitniejszych artystów XIX i XX wieku. Urodził się 12 listopada 1840 roku w Paryżu. Jego twórczość, choć początkowo spotykała się z krytyką, zrewolucjonizowała świat rzeźby, przełamując klasyczne formy i wprowadzając nowatorskie podejście do przedstawiania ludzkiego ciała oraz emocji.\r\n\r\nRodin studiował w École des beaux-arts w Paryżu, ale jego pierwszy sukces przyszedł dopiero po wielu latach trudności i niezrozumienia ze strony artystycznego środowiska. Jego najbardziej znane dzieło, Myśliciel (1902), pierwotnie część większej kompozycji Brama piekieł, stało się symbolem twórczości Rodina. Artysta zyskał sławę dzięki swoim realistycznym, pełnym ekspresji rzeźbom, które ukazywały zarówno zewnętrzną formę, jak i wewnętrzne przeżycia postaci.\r\n\r\nRodin dążył do oddania życia i ruchu w kamieniu i brązie, wykorzystując fakturę materiału, co było innowacyjne w jego czasach. Jego inne ważne prace to Pocałunek (1889), Balerina (1897) czy Portret Balzaca (1898), które charakteryzowały się głęboką analizą psychologiczną postaci.\r\n\r\nZmarł 17 listopada 1917 roku w Meudon, pozostawiając po sobie ogromny dorobek artystyczny, który na stałe wpisał się w historię sztuki. Jego rzeźby, pełne pasji i ekspresji, są obecne w wielu muzeach na całym świecie.', '1840-11-12', '1917-11-17'),
+(11, 'Michał', 'Anioł', 'Michał Anioł, a właściwie Michelangelo di Lodovico Buonarroti Simoni, był włoskim rzeźbiarzem, malarzem, architektem i poetą, jednym z najwybitniejszych artystów Renesansu. Urodził się 6 marca 1475 roku w Caprese, w Toskanii. Jego twórczość miała ogromny wpływ na rozwój sztuki europejskiej, a jego dzieła stały się symbolem doskonałości artystycznej.\r\n\r\nMichał Anioł wykazał się niezwykłym talentem od młodości, kształcąc się w Florencji, gdzie podjął naukę u różnych mistrzów, w tym u rzeźbiarza Lorenza Ghibertiego. Jego pierwsze wielkie osiągnięcia to rzeźby takie jak Pietà (1498–1499), która zyskała ogromne uznanie za swoją precyzję i emocjonalną głębię, oraz Dawid (1501–1504), symbol renesansowego idealizmu i ludzkiej siły.\r\n\r\nJako malarz Michał Anioł osiągnął sławę dzięki freskom w Kaplicy Sykstyńskiej w Watykanie, w tym Stworzeniu Adama (1512), które stało się jednym z najbardziej rozpoznawalnych obrazów w historii sztuki. Jego prace były pełne ekspresji, ukazując zarówno fizyczne, jak i duchowe aspekty ludzkiej natury.\r\n\r\nMichał Anioł był również cenionym architektem, a jego prace w St. Piotrze w Watykanie oraz projektowanie kopuły bazyliki są jednymi z jego najbardziej znaczących osiągnięć.\r\n\r\nZmarł 18 lutego 1564 roku w Rzymie, w wieku 88 lat, pozostawiając po sobie niezrównany dorobek, który do dziś wywiera ogromny wpływ na sztukę, architekturę i kulturę Zachodu.', '1475-03-06', '1564-02-18'),
+(12, 'Aleksandros', 'z Antiochii', 'Aleksandros z Antiochii był starożytnym greckim rzeźbiarzem, żyjącym na przełomie II i I wieku p.n.e., znanym przede wszystkim jako twórca słynnej rzeźby Wenus z Milo (lub Afrodyta z Milo), która jest jednym z najważniejszych dzieł sztuki hellenistycznej. Jego działalność przypadała na okres późnego hellenizmu, kiedy sztuka grecka osiągała wysoki poziom technicznej doskonałości i emocjonalnej ekspresji.\r\n\r\nWenus z Milo została odkryta w 1820 roku na wyspie Melos (Milo) w Grecji i szybko zyskała międzynarodową sławę. Rzeźba przedstawia boginię miłości, Afrodytę, w dynamicznej pozie, która podkreśla idealne proporcje i piękno jej ciała. Chociaż dzieło jest obecnie uszkodzone (brakuje ramion), to nadal uchodzi za jedno z arcydzieł antycznej rzeźby.\r\n\r\nAleksandros z Antiochii nie jest szeroko znany z innych prac, a większość szczegółów na temat jego życia pozostaje niepewna. Wenus z Milo jest przypisywana jemu dzięki inskrypcji odkrytej w pobliżu rzeźby, choć obecnie nie jest wystawiana razem z nią. Mimo braku szczegółowych informacji na temat artysty, jego dzieło jest trwałym świadectwem greckiego dążenia do doskonałości estetycznej i harmonii.', NULL, NULL),
+(13, 'Frédéric Auguste', 'Bartholdi', 'Frédéric Auguste Bartholdi był francuskim rzeźbiarzem i architektem, najbardziej znanym jako twórca Statuy Wolności, jednego z najbardziej rozpoznawalnych symboli Stanów Zjednoczonych. Urodził się 2 sierpnia 1834 roku w Colmar, w Alzacji. Jego talent artystyczny przejawił się już w młodym wieku, co skłoniło go do studiów w Paryżu, gdzie kształcił się w dziedzinie rzeźby i architektury.\r\n\r\nBartholdi tworzył monumentalne dzieła, często inspirowane mitologią, historią i ideami wolności. Jego najsłynniejsze dzieło, Statua Wolności (pełna nazwa: Wolność Opromieniająca Świat), zostało zaprojektowane jako dar narodu francuskiego dla Stanów Zjednoczonych, upamiętniający stulecie amerykańskiej Deklaracji Niepodległości. Monumentalna rzeźba, wykonana z miedzi i osadzona na stalowej konstrukcji zaprojektowanej przez Gustave\'a Eiffla, została zainaugurowana 28 października 1886 roku w Nowym Jorku.\r\n\r\nBartholdi stworzył także inne znaczące dzieła, takie jak monumentalne rzeźby w rodzinnym Colmar, w tym Löwe von Belfort, ogromnego lwa symbolizującego opór Francuzów podczas wojny francusko-pruskiej.\r\n\r\nZmarł 4 października 1904 roku w Paryżu, pozostawiając po sobie bogaty dorobek artystyczny. Jego twórczość do dziś przypomina o sile idei wolności i solidarności między narodami.', '1834-08-02', '1904-10-04'),
+(14, 'Gian Lorenzo', 'Bernini', 'Gian Lorenzo Bernini był włoskim rzeźbiarzem, architektem i malarzem, uznawanym za jednego z najważniejszych artystów baroku. Urodził się 7 grudnia 1598 roku w Neapolu, w rodzinie rzeźbiarza Pietra Berniniego, który był jego pierwszym nauczycielem. Już jako młody chłopiec wykazywał niezwykły talent artystyczny, a jego prace szybko zwróciły uwagę mecenasów sztuki.\r\n\r\nBernini jest autorem licznych dzieł, które łączą dramatyczną ekspresję, doskonałość techniczną i teatralną kompozycję. Jego słynne rzeźby, takie jak Apollo i Dafne (1622–1625) czy Porwanie Prozerpiny (1621–1622), ukazują mistrzowskie operowanie marmurem, który w jego rękach zdaje się żyć. Jednym z jego największych osiągnięć jest Ekstaza świętej Teresy (1647–1652), rzeźba znajdująca się w kościele Santa Maria della Vittoria w Rzymie, która jest kwintesencją barokowej emocjonalności i mistycyzmu.\r\n\r\nJako architekt Bernini zaprojektował m.in. kolumnadę otaczającą plac św. Piotra w Watykanie, tworząc monumentalny, symboliczny gest obejmujący wiernych. Był również zaangażowany w przebudowę Bazyliki św. Piotra oraz wiele innych projektów w Rzymie, które zmieniły oblicze miasta.\r\n\r\nZmarł 28 listopada 1680 roku w Rzymie. Bernini pozostawił po sobie imponujące dziedzictwo, które do dziś zachwyca swoją dynamiką, bogactwem form i głębią emocji. Jego twórczość była kluczowa dla ukształtowania barokowego stylu w sztuce europejskiej.', '1598-12-07', '1680-11-28'),
+(15, 'Vincent', 'van Gogh', 'Vincent van Gogh był holenderskim malarzem postimpresjonistycznym, którego twórczość, choć niedoceniona za życia, stała się jednym z najważniejszych osiągnięć w historii sztuki. Urodził się 30 marca 1853 roku w Groot-Zundert w Holandii. Zanim zdecydował się poświęcić malarstwu, pracował jako sprzedawca sztuki, kaznodzieja i nauczyciel.\r\n\r\nVan Gogh rozpoczął swoją karierę artystyczną w latach 80. XIX wieku, początkowo tworząc ciemne, realistyczne obrazy inspirowane życiem wiejskim, takie jak Jedzący kartofle (1885). Przełom w jego twórczości nastąpił po przeprowadzce do Paryża, gdzie zetknął się z impresjonistami i neoimpresjonistami. Zainspirowany ich techniką i jasną paletą, rozwinął swój własny styl, charakteryzujący się intensywnymi kolorami, dynamicznymi pociągnięciami pędzla i głęboką emocjonalnością.\r\n\r\nNajbardziej znane dzieła van Gogha powstały w ostatnich latach jego życia, kiedy mieszkał w Arles na południu Francji. Obrazy takie jak Słoneczniki, Nocna kawiarnia czy Gwiaździsta noc odzwierciedlają jego pasję do natury i fascynację światłem. Pomimo artystycznego geniuszu, van Gogh zmagał się z poważnymi problemami psychicznymi, które doprowadziły go do dobrowolnego pobytu w szpitalu psychiatrycznym.\r\n\r\nZmarł 29 lipca 1890 roku w Auvers-sur-Oise, dwa dni po tym, jak postrzelił się w klatkę piersiową, prawdopodobnie w akcie desperacji. Choć za życia sprzedał tylko jeden obraz, jego twórczość pośmiertnie zdobyła ogromne uznanie, czyniąc go jednym z najbardziej wpływowych artystów w historii. Jego prace są dziś symbolem wytrwałości w dążeniu do artystycznej wizji i głębi ludzkich emocji.', '1853-03-30', '1890-07-29'),
+(16, 'Tadeusz', 'Makowski', 'Tadeusz Makowski był polskim malarzem, jednym z najważniejszych przedstawicieli nurtu na pograniczu symbolizmu, ekspresjonizmu i sztuki naiwnej. Urodził się 29 stycznia 1882 roku w Oświęcimiu. Początkowo studiował filologię klasyczną na Uniwersytecie Jagiellońskim w Krakowie, jednak szybko zorientował się, że jego prawdziwą pasją jest sztuka. Rozpoczął studia na Akademii Sztuk Pięknych w Krakowie pod kierunkiem Józefa Mehoffera i Jana Stanisławskiego.\r\n\r\nW 1908 roku wyjechał do Paryża, gdzie spędził większość życia. Na początku tworzył pod wpływem impresjonizmu i symbolizmu, później zainteresował się kubizmem, jednak jego najważniejsze prace powstały w oryginalnym stylu, inspirowanym światem dzieci, prostotą i folklorem. Jego obrazy, takie jak Dzieci z lalką czy Karnawał, cechują się melancholijną atmosferą, uproszczonymi formami oraz pastelową kolorystyką.\r\n\r\nMakowski był zafascynowany codziennym życiem, a w centrum jego twórczości często znajdowały się dzieci – zarówno jako temat, jak i symbol niewinności i autentyczności. Jego styl łączył elementy naiwności z głęboką refleksją nad ludzką naturą.\r\n\r\nZmarł 1 listopada 1932 roku w Paryżu, pozostawiając po sobie bogaty dorobek artystyczny, który do dziś jest wysoko ceniony za swoją poetycką prostotę i uniwersalną wymowę. Jego obrazy znajdują się w kolekcjach najważniejszych polskich muzeów, a także za granicą.', '1882-01-29', '1932-11-01'),
+(17, 'Weronika', 'Bucewka', 'Weronika Bucewka to nowoczesna artystka, która w swojej twórczości łączy abstrakcyjne formy z głębokimi przesłaniami. Urodzona w 2002 roku, szybko zyskała reputację twórczyni, która potrafi uchwycić esencję natury i emocji. Jej obraz \"4 żywioły\" jest doskonałym przykładem tego, jak łączy ona tradycyjne motywy z nowoczesnym podejściem do malarstwa. Jej twórczość wywołuje u odbiorcy refleksje o związku człowieka z naturą oraz o przemijalności wszystkiego, co nas otacza.', '2002-05-13', NULL),
+(18, 'Olga', 'Długiewicz', 'Olga Długiewicz to artystka, która od zawsze fascynuje się światem zwierząt. Urodzona w 2003 roku, Długiewicz z pasją oddaje się malarstwu, w którym najważniejszym tematem są istoty żyjące w dzikiej przyrodzie. Jej obrazy pełne są realizmu, a jednocześnie niosą ze sobą głębokie emocje, które ukazują nie tylko fizyczną, ale i duchową stronę zwierząt. Przez swoje obrazy stara się przekazać widzowi osobliwość i piękno fauny, uwrażliwiając na potrzebę ochrony przyrody. Kowalska łączy w swojej sztuce pasję do zwierząt z wnikliwością artystyczną, dzięki czemu jej prace stają się świadectwem wielkiego szacunku do otaczającego nas świata.', '2003-04-04', NULL),
+(19, 'Yayoi', 'Kusama', 'Yayoi Kusama jest japońską artystką znaną z jej niezwykłego wkładu w sztukę współczesną, szczególnie w dziedzinie instalacji, rzeźby, malarstwa oraz performance art. Urodziła się w Matsumoto w prefekturze Nagano, w rodzinie, która wspierała jej artystyczne pasje od najmłodszych lat.  Kusama rozpoczęła swoją karierę artystyczną w latach 50. XX wieku, kiedy to przeniosła się do Nowego Jorku, gdzie stała się kluczową postacią w ruchu awangardowym. Jej prace charakteryzują się intensywnym wykorzystaniem powtarzalnych wzorów, zwłaszcza kropek oraz motywów organicznych, które odzwierciedlają jej unikalne podejście do przestrzeni i percepcji. Kusama często eksploruje tematy nieskończoności, obsesji oraz relacji między ciałem a przestrzenią, co jest widoczne w jej słynnych „Pokojach Nieskończoności” – immersyjnych instalacjach, które tworzą iluzję nieograniczonej przestrzeni dzięki lustrzanym powierzchniom i powtarzalnym wzorom.  Jej twórczość jest również głęboko osobista, odzwierciedlając jej walkę z psychologiczny', '1929-03-22', NULL);
 
 -- --------------------------------------------------------
 
@@ -42,30 +70,48 @@ CREATE TABLE `Artists` (
 -- Table structure for table `Artworks`
 --
 
-CREATE TABLE `Artworks` (
-  `artwork_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Artworks` (
+  `artwork_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(40) NOT NULL,
   `artist_id` int(11) NOT NULL,
-  `creation_date` date NOT NULL,
-  `description` int(11) NOT NULL,
+  `creation_date` varchar(20) NOT NULL,
+  `method` varchar(50) DEFAULT NULL,
+  `description` text NOT NULL,
   `location` enum('wystawa','magazyn') NOT NULL COMMENT 'Aktualna lokalizacja (np. na wystawie, w magazynie)',
-  `status` enum('dostępne','wypożyczone','konserwacji') NOT NULL COMMENT 'Status dzieła (np. dostępne, wypożyczone, w konserwacji)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `status` enum('dostępne','wypożyczone','konserwacji','niedostępne') NOT NULL COMMENT 'Status dzieła (np. dostępne, wypożyczone, w konserwacji)',
+  `price` float DEFAULT NULL,
+  `picturePath` varchar(50) NOT NULL,
+  PRIMARY KEY (`artwork_id`),
+  KEY `artist_id` (`artist_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Table structure for table `Clients`
+-- Dumping data for table `Artworks`
 --
 
-CREATE TABLE `Clients` (
-  `client_id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `surname` varchar(40) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `phone_number` int(9) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `Artworks` (`artwork_id`, `title`, `artist_id`, `creation_date`, `method`, `description`, `location`, `status`, `price`, `picturePath`) VALUES
+(1, 'Trwałość pamięci', 1, '1931', 'olej, płótno, 24,1 × 33 cm', '\"Trwałość pamięci\" (La persistencia de la memoria, 1931) autorstwa Salvadora Dalí to jedno z najbardziej znanych dzieł surrealizmu, które stało się ikoną sztuki XX wieku. Obraz przedstawia krajobraz o nierzeczywistej atmosferze, w którym dominują zegary o miękkich, topniejących formach, zdających się zaprzeczać zasadom fizyki.\r\n\r\nNa pierwszym planie widać rozmyty kształt przypominający twarz (często interpretowany jako autoportret Dalí), na której spoczywa jeden z zegarów. Kolejne zegary rozłożone są na tle opustoszałego krajobrazu z charakterystycznymi skałami przypominającymi katalońskie pejzaże, bliskie artyście.\r\n\r\nDzieło często interpretuje się jako refleksję nad względnością czasu i jego nietrwałością w ludzkiej percepcji. Miękkie zegary symbolizują ulotność chwil i ich deformację pod wpływem pamięci oraz snów, co wpisuje się w surrealistyczną fascynację podświadomością. Choć obraz ma melancholijną aurę, jego szczegóły – jak na przykład obecność małych mrówek na jednym z zegarów – wprowadzają elementy niepokoju.', 'wystawa', 'dostępne', NULL, '/trwaloscpamieci.jpg'),
+(2, 'Babie Lato', 2, '1900', 'olej na płótnie, 119,7 × 156,5 cm', '\"Babie Lato\" to jedno z najbardziej rozpoznawalnych dzieł Józefa Chełmońskiego, przedstawiające sielankowy, polski pejzaż z letnim, wiejskim klimatem. Obraz ukazuje widok na łąkę, na której rosną wysokie trawy, wśród których unoszą się lekkie, prawie niewidoczne pasma \"babięgo lata\" – cienkie nitki pajęczyn, oświetlone przez promienie słoneczne.\r\n\r\nChełmoński mistrzowsko uchwycił spokojną atmosferę późnego lata, kiedy dzień jest jeszcze ciepły, ale powoli nadchodzi zmierzch. Ciepła paleta barw – od złocistych żółci i brązów po delikatne zielenie – podkreśla nostalgiczny nastrój obrazu, który jest pełen ciszy i harmonii z naturą.\r\n\r\nObraz ukazuje również charakterystyczną dla Chełmońskiego umiejętność oddania detali przyrody, takich jak tekstura trawy, migoczące światło i efekt mgiełki, co sprawia, że widz ma poczucie zanurzenia w tym pejzażu. \"Babie Lato\" jest hołdem dla polskiej wsi, a także dla ulotnych chwil letnich, które artysta potrafił uchwycić w sposób pełen poezji i spokoju.', 'wystawa', 'dostępne', NULL, '/babielato.jpg'),
+(3, 'AJ76', 3, '1976', 'olej na płótnie, 90 × 120 cm', '\"AJ76\" to obraz Zdzisława Beksińskiego, który przedstawia postać na koniu, zanurzoną w mrocznym, surrealistycznym krajobrazie. Postać, będąca częścią tej tajemniczej sceny, jest ubrana w zniszczoną, niemal nieziemską zbroję, co nadaje jej charakterystyczny, groźny wygląd. Kształty i postacie w dziele Beksińskiego są zwykle zniekształcone i poddane mrocznej, apokaliptycznej atmosferze, co tworzy wrażenie niepokoju i nieuchronności.\r\n\r\nOtaczający krajobraz jest pełen ciemnych, zgaszonych barw – brązów, szarości i czerwieni, które razem tworzą atmosferę przygnębienia. Kontekst obrazu jest niejednoznaczny, ale z pewnością oddaje uczucie izolacji i niepewności. Tło, choć rozmyte i pozbawione szczegółów, intensyfikuje atmosferę obcości i tajemnicy, a postać na koniu może być interpretowana jako symbol przemijania, podróży lub walki.\r\n\r\nBeksiński w tej pracy ukazuje swoją mistrzowską umiejętność tworzenia surrealistycznych wizji, w których postacie i formy łączą się w sposób, który wzbudza zarówno fascynację, jak i lęk.', 'wystawa', 'dostępne', NULL, '/aj76.jpg'),
+(4, 'BG74', 3, '1974', 'olej na płótnie, 80 × 100 cm', '\"BG74\" to jedno z bardziej dramatycznych dzieł Zdzisława Beksińskiego, które przedstawia mroczną, surrealistyczną scenę. W centrum obrazu widoczna jest kołyska, nad którą unosi się postać przypominająca Śmierć – stojąca nad niemowlęciem, które jest przykryte cieniem i atmosferą grozy. Postać ta jest przedstawiona w formie opartej na groteskowej, humanoidalnej sylwetce, z maską przypominającą czaszkę, co nadaje jej nieziemski, przerażający wygląd.\r\n\r\nTło obrazu wypełniają ciemne, brązowe i szaro-czarne barwy, które w połączeniu z formą postaci tworzą atmosferę niepokoju i fatalizmu. Mimo że motyw śmierci jest centralnym tematem dzieła, Beksiński nie przedstawia jej w sposób dosłowny, lecz symboliczny, skupiając się na psychologicznym, emocjonalnym ładunku, który wywołuje.\r\n\r\n\"BG74\" jest obrazem, który skłania do refleksji nad ulotnością życia i nieuchronnością śmierci. Przesycony niepokojem i tajemniczością, pozostaje jednym z najważniejszych przykładów twórczości Beksińskiego, w której mrok i nieznane stają się głównymi tematami.', 'wystawa', 'dostępne', NULL, '/bg74.jpg'),
+(5, 'Nad wodą', 4, '1879', 'olej na płótnie, 55 × 46 cm', '\"Nad wodą\" to obraz Auguste\'a Renoira, przedstawiający scenę nad rzeką, gdzie młoda kobieta odpoczywa, siedząc na brzegu. W tle widać spokój natury – drzewa, wodę i błękitne niebo. Postać kobiety, ujęta w naturalnej, niemal codziennej pozie, jest centralnym punktem kompozycji, a jej ubranie oraz sposób, w jaki otacza ją światło, nadają jej delikatność i harmonię z otoczeniem.\r\n\r\nRenoir wykorzystuje swoje charakterystyczne techniki impresjonistyczne – krótkie, niemal wibrujące pociągnięcia pędzla i subtelną grę światła, co pozwala oddać uczucie ciepłego letniego dnia. Kobieta na obrazie, mimo że centralną postacią, nie jest wyizolowana, lecz stanowi część większej całości, wtopioną w naturę, jakby sama była jej częścią.\r\n\r\nObraz ma lekki, romantyczny charakter, który oddaje impresję chwili – zatrzymanej w czasie, w której natura i ludzka postać tworzą idealną harmonię. Renoir w tym dziele ukazuje nie tylko piękno samego krajobrazu, ale także zmysłowe piękno postaci ludzkiej w naturalnym otoczeniu.', 'wystawa', 'dostępne', NULL, '/nadwoda.jpg'),
+(6, 'Żydówka z pomarańczami', 5, '1882', 'olej na płótnie, 77 × 55 cm', '\"Żydówka z pomarańczami\" to obraz Aleksandra Gierymskiego, przedstawiający młodą kobietę z żydowskiego środowiska, ubraną w tradycyjny strój, trzymającą w rękach kosz z pomarańczami. Dzieło charakteryzuje się wyraźnym zainteresowaniem artysty szczegółami realistycznymi oraz atmosferą codziennego życia.\r\n\r\nKobieta na obrazie jest przedstawiona w pełnej naturalności, z wyrazem twarzy, który może sugerować zarówno zadumę, jak i pewną melancholię. Ubranie, złożone z ciemnych tkanin i delikatnych detali, kontrastuje z żywymi, jasnymi kolorami owoców, które stanowią wyraźny punkt centralny kompozycji. Pomarańcze, ich intensywna pomarańczowa barwa, stanowią symbol zmysłowego piękna oraz bogactwa natury.\r\n\r\nGierymski z precyzją oddaje także grę światła i cieni na twarzy i tkaninie, co nadaje obrazowi realistyczny, niemal fotograficzny charakter. Dzieło to wpisuje się w nurt realizmu, z naciskiem na uchwycenie chwil z życia ludzi i przedstawienie ich w kontekście codziennych, często subtelnych momentów.', 'magazyn', 'konserwacji', NULL, '/zydowkazpomaranczami.jpg'),
+(7, 'Dziewczynka z Chryzantemami', 6, '1894', 'olej na płótnie, 91 × 73 cm', '\"Dziewczynka z chryzantemami\" to jedno z najważniejszych dzieł Olgi Boznańskiej, które ukazuje młodą dziewczynkę siedzącą w obliczu bukietu chryzantem. Kompozycja jest subtelna, a kolory harmonijnie łączą się, tworząc spokojny, melancholijny nastrój.\r\n\r\nDziewczynka jest ubrana w ciemny strój, a jej twarz, mimo wyrazistego rysunku, pozostaje delikatna, pełna spokoju i zamyślenia. Chryzantemy, które trzyma w rękach, stają się centralnym punktem obrazu, a ich jasne, białe i żółte kolory kontrastują z ciemniejszym tłem. Kwiaty w tym przypadku nie tylko pełnią funkcję dekoracyjną, ale także podkreślają atmosferę intymności i czułości.\r\n\r\nBoznańska z mistrzowską precyzją oddaje detale twarzy dziewczynki, jej delikatność i naturalność. Obraz ma silny ładunek emocjonalny, a jednocześnie wyraża poczucie nostalgii i refleksji nad przemijającym czasem. \"Dziewczynka z chryzantemami\" jest symbolem młodości, delikatności i ulotności życia.', 'wystawa', 'dostępne', NULL, '/dziewczynkazchryzantemami.jpg'),
+(8, 'Dziwny ogród', 7, '1910', 'olej na płótnie, 140 × 155 cm', '\"Dziwny ogród\" to obraz Józefa Mehoffera, który łączy w sobie elementy symbolizmu i secesji, tworząc surrealistyczną wizję fantastycznego ogrodu. Centralnym punktem kompozycji jest postać kobieca, stojąca w niezwykłym, niemal onirycznym krajobrazie pełnym abstrakcyjnych kształtów roślinnych i bogatych detali.\r\n\r\nKobieta, ubrana w długą suknię, jest otoczona roślinnością, która przypomina zarówno kwiaty, jak i nietypowe, wyidealizowane kształty. Rośliny, o intensywnych barwach i geometrycznych formach, kontrastują z ciepłymi tonami tła, tworząc wrażenie, jakby cały ogród był wytworem wyobraźni. Zadziwiająca jest także stylizacja postaci, która przywodzi na myśl mitologiczną boginię lub personifikację natury.\r\n\r\nObraz posiada silny ładunek emocjonalny, pełen tajemniczości i melancholii. \"Dziwny ogród\" ukazuje zderzenie piękna z niepokojem, oferując widzowi przestrzeń do osobistej interpretacji, gdzie granice między rzeczywistością a wyobraźnią stają się płynne.', 'wystawa', 'dostępne', NULL, '/dziwnyogrod.jpg'),
+(9, 'Autoportret w zielonym bugatti', 8, '1929', 'olej na płótnie, 65 × 54 cm', '\"Autoportret w zielonym Bugatti\" to jedno z najsłynniejszych dzieł Tamary Łempickiej, które odzwierciedla zarówno jej styl, jak i osobistą fascynację nowoczesnością i luksusem. Obraz przedstawia artystkę w eleganckiej pozie, siedzącą za kierownicą zielonego Bugatti – symbolu prestiżu i wyrafinowania.\r\n\r\nŁempicka, znana ze swojego nowoczesnego podejścia do malarstwa, ukazuje siebie jako silną, pewną siebie kobietę, która nie boi się zdefiniować swojej tożsamości i pozycji w społeczeństwie. Stylizacja postaci jest wyraźnie art deco – z precyzyjnie wyrzeźbionymi rysami twarzy, gładką, lśniącą skórą oraz luksusowym, stylowym autem w tle. Intensywna zieleń samochodu kontrastuje z ciemnym tłem, co uwydatnia elegancję zarówno artystki, jak i jej otoczenia.\r\n\r\nObraz jest manifestem kobiecej niezależności i elegancji, a jednocześnie zawiera elementy refleksji nad rolą artysty w społeczeństwie. Łempicka pokazuje siebie jako osobę nowoczesną, pewną swojej roli i otwartą na życie w luksusie, co podkreśla w tej silnej, pełnej charakteru kompozycji.', 'wystawa', 'dostępne', NULL, '/autoportretwzielonymbugatti.jpg'),
+(10, 'Kochankowie', 9, '1928', 'olej na płótnie, 54 × 73 cm', '\"Kochankowie\" to jedno z najbardziej rozpoznawalnych dzieł René Magritte\'a, w którym artysta podejmuje temat miłości i tajemniczości w sposób charakterystyczny dla surrealizmu. Obraz przedstawia parę ludzi, którzy całują się, ale ich twarze są zasłonięte białymi chustami, co sprawia, że pozostają anonimowi.\r\n\r\nMimo że na pierwszy rzut oka scena wydaje się być romantycznym gestem, to zamaskowanie twarzy wprowadza element niepokoju, zacierając granice między intymnością a obcością. Zasłonięcie twarzy jest częstym motywem w twórczości Magritte\'a, który często badał kwestie tożsamości, widzenia i ukrywania prawdy.\r\n\r\nTło obrazu jest proste, z jednolitą kolorystyką, co dodatkowo uwypukla postacie kochanków. Dzieło to jest jednym z przykładów surrealistycznej gry z rzeczywistością, w której pozornie prosta scena kryje głębszą, niejednoznaczną symbolikę. \"Kochankowie\" są obrazem, który wywołuje pytania o naturę miłości, intymności i komunikacji, oferując widzowi przestrzeń do interpretacji i refleksji nad tym, co pozostaje niewypowiedziane.', 'wystawa', 'dostępne', NULL, '/kochankowie.jpg'),
+(11, 'Pocałunek', 10, '1882', 'marmur, 173 × 112 × 75 cm', '\"Pocałunek\" to jedno z najbardziej znanych dzieł Auguste\'a Rodina, które przedstawia parę kochanków w momencie intensywnego, pełnego namiętności pocałunku. Rzeźba ukazuje postacie w pełnej bliskości, ich ciała są ze sobą splecione, a twarze zwrócone ku sobie, co nadaje dziełu sensualny charakter.\r\n\r\nRodin uchwycił moment pełnej intymności i emocjonalnego napięcia, oddając subtelną grę między miłością a pożądaniem. Zręczność, z jaką artysta oddał detale ciał i rąk, przyczynia się do uczucia, że postacie są w pełni obecne w tej chwili, a ich zmysłowość nie jest tylko wizualna, lecz niemal namacalna. Kiedy patrzymy na \"Pocałunek\", czujemy nie tylko ciepło i bliskość, ale także napięcie emocjonalne, które towarzyszy aktowi miłości.\r\n\r\nRzeźba, choć pełna delikatności i finezji, zachowuje monumentalny charakter, co nadaje jej uniwersalny wymiar. Rodin w tym dziele nie tylko oddaje fizyczny akt pocałunku, ale także emocjonalną i duchową głębię, której towarzyszy.', 'wystawa', 'dostępne', NULL, '/pocalunek.jpg'),
+(12, 'Dawid', 11, '1501–1504', 'marmur, wysokość 517 cm', '\"Dawid\" to jedna z najbardziej ikonicznych rzeźb Michała Anioła, przedstawiająca biblijnego bohatera, Dawida, w momencie przed walką z Goliatem. Rzeźba ukazuje młodzieńca, który stoi w pełnej gotowości, z lekko uniesioną głową i skupionym wzrokiem, co sugeruje zarówno jego pewność siebie, jak i wewnętrzną siłę. Jego postawa jest pełna spokoju, ale jednocześnie napięta, co podkreśla fizyczną i emocjonalną gotowość do nadchodzącej walki.\r\n\r\nDawid Michała Anioła jest ukazany w pełnej nagości, co w kontekście renesansowym miało na celu oddanie ideałów piękna i harmonii ciała ludzkiego. Artysta skupił się na realistycznym odwzorowaniu anatomii, co było jednym z jego najważniejszych osiągnięć. Postać jest dynamiczna, z wyraźnymi rysami mięśni i starannie wyrzeźbioną twarzą, która ukazuje zarówno młodzieńczą energię, jak i powagę zadania.\r\n\r\nRzeźba \"Dawid\" to manifest mistrzostwa Michała Anioła w zakresie przedstawiania ludzkiego ciała i emocji, a także symbol siły, odwagi i determinacji.', 'wystawa', 'dostępne', NULL, '/dawid.jpg'),
+(13, 'Wenus z Milo', 12, 'ok. 150 p.n.e.', 'marmur, wysokość 203 cm', '\"Wenus z Milo\" to jedna z najsłynniejszych rzeźb starożytnej Grecji, której autorstwo przypisuje się Aleksandrosowi z Antiochii. Rzeźba przedstawia boginię miłości i piękna, Wenus, w pełnej nagości, ale z charakterystycznym brakiem obu rąk. Postać jest uchwycona w naturalistycznej, ale idealizowanej formie, z delikatnymi detalami ukazującymi miękkie krzywizny ciała, co odzwierciedla ówczesne greckie ideały piękna.\r\n\r\nRzeźba ma dynamiczną kompozycję, w której ciało Wenus jest lekko skręcone, co nadaje jej poczucie ruchu i gracji. Pomimo braku rąk, rzeźba nie traci swojej pełni wyrazu – jej postać, z wyraźnie zaznaczoną sylwetką, oddaje spokój i zmysłowość. Wykonanie detali twarzy, jak i subtelne uwypuklenie mięśni i kształtów, świadczy o mistrzowskiej technice i realizacji.\r\n\r\n\"Wenus z Milo\" stała się jednym z symboli klasycznego piękna, a jej brakujące ręce tylko dodają tajemniczości i magnetyzmu. Rzeźba wciąż fascynuje nie tylko swoją estetyką, ale również pytaniem o pierwotną formę i pełnię wyrazu, którą mogła posiadać.', 'wystawa', 'dostępne', NULL, '/wenuszmilo.jpg'),
+(14, 'Pieta', 11, '1498–1499', 'marmur, wysokość 174 cm', '\"Pietà\" to jedno z najbardziej wzruszających dzieł Michała Anioła, przedstawiające Matkę Boską trzymającą martwego Jezusa na swoich kolanach po jego zdjęciu z krzyża. Rzeźba jest wyjątkowa pod względem emocjonalnym i technicznym, ukazując głęboką relację matki i syna w chwili smutku i straty.\r\n\r\nMatka Boska jest przedstawiona jako młoda kobieta, mimo jej roli matki, co jest charakterystycznym elementem renesansowego idealizmu. Jej postawa i wyraz twarzy są pełne łagodności i współczucia, co kontrastuje z brutalnością i cierpieniem Jezusa, którego ciało jest w naturalistyczny sposób oddane, pełne szczegółów, takich jak mięśnie czy fałdy skóry. Ciało Jezusa leży spokojnie na jej kolanach, co podkreśla zarówno zmysłowość, jak i majestat tej sceny.\r\n\r\nRzeźba, mimo swojej monumentalnej formy, jest niezwykle intymna. Michał Anioł z niezwykłą precyzją oddał detale rzeźbiarskie, takie jak draperie czy teksturę ciała, co daje poczucie realizmu, ale równocześnie całość jest pełna duchowej harmonii. \"Pietà\" to wyraz nie tylko technicznej biegłości artysty, ale również głębokiego zrozumienia emocji i religijnej symboliki.', 'magazyn', 'wypożyczone', NULL, '/pieta.jpg'),
+(15, 'Statua Wolności', 13, '1886', 'miedź, stal, beton', '\"Statua Wolności\" to monumentalna rzeźba zaprojektowana przez Frédérica Auguste\'a Bartholdiego, która stała się symbolem wolności, nadziei i demokracji. Posąg przedstawia postać kobiecą, symbolizującą wolność, trzymającą w jednej ręce pochodnię, a w drugiej tablicę z datą Deklaracji Niepodległości Stanów Zjednoczonych (4 lipca 1776).\r\n\r\nRzeźba ma klasyczne cechy przedstawienia kobiety, ale z elementami wyrazistych symboli wolności, takich jak pochodnia (znak światła i wiedzy) i tablica (symbol prawa). Jej postura jest wyprostowana, a postać kobieca, ubrana w draperie, stoi na szczycie postumentu w pozycji triumfalnej, co wzmacnia jej monumentalny charakter.', 'wystawa', 'dostępne', NULL, '/statuawolnosci.jpg'),
+(16, 'Żurawie', 2, '1879', 'olej na płótnie,  99 × 140 cm', '\"Żurawie\" to obraz autorstwa Józefa Chełmońskiego, który ukazuje scenę z życia dzikiej przyrody, typową dla realizmu artysty. Na obrazie przedstawione są żurawie w locie, które majestatycznie przelatują nad rozległą polską łąką, z malowniczym tłem nieba, pełnym chmur i miękkiego światła.\r\n\r\nChełmoński, znany ze swojej wierności szczegółom przyrodniczym, oddaje dynamiczny ruch ptaków z dużą precyzją, co kontrastuje z nieruchomą, spokojną przestrzenią krajobrazu. Obraz emanuje spokojem, ale jednocześnie przyciąga uwagę do detali – jak tekstura piór ptaków czy subtelne światłocienie. Tło, pełne złocistych odcieni, nadaje całej kompozycji ciepły, prawdziwy charakter.\r\n\r\n\"Żurawie\" to dzieło, które nie tylko oddaje urok przyrody, ale także ukazuje głębokie zrozumienie ekosystemu i znaczenie harmonii między człowiekiem a naturą.', 'wystawa', 'dostępne', NULL, '/zurawie.jpg'),
+(17, 'Apollo i Daphne', 14, '1622–1625', 'marmur, wysokość 243 cm', '\"Apollo i Daphne\" to jedna z najsłynniejszych rzeźb autorstwa Gian Lorenza Berniniego, przedstawiająca moment przemiany nimfy Daphne w drzewo laurowe, w wyniku jej ucieczki przed bogiem Apollonem. Rzeźba uchwyca dramatyczny moment, kiedy Daphne zaczyna zamieniać się w drzewo, a jej ciało stopniowo przybiera formę pnia, gałęzi i liści, co sprawia, że jej przemiana jest zarówno piękna, jak i tragiczna.\r\n\r\nBernini, mistrz barokowego stylu, w tej rzeźbie połączył dynamiczność z realizmem. Apollo, pełen pasji i determinacji, jest ukazany w momencie chwytania Daphne, lecz jego gest jest jednocześnie pełen łagodności, świadczący o bezsilności w obliczu nieuniknionego losu. Daphne, w połowie przemieniona, pozostaje w stanie zawieszenia, z jej ciałem zaczynającym przyjmować formę drzewa, a jej włosy stają się gałęziami.\r\n\r\nRzeźba jest pełna ruchu i emocji, co w połączeniu z techniczną precyzją Berniniego, który umiejętnie oddał fakturę skóry, gałęzi i liści, sprawia, że \"Apollo i Daphne\" jest jednym z najwybitniejszych dzieł sztuki barokowej. Artysta nie tylko oddał dramatyzm mitu, ale także stworzył dzieło, które w mistrzowski sposób łączy w sobie elementy rzeźby, ruchu i transformacji.', 'magazyn', 'konserwacji', NULL, '/apolloidaphne.jpg'),
+(18, 'Gwiaździsta noc', 15, '1889', 'olej na płótnie, 73,7 × 92,1 cm', '\"Gwiaździsta noc\" to jedno z najbardziej rozpoznawalnych dzieł Vincenta van Gogha, które przedstawia nocne niebo nad Saint-Rémy-de-Provence, z dynamicznie wirującymi gwiazdami i rozświetlonymi księżycem oraz zróżnicowaną, falującą fakturą tła. W centrum kompozycji znajduje się spokojna wioska z kościołem, a całe tło pełne jest ekspresyjnych, kręcących się form przypominających wiry, które są charakterystyczne dla stylu van Gogha.\r\n\r\nObraz wyróżnia się intensywnym użyciem koloru i energicznymi pociągnięciami pędzla, które nadają kompozycji wyjątkową teksturę i ruch. Choć malowidło przedstawia noc, nie jest ono ciemne ani ponure – van Gogh używa jaskrawych żółci i błękitów, które tworzą kontrast z ciemniejszymi odcieniami nieba i krajobrazu. Złożona, niemal hipnotyzująca dynamika, jaka pojawia się w \"Gwiaździstej nocy\", odzwierciedla subiektywne postrzeganie świata przez artystę oraz jego zmagania z emocjami, tworząc dzieło pełne intensywnej ekspresji.\r\n\r\n\"Gwiaździsta noc\" jest również symbolicznym dziełem, które można interpretować jako wyraz tęsknoty i poszukiwania sensu, gdzie niebo i natura stają się pełne emocji, a ich wirująca energia łączy rzeczywistość z wewnętrznym światem twórcy.', 'wystawa', 'dostępne', NULL, '/gwiazdzistanoc.jpg'),
+(19, 'Maskarada', 16, '1928', 'olej na płótnie, 81 × 100 cm', '\"Maskarada\" to obraz Tadeusza Makowskiego, który łączy elementy ekspresjonizmu i surrealizmu, przedstawiając scenę balu maskowego, w której postacie w maskach oraz z dziwnymi pozami tworzą niezwykłą, nieco oniryczną atmosferę. Obraz emanuje tajemniczością, a jego kompozycja pełna jest kontrastów i nieoczywistych zestawień.\r\n\r\nNa obrazie widzimy postacie ubrane w barwne kostiumy, z wyrazistymi maskami na twarzach, co nadaje im niemal bezosobowy charakter, a jednocześnie podkreśla grę z tożsamościami i iluzją. Kolorystyka jest intensywna, z przewagą ciepłych tonów czerwieni, pomarańczy i złota, co dodaje obrazowi teatralności i dramatyzmu. Formy są uproszczone, a postacie i tła pozbawione detali, co tworzy wrażenie, jakbyśmy patrzyli na senne, abstrakcyjne wizje.\r\n\r\n\"Maskarada\" Makowskiego to dzieło pełne symboliki, gdzie artysta bawi się z widzem w grę pozorów i ukrytych znaczeń, a zarazem tworzy obraz pełen radości, ale i mroku. To przenikanie się świata realnego i wyobrażonego, które jest charakterystyczne dla stylu Makowskiego, a także dla ducha międzywojennej sztuki.', 'wystawa', 'dostępne', NULL, '/maskarada.jpg'),
+(20, '4 Żywioły', 17, '2024', 'Digital art', '\"4 żywioły\" to obraz Weroniki Bucewki, który stanowi głęboką refleksję nad naturą i jej nieustanną dynamiką. Praca ta przedstawia cztery fundamentalne żywioły: ogień, wodę, ziemię i powietrze, które zostały ukazane w sposób abstrakcyjny, jednak pełen symboliki i emocji. Każdy z żywiołów jest przedstawiony za pomocą unikalnej palety kolorów i form, które podkreślają ich moc, energię oraz ich wzajemne oddziaływanie.\r\n\r\nOgień jest symbolizowany przez intensywne czerwienie i pomarańcze, wywołujące poczucie ciepła i pasji. Woda jest przedstawiona w chłodnych, niebieskich tonacjach, przywodząc na myśl spokój, ale również zmienność. Ziemia w obrazach Bucewki jest reprezentowana przez głębokie brązy i zielenie, ukazujące stabilność, ale również procesy transformacji i wzrostu. Powietrze natomiast jest oddane przez subtelne, lekkie formy i szare przejścia, symbolizujące niewidzialną, ale wszechobecną obecność.\r\n\r\nObraz pełen jest kontrastów – dynamicznych linii, które wskazują na nieustanny ruch, oraz statycznych, spokojniejszych elementów, które zapraszają do refleksji nad równowagą w naturze. \"4 żywioły\" to dzieło, które łączy w sobie zarówno intensywność emocji, jak i głęboką filozoficzną myśl o związku człowieka z przyrodą oraz o nieuchronnych procesach zachodzących w świecie.', 'wystawa', 'dostępne', NULL, '/4zywioly.jpg'),
+(21, 'Rak-malina', 18, '2024', 'Digital art', '\"Rak-malina\" to obraz autorstwa Olgi Długiewicz, który łączy subtelność natury z wyrazistym podejściem artystycznym. Praca ta przedstawia raka – jednego z bardziej tajemniczych mieszkańców wód – w niezwykły sposób. Zamiast klasycznego podejścia do tego zwierzęcia, Kowalska łączy je z symbolem malin, nadając obrazowi nieoczekiwany, niemal surrealistyczny charakter.\r\n\r\nRak jest ukazany w swojej naturalnej formie, z wyraźnymi detalami, ale artystka decyduje się połączyć go z delikatnymi, soczystymi malinami, które tworzą jego skorupę, jakby były częścią jego świata. To połączenie symbolizuje zderzenie dwóch, pozornie różnych światów – twardego, wytrzymałego świata wodnych stworzeń oraz delikatności natury roślinnej.', 'wystawa', 'dostępne', NULL, '/rakmalina.jpg'),
+(22, 'Mushrooms', 19, '1995', 'akryl na płótnie, 130 cm x 130 cm', 'Obraz \"Mushrooms\" Yayoi Kusamy to dzieło pulsujące energią i intensywną kolorystyką, charakterystyczną dla twórczości artystki. Na płótnie przedstawiono liczne grzyby o abstrakcyjnych, nierealnych kształtach, które wydają się jednocześnie organiczne i surrealistyczne. Kusama wykorzystuje wzory kropek, które tworzą hipnotyczny rytm, podkreślając zarówno delikatność, jak i dziwaczność przedstawionych form. Dzieło łączy dziecięcą fascynację naturą z psychodeliczną estetyką, wciągając widza w świat fantazji i nieskończoności. Kolorystyka jest żywa, a kontrasty wzmacniają trójwymiarowość elementów. Obraz zachwyca swoją precyzją i niepowtarzalnym stylem, który balansuje między rzeczywistością a snem.', 'wystawa', 'dostępne', 50000.5, '/mushrooms.jpg');
 
 -- --------------------------------------------------------
 
@@ -73,13 +119,15 @@ CREATE TABLE `Clients` (
 -- Table structure for table `Events`
 --
 
-CREATE TABLE `Events` (
-  `event_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Events` (
+  `event_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL COMMENT 'Nazwa wydarzenia',
   `event_date` date NOT NULL,
   `exhibition_id` int(11) DEFAULT NULL COMMENT 'ID wystawy (jeśli dotyczy)',
   `capacity` int(11) NOT NULL COMMENT 'Maksymalna liczba uczestników',
-  `event_type` enum('warsztat','oprowadzanie') NOT NULL COMMENT 'Typ wydarzenia (np. warsztat, oprowadzanie)'
+  `event_type` enum('warsztat','oprowadzanie') NOT NULL COMMENT 'Typ wydarzenia (np. warsztat, oprowadzanie)',
+  PRIMARY KEY (`event_id`),
+  KEY `exhibition_id` (`exhibition_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -88,13 +136,14 @@ CREATE TABLE `Events` (
 -- Table structure for table `Exhibitions`
 --
 
-CREATE TABLE `Exhibitions` (
-  `exhibition_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Exhibitions` (
+  `exhibition_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL COMMENT 'Nazwa wystawy',
   `start_date` date NOT NULL,
   `end_date` date DEFAULT NULL COMMENT 'Mogą być stałe wystawy',
   `location` varchar(60) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  PRIMARY KEY (`exhibition_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -103,12 +152,14 @@ CREATE TABLE `Exhibitions` (
 -- Table structure for table `Marketing`
 --
 
-CREATE TABLE `Marketing` (
-  `promotion_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Marketing` (
+  `promotion_id` int(11) NOT NULL AUTO_INCREMENT,
   `content` text NOT NULL COMMENT 'Treść promocyjna',
   `target_audience` enum('młodzież','młodzi dorośli','dorośli','emeryci','wszystkie grupy wiekowe') NOT NULL COMMENT 'Docelowa grupa odbiorców',
   `start_date` date NOT NULL,
-  `end_date` date NOT NULL
+  `end_date` date NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  PRIMARY KEY (`promotion_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -117,11 +168,13 @@ CREATE TABLE `Marketing` (
 -- Table structure for table `Reports`
 --
 
-CREATE TABLE `Reports` (
-  `report_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Reports` (
+  `report_id` int(11) NOT NULL AUTO_INCREMENT,
   `report_type` varchar(40) NOT NULL COMMENT 'Typ raportu (np. sprzedaży, odwiedzających)',
   `generated_date` date NOT NULL COMMENT 'Data wygenerowania',
-  `details` text NOT NULL COMMENT 'Szczegóły raportu'
+  `details` text NOT NULL COMMENT 'Szczegóły raportu',
+  `user_id` varchar(50) NOT NULL,
+  PRIMARY KEY (`report_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -130,13 +183,21 @@ CREATE TABLE `Reports` (
 -- Table structure for table `Transactions`
 --
 
-CREATE TABLE `Transactions` (
+CREATE TABLE IF NOT EXISTS `Transactions` (
   `transaction_id` int(11) NOT NULL,
-  `client_id` int(11) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
   `artwork_id` int(11) NOT NULL,
   `sale_date` date NOT NULL,
-  `price` double NOT NULL
+  `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Triggers `Transactions`
+--
+DELIMITER $$
+CREATE TRIGGER `modArtworkStatus` AFTER INSERT ON `Transactions` FOR EACH ROW UPDATE Artworks SET status = 'niedostępne', location = 'magazyn' WHERE artwork_id = NEW.artwork_id
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -144,131 +205,42 @@ CREATE TABLE `Transactions` (
 -- Table structure for table `Users`
 --
 
-CREATE TABLE `Users` (
-  `user_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Users` (
+  `user_id` varchar(50) NOT NULL,
+  `user_type` varchar(3) NOT NULL,
+  `user_no` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `role` enum('administrator','pracownik','klient') NOT NULL
+  `name` varchar(30) NOT NULL,
+  `surname` varchar(40) NOT NULL,
+  `phoneNo` int(9) DEFAULT NULL,
+  `role` varchar(50) DEFAULT NULL COMMENT 'tylko dla pracowników',
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `Users`
+--
+
+INSERT INTO `Users` (`user_id`, `user_type`, `user_no`, `username`, `password`, `name`, `surname`, `phoneNo`, `role`) VALUES
+('ADM0', 'ADM', 0, 'admin', 'admin', 'Anna', 'Nowak', NULL, 'Administrator'),
+('CLI0', 'CLI', 0, 'bambik', 'bambik', 'Jan', 'Kowalski', 531203956, '');
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Indexes for table `Artists`
---
-ALTER TABLE `Artists`
-  ADD PRIMARY KEY (`artist_id`);
-
---
--- Indexes for table `Artworks`
+-- Constraints for table `Artworks`
 --
 ALTER TABLE `Artworks`
-  ADD PRIMARY KEY (`artwork_id`),
-  ADD KEY `artist_id` (`artist_id`);
+  ADD CONSTRAINT `artworks_ibfk_1` FOREIGN KEY (`artist_id`) REFERENCES `Artists` (`artist_id`) ON UPDATE CASCADE;
 
 --
--- Indexes for table `Clients`
---
-ALTER TABLE `Clients`
-  ADD PRIMARY KEY (`client_id`);
-
---
--- Indexes for table `Events`
+-- Constraints for table `Events`
 --
 ALTER TABLE `Events`
-  ADD PRIMARY KEY (`event_id`),
-  ADD KEY `exhibition_id` (`exhibition_id`);
-
---
--- Indexes for table `Exhibitions`
---
-ALTER TABLE `Exhibitions`
-  ADD PRIMARY KEY (`exhibition_id`);
-
---
--- Indexes for table `Marketing`
---
-ALTER TABLE `Marketing`
-  ADD PRIMARY KEY (`promotion_id`);
-
---
--- Indexes for table `Reports`
---
-ALTER TABLE `Reports`
-  ADD PRIMARY KEY (`report_id`);
-
---
--- Indexes for table `Transactions`
---
-ALTER TABLE `Transactions`
-  ADD PRIMARY KEY (`transaction_id`),
-  ADD KEY `client_id` (`client_id`,`artwork_id`);
-
---
--- Indexes for table `Users`
---
-ALTER TABLE `Users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `Artists`
---
-ALTER TABLE `Artists`
-  MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Artworks`
---
-ALTER TABLE `Artworks`
-  MODIFY `artwork_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Clients`
---
-ALTER TABLE `Clients`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Events`
---
-ALTER TABLE `Events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Exhibitions`
---
-ALTER TABLE `Exhibitions`
-  MODIFY `exhibition_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Marketing`
---
-ALTER TABLE `Marketing`
-  MODIFY `promotion_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Reports`
---
-ALTER TABLE `Reports`
-  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Transactions`
---
-ALTER TABLE `Transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Users`
---
-ALTER TABLE `Users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`exhibition_id`) REFERENCES `Exhibitions` (`exhibition_id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
