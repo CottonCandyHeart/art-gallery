@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -12,29 +13,33 @@
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.LogInController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle fill="#eaeaea" height="586.0" layoutX="195.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="438.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.26443764567375183" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <ImageView fitHeight="206.0" fitWidth="205.0" layoutX="308.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../img/Logo.png" />
          </image>
       </ImageView>
-      <Text layoutX="249.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="101.443359375">
+      <TextField fx:id="usernameTextField" layoutX="288.0" layoutY="280.0" prefHeight="40.0" prefWidth="240.0" />
+      <Text layoutX="323.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
-            <Font name="Microsoft JhengHei UI Light" size="18.0" />
+            <Font name="Microsoft JhengHei UI Light" size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="226.0" layoutY="197.0" />
-      <Text layoutX="249.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" textAlignment="CENTER" wrappingWidth="101.443359375">
-         <font>
-            <Font name="Microsoft JhengHei UI Light" size="18.0" />
-         </font>
-      </Text>
-      <Button layoutX="218.0" layoutY="320.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #e576a2;" text="Cancel">
+      <Button fx:id="cancelButton" layoutX="271.0" layoutY="517.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: #e576a2;" text="Cancel">
          <effect>
             <DropShadow>
                <color>
@@ -42,9 +47,12 @@
                </color>
             </DropShadow>
          </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
       </Button>
-      <PasswordField layoutX="226.0" layoutY="267.0" />
-      <Button layoutX="312.0" layoutY="320.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #9babd9;" text="Log In">
+      <PasswordField fx:id="passwordField" layoutX="290.0" layoutY="376.0" prefHeight="40.0" prefWidth="240.0" />
+      <Button fx:id="logInButton1" layoutX="420.0" layoutY="517.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: #9babd9;" text="Log In">
          <effect>
             <DropShadow>
                <color>
@@ -52,8 +60,11 @@
                </color>
             </DropShadow>
          </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
       </Button>
-      <Circle blendMode="SRC_ATOP" layoutX="531.0" layoutY="44.0" opacity="0.37" radius="120.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0">
+      <Circle blendMode="SRC_ATOP" layoutX="792.0" layoutY="101.0" opacity="0.37" radius="148.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0">
          <effect>
             <GaussianBlur radius="63.0" />
          </effect>
@@ -74,7 +85,7 @@
             </RadialGradient>
          </fill>
       </Circle>
-      <Circle blendMode="SRC_ATOP" layoutX="41.0" layoutY="210.0" opacity="0.37" radius="120.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0">
+      <Circle blendMode="SRC_ATOP" layoutX="40.0" layoutY="376.0" opacity="0.37" radius="148.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0">
          <effect>
             <GaussianBlur radius="63.0" />
          </effect>
@@ -95,5 +106,14 @@
             </RadialGradient>
          </fill>
       </Circle>
+      <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="263.0" layoutY="439.0" prefHeight="51.0" prefWidth="301.0" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Text layoutX="325.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+         <font>
+            <Font name="Microsoft JhengHei UI Light" size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

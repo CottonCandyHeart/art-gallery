@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.StartingController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.StartingController">
   <content>
     <SplitPane dividerPositions="0.29797979797979796" prefHeight="662.0" prefWidth="816.0">
       <items>
@@ -34,7 +34,7 @@
                   </color>
                 </DropShadow>
               </effect></Button>
-            <Button layoutX="85.0" layoutY="337.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Collection" textAlignment="CENTER">
+            <Button fx:id="collectionButton" layoutX="85.0" layoutY="337.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Collection" textAlignment="CENTER">
               <effect>
                 <DropShadow offsetY="2.0">
                   <color>
@@ -42,7 +42,7 @@
                   </color>
                 </DropShadow>
               </effect></Button>
-            <Button layoutX="98.0" layoutY="494.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Map" textAlignment="CENTER">
+            <Button fx:id="mapButton" layoutX="98.0" layoutY="494.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Map" textAlignment="CENTER">
               <effect>
                 <DropShadow offsetY="2.0">
                   <color>
@@ -50,7 +50,7 @@
                   </color>
                 </DropShadow>
               </effect></Button>
-            <Button layoutX="126.0" layoutY="546.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Sign up">
+            <Button fx:id="signUpButton" layoutX="126.0" layoutY="546.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Sign up">
               <effect>
                 <DropShadow offsetY="2.0">
                   <color>
@@ -58,7 +58,7 @@
                   </color>
                 </DropShadow>
               </effect></Button>
-            <Button layoutX="94.0" layoutY="442.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Events" textAlignment="CENTER">
+            <Button fx:id="eventsButton" layoutX="94.0" layoutY="442.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Events" textAlignment="CENTER">
               <effect>
                 <DropShadow offsetY="2.0">
                   <color>
@@ -66,7 +66,7 @@
                   </color>
                 </DropShadow>
               </effect></Button>
-            <Button layoutX="94.0" layoutY="388.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Artists" textAlignment="CENTER">
+            <Button fx:id="artistsButton" layoutX="94.0" layoutY="388.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Artists" textAlignment="CENTER">
               <effect>
                 <DropShadow offsetY="2.0">
                   <color>
@@ -75,7 +75,7 @@
                 </DropShadow>
               </effect>
             </Button>
-            <Button layoutX="56.0" layoutY="546.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Log in">
+            <Button fx:id="logInButton" layoutX="56.0" layoutY="546.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Log in">
               <effect>
                 <DropShadow offsetY="2.0">
                   <color>
