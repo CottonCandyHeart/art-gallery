@@ -22,7 +22,7 @@ public class LogInController implements Initializable {
     @FXML
     private TextField usernameTextField;
     @FXML
-    private PasswordField passwordTextField;
+    private PasswordField passwordField;
 
     //private DataBase db = new DataBase(); //tak było jak robiliśmy warcaby
 
@@ -31,7 +31,7 @@ public class LogInController implements Initializable {
         logInButton1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (usernameTextField.getText().isEmpty() || passwordTextField.getText().isEmpty()) {
+                if (usernameTextField.getText().isEmpty() || passwordField.getText().isEmpty()) {
                     warningLabel.setText("Please fill all fields!");
                     return;
                 }
