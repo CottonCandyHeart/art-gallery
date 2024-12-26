@@ -71,7 +71,7 @@ public class LogInController implements Initializable {
                             System.out.println("Cannot recognize user type");
                         }
 
-                        sc.changeScene(event, "MainWindowGUI.fxml", "Game Window!", user);
+                        sc.changeSceneUser(event, "MainWindowGUI.fxml", "Game Window!", user);
                         db.closeConnection(db.getCon(), db.getSt());
                         try {
                             Thread.sleep(2000);
@@ -125,7 +125,7 @@ public class LogInController implements Initializable {
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                SceneController.changeScene(event, "/com/example/ArtGallery/hello-view.fxml", "Welcome!", user);
+                SceneController.changeScene(event, "/com/example/ArtGallery/hello-view.fxml", "Welcome!");
             }
         });
     }

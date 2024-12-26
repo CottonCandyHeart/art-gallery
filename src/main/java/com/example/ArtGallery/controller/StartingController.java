@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class StartingController implements Initializable
 {
     @FXML
@@ -26,6 +27,15 @@ public class StartingController implements Initializable
     private Button eventsButton;
     @FXML
     private Button mapButton;
+
+    //private User user;
+
+    /*public void setUser(User user) {
+        this.user = user;
+        usernameLabel.setText(user.getUsername());
+        winsScoreLabel.setText(String.valueOf(user.getWins()));
+        defeatsScoreLabel.setText(String.valueOf(user.getLost()));
+    }*/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

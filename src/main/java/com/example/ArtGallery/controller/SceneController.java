@@ -12,7 +12,7 @@ import java.io.IOException;
 import com.example.ArtGallery.users.*;
 
 public class SceneController {
-    public static void changeScene(ActionEvent event, String fxmlFile, String title, User user){
+    public static void changeScene(ActionEvent event, String fxmlFile, String title){
         Parent root = null;
         try{
             root = FXMLLoader.load(SceneController.class.getResource(fxmlFile));
@@ -23,5 +23,22 @@ public class SceneController {
         stage.setTitle(title);
         stage.setScene(new Scene(root, 816, 600));
         stage.show();
+    }
+
+    public static void changeSceneUser(ActionEvent event, String fxmlFile, String title, User user){
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneController.class.getResource(fxmlFile));
+            Parent root = loader.load();
+
+            StartingController startingController = loader.getController();
+            //StartingController.setUser(user);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

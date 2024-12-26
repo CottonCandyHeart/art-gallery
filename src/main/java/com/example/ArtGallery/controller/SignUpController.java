@@ -73,7 +73,7 @@ public class SignUpController implements Initializable {
         cancelButton1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                SceneController.changeScene(event, "/com/example/ArtGallery/hello-view.fxml", "Welcome!");
+                SceneController.changeScene(event, "/com/example/ArtGallery/hello-view.fxml", "Welcome!" );
             }
         });
     }
