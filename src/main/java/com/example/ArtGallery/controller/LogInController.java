@@ -71,6 +71,7 @@ public class LogInController implements Initializable {
                             System.out.println("Cannot recognize user type");
                         }
 
+                        // -------------------- TO DO OGARNIĘCIA JESZCZE --------------------
                         sc.changeScene(event, "MainWindowGUI.fxml", "Game Window!", user);
                         db.closeConnection(db.getCon(), db.getSt());
                         try {
