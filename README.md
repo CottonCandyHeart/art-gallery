@@ -29,7 +29,6 @@ SELECT artist_id INTO artworkArtistId FROM Artists WHERE name = artworkArtistNam
 
 IF artworkArtistId IS NOT NULL THEN
     SELECT COUNT(*) INTO artwork_count FROM Artworks WHERE title = artworkTitle AND artist_id = artworkArtistId;
-
     IF artwork_count = 0 THEN
         IF artworkPrice = "NULL" THEN
             INSERT INTO Artworks VALUES (NULL, artworkTitle, artworkArtistId, artworkCreationDate, artworkMethod, artworkDescription, artworkLocation, artworkStatus, NULL, artworkPicturePath);
