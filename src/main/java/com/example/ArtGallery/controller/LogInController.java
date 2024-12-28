@@ -85,7 +85,7 @@ public class LogInController implements Initializable {
                     }
                 }
 
-                //obsługa logowania z warcabów:
+                // ----------- obsługa logowania z warcabów: -----------
                 /*
                 String username = db.getDataString("SELECT username FROM user where username like \"" + usernameTextField.getText() + "\";");
 

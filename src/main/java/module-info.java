@@ -11,12 +11,18 @@ module com.example.ArtGallery {
     // Add these additional Spring requirements
     requires spring.beans;
     requires spring.core;
+    requires jakarta.persistence;
+    requires spring.data.jpa;
+    requires org.hibernate.orm.core;
+    requires spring.orm;
 
     exports com.example.ArtGallery.controller;
     opens com.example.ArtGallery.controller;
 
     opens com.example.ArtGallery to spring.beans, spring.context, javafx.fxml, spring.core, javafx.base;
     exports com.example.ArtGallery;
+
+    opens com.example.ArtGallery.model to spring.core, org.hibernate.orm.core;
 
 }
 
