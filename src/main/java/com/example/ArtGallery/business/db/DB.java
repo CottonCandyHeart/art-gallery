@@ -1,4 +1,4 @@
-package com.example.ArtGallery.db;
+package com.example.ArtGallery.business.db;
 import java.sql.*;
 import java.util.Properties;
 

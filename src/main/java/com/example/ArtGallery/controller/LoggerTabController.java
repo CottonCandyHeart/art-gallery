@@ -1,4 +1,4 @@
-package com.jcchv.java.controller;
+package com.example.ArtGallery.controller;
 
 import org.springframework.stereotype.Component;
 

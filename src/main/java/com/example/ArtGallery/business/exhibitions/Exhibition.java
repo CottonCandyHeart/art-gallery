@@ -1,4 +1,4 @@
-package com.example.ArtGallery.exhibitions;
+package com.example.ArtGallery.business.exhibitions;
 
 public class Exhibition {
     private int iD;

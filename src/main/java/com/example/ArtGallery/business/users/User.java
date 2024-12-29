@@ -1,4 +1,4 @@
-package com.example.ArtGallery.users;
+package com.example.ArtGallery.business.users;
 
 public class User {
     private String ID;

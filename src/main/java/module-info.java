@@ -24,5 +24,12 @@ module com.example.ArtGallery {
 
     opens com.example.ArtGallery.model to spring.core, org.hibernate.orm.core;
 
+    exports com.example.ArtGallery.data;
+    opens com.example.ArtGallery.data to spring.beans, spring.core, spring.context, org.hibernate.orm.core;
+
+    exports com.example.ArtGallery.services;
+
+    requires java.base;
+
 }
 

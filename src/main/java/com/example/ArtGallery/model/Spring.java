@@ -1,4 +1,4 @@
-package com.jcchv.java.model;
+package com.example.ArtGallery.model;
 
 public class Spring {
     public String spring;

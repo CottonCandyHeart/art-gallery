@@ -1,8 +1,8 @@
-package com.example.ArtGallery.artworks;
-import com.example.ArtGallery.artists.*;
+package com.example.ArtGallery.business.artworks;
+import com.example.ArtGallery.business.artists.*;
 
 public class Artwork {
-    private int ID;
+    private Long ID;
     private String title;
     private Artist artist;
     private String creationDate;
@@ -11,7 +11,7 @@ public class Artwork {
     private String status;
     private String attribute;
 
-    public Artwork(int ID, String title, Artist artist, String creationDate, String description, String location, String status, String attribute) {
+    public Artwork(Long ID, String title, Artist artist, String creationDate, String description, String location, String status, String attribute) {
         this.ID = ID;
         this.title = title;
         this.artist = artist;
@@ -23,7 +23,7 @@ public class Artwork {
     }
 
     // ---------------- GETTERS ----------------
-    public int getID() {return ID;}
+    public Long getID() {return ID;}
     public String getTitle() {return title;}
     public Artist getArtist() {return artist;}
     public String getCreationDate() {return creationDate;}
@@ -33,7 +33,7 @@ public class Artwork {
     public String getAttribute() {return attribute;}
 
     // ---------------- SETTERS ----------------
-    public void setID(int ID) {this.ID = ID;}
+    public void setID(Long ID) {this.ID = ID;}
     public void setTitle(String title) {this.title = title;}
     public void setArtist(Artist artist) {this.artist = artist;}
     public void setCreationDate(String creationDate) {this.creationDate = creationDate;}

@@ -1,4 +1,4 @@
-package com.example.ArtGallery.reports;
+package com.example.ArtGallery.business.reports;
 
 public class Report {
     private int ID;

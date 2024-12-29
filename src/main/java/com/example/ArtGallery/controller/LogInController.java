@@ -12,8 +12,8 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.example.ArtGallery.db.*;
-import com.example.ArtGallery.users.*;
+import com.example.ArtGallery.business.db.*;
+import com.example.ArtGallery.business.users.*;
 
 public class LogInController implements Initializable {
     @FXML

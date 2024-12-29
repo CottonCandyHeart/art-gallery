@@ -1,23 +1,23 @@
-package com.jcchv.java.services;
+package com.example.ArtGallery.services;
 
-import com.jcchv.java.data.SpringReposiroty;
-import com.jcchv.java.model.Spring;
+import com.example.ArtGallery.data.SpringRepository;
+import com.example.ArtGallery.model.Spring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SpringServiceImpl implements SpringService {
 
-    private SpringReposiroty springReposiroty;
+    private SpringRepository springRepository;
 
     @Autowired
-    public SpringServiceImpl(SpringReposiroty springReposiroty){
-        this.springReposiroty=springReposiroty;
+    public SpringServiceImpl(SpringRepository springRepository){
+        this.springRepository=springRepository;
     }
 
 
     @Override
     public Spring getSpring() {
-        return springReposiroty.getSpring();
+        return springRepository.getSpring();
     }
 }

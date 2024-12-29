@@ -1,5 +1,5 @@
-package com.jcchv.java.controller;
-import com.jcchv.java.services.SpringService;
+package com.example.ArtGallery.controller;
+import com.example.ArtGallery.services.SpringService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
