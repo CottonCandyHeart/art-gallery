@@ -1,5 +1,6 @@
 package com.example.ArtGallery.controller;
 import com.example.ArtGallery.services.SpringService;
+import com.example.ArtGallery.services.SpringServiceImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,7 +19,7 @@ public class ConsoleTabController implements Initializable {
     private SpringService springService;
 
     @Autowired
-    public ConsoleTabController(SpringService springService) {
+    public ConsoleTabController(SpringServiceImpl springService) {
         this.springService = springService;
     }
 
