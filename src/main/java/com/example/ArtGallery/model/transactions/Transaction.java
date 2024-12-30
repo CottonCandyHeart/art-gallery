@@ -1,6 +1,6 @@
-package com.example.ArtGallery.transactions;
-import com.example.ArtGallery.users.*;
-import com.example.ArtGallery.artworks.*;
+package com.example.ArtGallery.model.transactions;
+import com.example.ArtGallery.model.users.*;
+import com.example.ArtGallery.model.artworks.*;
 
 public class Transaction {
     private int ID;

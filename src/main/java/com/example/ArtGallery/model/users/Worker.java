@@ -1,4 +1,4 @@
-package com.example.ArtGallery.users;
+package com.example.ArtGallery.model.users;
 
 public class Worker extends User {
     private String role;

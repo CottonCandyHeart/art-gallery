@@ -182,13 +182,13 @@ public class DB {
         }
     }
     public static boolean checkDriver(String driver){
-        System.out.print("Sprawdzanie sterownika:");
+        System.out.print("Checking the driver:");
         try{
             Class.forName(driver);
             System.out.println("OK");
             return true;
         } catch (ClassNotFoundException e) {
-            System.out.println("Błąd");
+            System.out.println("Error");
             return false;
         }
     }

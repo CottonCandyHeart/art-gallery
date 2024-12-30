@@ -1,4 +1,4 @@
-package com.example.ArtGallery.artists;
+package com.example.ArtGallery.model.artists;
 
 public class Artist {
     private String name;

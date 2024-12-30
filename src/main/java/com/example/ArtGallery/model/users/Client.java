@@ -1,4 +1,4 @@
-package com.example.ArtGallery.users;
+package com.example.ArtGallery.model.users;
 
 public class Client extends User {
     private int phoneNo;

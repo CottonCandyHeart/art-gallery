@@ -1,5 +1,5 @@
-package com.example.ArtGallery.artworks;
-import com.example.ArtGallery.artists.*;
+package com.example.ArtGallery.model.artworks;
+import com.example.ArtGallery.model.artists.*;
 
 public class Artwork {
     private int ID;

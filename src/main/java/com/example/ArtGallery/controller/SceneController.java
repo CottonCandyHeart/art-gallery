@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.example.ArtGallery.users.*;
+import com.example.ArtGallery.model.users.*;
 
 public class SceneController {
     public static void changeScene(ActionEvent event, String fxmlFile, String title){

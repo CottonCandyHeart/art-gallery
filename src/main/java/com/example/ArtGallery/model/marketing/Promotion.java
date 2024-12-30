@@ -1,4 +1,4 @@
-package com.example.ArtGallery.marketing;
+package com.example.ArtGallery.model.marketing;
 
 public class Promotion {
     private int ID;

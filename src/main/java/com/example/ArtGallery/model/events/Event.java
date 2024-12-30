@@ -1,5 +1,5 @@
-package com.example.ArtGallery.events;
-import com.example.ArtGallery.exhibitions.Exhibition;
+package com.example.ArtGallery.model.events;
+import com.example.ArtGallery.model.exhibitions.Exhibition;
 
 public class Event {
     private int ID;

@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.example.ArtGallery.db.*;
-import com.example.ArtGallery.users.*;
+import com.example.ArtGallery.model.users.*;
 
 public class LogInController implements Initializable {
     @FXML
@@ -71,7 +71,7 @@ public class LogInController implements Initializable {
                             System.out.println("Cannot recognize user type");
                         }
 
-                        sc.changeSceneUser(event, "MainWindowGUI.fxml", "Game Window!", user);
+                        sc.changeSceneUser(event, "MainWindowGUI.fxml", "Art Haven", user);
                         db.closeConnection(db.getCon(), db.getSt());
                         try {
                             Thread.sleep(2000);

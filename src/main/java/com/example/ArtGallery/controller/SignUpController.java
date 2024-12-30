@@ -1,5 +1,7 @@
 package com.example.ArtGallery.controller;
 
+import com.example.ArtGallery.db.DB;
+import com.example.ArtGallery.model.users.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -32,7 +34,8 @@ public class SignUpController implements Initializable {
     @FXML
     private PasswordField confirmPasswordField;
 
-    //private DataBase db = new DataBase(); //tak było jak robiliśmy warcaby
+    private DB db = new DB();
+    private SceneController sc = new SceneController();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,27 +50,39 @@ public class SignUpController implements Initializable {
                     return;
                 }
 
-                /*
-                String login = db.getDataString("SELECT login FROM user where login like \"" + usernameTextField.getText() + "\";");
-                String password = passwordTextField.getText();
-                String confirmPassword = confirmPasswordTextField.getText();
-                if (login != null) {
-                    warningLabel.setText("User already exists!");
+                String login = usernameTextField1.getText();
+                String loginExists = db.getDataString("SELECT username FROM Users WHERE username LIKE \"" + login + "\";");
+                String password = passwordField1.getText();  // TODO Szyfrowanie
+                String confirmPassword = confirmPasswordField.getText();
+                String name = nameTextField.getText();
+                String surname = surnameTextField.getText();
+                int age = Integer.parseInt(ageTextField.getText()) ;
+                int phoneNo = 123456789;
+                // TODO numer telefonu dodać
+
+
+                if (loginExists != null) {
+                    warningLabel1.setText("User already exists!");
                 } else if (password.equals(confirmPassword)) {
-                    db.executeUpdate(db.getSt(), "INSERT INTO user (login, haslo, ilosc_wygranych, ilosc_przegranych, ilosc_remisow) VALUES (\"" + usernameTextField.getText() + "\", \"" + passwordTextField.getText() + "\", 0, 0, 0);");
-                    warningLabel.setText("User created!");
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+                    if (age > 18){
+                        db.executeUpdate(db.getSt(), "CALL 'addUser'('CLI','" + login + "','" + password + "','" + name + "','" + surname + "'," + phoneNo + ",'NULL';");
+                        warningLabel1.setText("User created!");
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                        String id = db.getDataString("SELECT user_id FROM Users WHERE username LIKE \"" + login + "\";");
+                        User user = new Client(id, login, name, surname, phoneNo);
+                        db.closeConnection(db.getCon(), db.getSt());
+                        sc.changeSceneUser(event, "MainWindowGUI.fxml", "Art Haven", user);
                     }
-                    User user = new User(usernameTextField.getText(), 0, 0, 0);
-                    db.closeConnection(db.getCon(), db.getSt());
-                    //xzczx
-                    DBUtils.changeSceneUser(event, "MainWindowGUI.fxml", "Game Window!", user);
+
                 } else {
-                    warningLabel.setText("Passwords do not match!");
-                }*/
+                    warningLabel1.setText("Passwords do not match!");
+                }
+
             }
         });
         cancelButton1.setOnAction(new EventHandler<ActionEvent>() {
