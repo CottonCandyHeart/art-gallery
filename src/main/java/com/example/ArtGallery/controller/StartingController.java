@@ -1,17 +1,18 @@
 package com.example.ArtGallery.controller;
 
+import com.example.ArtGallery.artists.Artist;
+import com.example.ArtGallery.controller.SceneController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.springframework.stereotype.Controller;
 
-@Controller
 public class StartingController implements Initializable
 {
     @FXML

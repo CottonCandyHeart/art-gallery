@@ -12,8 +12,8 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.example.ArtGallery.business.db.*;
-import com.example.ArtGallery.business.users.*;
+import com.example.ArtGallery.db.*;
+import com.example.ArtGallery.users.*;
 
 public class LogInController implements Initializable {
     @FXML
@@ -85,40 +85,6 @@ public class LogInController implements Initializable {
                     }
                 }
 
-                // ----------- obsługa logowania z warcabów: -----------
-                /*
-                String username = db.getDataString("SELECT username FROM user where username like \"" + usernameTextField.getText() + "\";");
-
-                if (username == null) {
-                    warningLabel.setText("User does not exist!");
-                }else{
-                    String password = db.getDataString("SELECT haslo FROM user where username like \"" + usernameTextField.getText() + "\";");
-                    if(password.equals(passwordTextField.getText())){
-                        warningLabel.setText("Logged in!");
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-                        Integer wins = db.getDataInt("SELECT ilosc_wygranych FROM user where username like \"" + usernameTextField.getText() + "\";");
-                        Integer losses = db.getDataInt("SELECT ilosc_przegranych FROM user where username like \"" + usernameTextField.getText() + "\";");
-                        Integer draws = db.getDataInt("SELECT ilosc_remisow FROM user where username like \"" + usernameTextField.getText() + "\";");
-                        User user = new User(usernameTextField.getText(), wins,draws,losses);
-
-                        &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-                        DBUtils.changeSceneUser(event, "MainWindowGUI.fxml", "Game Window!", user);
-                        db.closeConnection(db.getCon(), db.getSt());
-                        //DBUtils.changeScene(event, "MainWindowGUI.fxml", "Main Window!");
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }else{
-                        warningLabel.setText("Wrong password!");
-                    }
-                }*/
             }
         });
 
