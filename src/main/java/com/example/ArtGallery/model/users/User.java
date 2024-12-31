@@ -1,5 +1,7 @@
 package com.example.ArtGallery.model.users;
 
+import com.example.ArtGallery.db.DB;
+
 public class User {
     private String ID;
     private String username;
@@ -14,8 +16,15 @@ public class User {
     }
 
     // ---------------- METHODS ----------------
-
-
+    public void addUser(DB db, String password){}
+    public void modUser(DB db){}
+    public void modPasswd(DB db, String password) {
+        // TODO szyfrowanie
+        db.executeUpdate(db.getSt(), "UPDATE Users SET password = \"" + password + "\" WHERE user_id = \"" + ID + "\";");
+    }
+    public void deleteUser(DB db){
+        db.executeUpdate(db.getSt(), "DELETE FROM Users WHERE user_id = \"" + ID + "\";");
+    }
     // ---------------- GETTERS ----------------
     public String getID() {return ID;}
     public String getUsername() {return username;}

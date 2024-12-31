@@ -111,6 +111,25 @@ public class DB {
         }
         return null;
     }
+    public void callProcedure(String procedureName, Object... params) {
+        StringBuilder procedureCall = new StringBuilder("{CALL " + procedureName + "(");
+        for (int i = 0; i < params.length; i++) {
+            procedureCall.append(i > 0 ? ", ?" : "?");
+        }
+        procedureCall.append(")}");
+
+        try (CallableStatement callableStatement = con.prepareCall(procedureCall.toString())) {
+            for (int i = 0; i < params.length; i++) {
+                callableStatement.setObject(i + 1, params[i]); // Parametry numerowane od 1
+            }
+
+            callableStatement.execute();
+            System.out.println("Procedure " + procedureName + " executed successfully.");
+        } catch (SQLException e) {
+            System.err.println("Error while calling procedure " + procedureName + ": " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
     public Statement getSt() {
         return st;
     }
