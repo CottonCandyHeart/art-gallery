@@ -52,13 +52,13 @@ public class SignUpController implements Initializable {
 
                 String login = usernameTextField1.getText();
                 String loginExists = db.getDataString("SELECT username FROM Users WHERE username LIKE \"" + login + "\";");
-                String password = passwordField1.getText();  // TODO Szyfrowanie
+                String password = passwordField1.getText();
                 String confirmPassword = confirmPasswordField.getText();
                 String name = nameTextField.getText();
                 String surname = surnameTextField.getText();
-                int age = Integer.parseInt(ageTextField.getText()) ;
-                int phoneNo = 123456789;
-                // TODO numer telefonu dodać
+                int age = Integer.parseInt(ageTextField.getText());
+                //int phoneNo = Integer.parseInt(ageTextField.getText());
+                int phoneNo = 123456789; // TODO nr tel do ogarnięcia
 
 
                 if (loginExists != null) {

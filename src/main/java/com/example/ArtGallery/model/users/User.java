@@ -1,6 +1,7 @@
 package com.example.ArtGallery.model.users;
 
 import com.example.ArtGallery.db.DB;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class User {
     private String ID;
@@ -19,8 +20,8 @@ public class User {
     public void addUser(DB db, String password, String userType){}
     public void modUser(DB db){}
     public void modPasswd(DB db, String password) {
-        // TODO szyfrowanie
-        db.executeUpdate(db.getSt(), "UPDATE Users SET password = \"" + password + "\" WHERE user_id = \"" + ID + "\";");
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        db.executeUpdate(db.getSt(), "UPDATE Users SET password = \"" + hashedPassword + "\" WHERE user_id = \"" + ID + "\";");
     }
     public void deleteUser(DB db){
         db.executeUpdate(db.getSt(), "DELETE FROM Users WHERE user_id = \"" + ID + "\";");

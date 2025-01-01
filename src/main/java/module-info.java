@@ -2,6 +2,7 @@ module com.example.ArtGallery {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires jbcrypt;
 
     exports com.example.ArtGallery.controller;
     opens com.example.ArtGallery.controller;

@@ -1,6 +1,7 @@
 package com.example.ArtGallery.model.users;
 
 import com.example.ArtGallery.db.DB;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class Worker extends User {
     private String role;
@@ -13,8 +14,8 @@ public class Worker extends User {
     // ---------------- METHODS ----------------
     @Override
     public void addUser(DB db, String password, String userType){
-        // TODO szyfrowanie
-        db.callProcedure("addUser", userType, super.getUsername(), password, super.getName(), super.getSurname(), 1, role);
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        db.callProcedure("addUser", userType, super.getUsername(), hashedPassword, super.getName(), super.getSurname(), 1, role);
         String id = db.getDataString("SELECT user_id FROM Users WHERE username LIKE \"" + super.getUsername() + "\";");
         super.setID(id);
     }

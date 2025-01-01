@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.example.ArtGallery.db.*;
 import com.example.ArtGallery.model.users.*;
@@ -46,8 +47,8 @@ public class LogInController implements Initializable {
                 if (username == null) {
                     warningLabel.setText("User does not exist!");
                 }else{
-                    String password = db.getDataString("SELECT password FROM Users WHERE username LIKE \"" + usernameTextField.getText() + "\";");
-                    if(password.equals(passwordField.getText())) {
+                    String hashedPassword = db.getDataString("SELECT password FROM Users WHERE username LIKE \"" + usernameTextField.getText() + "\";");
+                    if(BCrypt.checkpw(passwordField.getText(), hashedPassword)) {
                         warningLabel.setText("Logged in!");
                         try {
                             Thread.sleep(2000);
@@ -63,12 +64,9 @@ public class LogInController implements Initializable {
                         if (userType.equals("CLI")){
                             int phoneNo = db.getDataInt("SELECT phoneNo FROM Users WHERE username LIKE \"" + usernameTextField.getText() + "\";");
                             user = new Client(ID, username, name, surname, phoneNo);
-                        } else if (userType.equals("ADM")) {
+                        } else {
                             String role = db.getDataString("SELECT role FROM Users WHERE username LIKE \"" + usernameTextField.getText() + "\";");
                             user = new Worker(ID, username, name, surname, role);
-                        } else {
-                            user = new User("NULL","NULL","NULL","NULL");
-                            System.out.println("Cannot recognize user type");
                         }
 
                         sc.changeSceneUser(event, "MainWindowGUI.fxml", "Art Haven", user);
