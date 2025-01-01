@@ -65,7 +65,8 @@ public class SignUpController implements Initializable {
                     warningLabel1.setText("User already exists!");
                 } else if (password.equals(confirmPassword)) {
                     if (age > 18){
-                        db.executeUpdate(db.getSt(), "CALL 'addUser'('CLI','" + login + "','" + password + "','" + name + "','" + surname + "'," + phoneNo + ",'NULL';");
+                        User user = new Client("NULL", login, name, surname, phoneNo);
+                        user.addUser(db, password, "CLI");
                         warningLabel1.setText("User created!");
                         try {
                             Thread.sleep(2000);
@@ -73,8 +74,6 @@ public class SignUpController implements Initializable {
                             throw new RuntimeException(e);
                         }
 
-                        String id = db.getDataString("SELECT user_id FROM Users WHERE username LIKE \"" + login + "\";");
-                        User user = new Client(id, login, name, surname, phoneNo);
                         db.closeConnection(db.getCon(), db.getSt());
                         sc.changeSceneUser(event, "MainWindowGUI.fxml", "Art Haven", user);
                     }

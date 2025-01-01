@@ -12,9 +12,11 @@ public class Client extends User {
 
     // ---------------- METHODS ----------------
     @Override
-    public void addUser(DB db, String password){
+    public void addUser(DB db, String password, String userType){
         // TODO szyfrowanie
-        db.callProcedure("addUser", super.getID().substring(0,3), super.getUsername(), password, super.getName(), super.getSurname(), phoneNo, "NULL");
+        db.callProcedure("addUser", userType, super.getUsername(), password, super.getName(), super.getSurname(), phoneNo, "NULL");
+        String id = db.getDataString("SELECT user_id FROM Users WHERE username LIKE \"" + super.getUsername() + "\";");
+        super.setID(id);
     }
     @Override
     public void modUser(DB db){

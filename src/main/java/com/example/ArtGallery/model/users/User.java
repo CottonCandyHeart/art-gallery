@@ -16,7 +16,7 @@ public class User {
     }
 
     // ---------------- METHODS ----------------
-    public void addUser(DB db, String password){}
+    public void addUser(DB db, String password, String userType){}
     public void modUser(DB db){}
     public void modPasswd(DB db, String password) {
         // TODO szyfrowanie
