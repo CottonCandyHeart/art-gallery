@@ -31,6 +31,10 @@ public class EventsController implements Initializable {
     private FlowPane calendar;
     @FXML
     private Button cancelButton2;
+    @FXML
+    private Button rightButton;
+    @FXML
+    private Button leftButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -44,19 +48,24 @@ public class EventsController implements Initializable {
                 SceneController.changeScene(event, "/com/example/ArtGallery/hello-view.fxml", "Welcome!");
             }
         });
-    }
 
-    @FXML
-    void backOneMonth(ActionEvent event){
-        dateFocus = dateFocus.minusMonths(1);
-        calendar.getChildren().clear();
-        drawCalendar();
-    }
-    @FXML
-    void fowardOneMonth(ActionEvent event){
-        dateFocus = dateFocus.plusMonths(1);
-        calendar.getChildren().clear();
-        drawCalendar();
+        rightButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dateFocus = dateFocus.plusMonths(1);
+                calendar.getChildren().clear();
+                drawCalendar();
+            }
+        });
+
+        leftButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                dateFocus = dateFocus.minusMonths(1);
+                calendar.getChildren().clear();
+                drawCalendar();
+            }
+        });
     }
 
     private void drawCalendar(){
@@ -107,7 +116,7 @@ public class EventsController implements Initializable {
                         }
                     }
                     if(today.getYear() == dateFocus.getYear() && today.getMonth() == dateFocus.getMonth() && today.getDayOfMonth() == currentDate){
-                        rectangle.setStroke(Color.BLUE);
+                        rectangle.setStroke(Color.PINK);
                     }
                 }
                 calendar.getChildren().add(stackPane);
