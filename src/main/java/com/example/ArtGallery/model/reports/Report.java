@@ -2,6 +2,8 @@ package com.example.ArtGallery.model.reports;
 
 import com.example.ArtGallery.db.*;
 
+import java.sql.ResultSet;
+
 public class Report {
     private int ID;
     private String type;
@@ -16,9 +18,19 @@ public class Report {
     }
 
     // ---------------- METHODS ----------------
-    public void generateFinanceReport(DB db, String startDate, String endDate){
-        // RAPORT Z DOCHODÓW GALERII (90% dochodu dla artysty, 10% dla galerii)
-        // Tabela Transactions
+    public void generateFinancialReport(DB db, String startDate, String endDate, String workerID){ // 2025-01-01
+        String report = "";
+        String sql = "SELECT transaction_id, user_id, title, CONCAT(Artists.name, \" \", Artists.surname), sale_date, price, income FROM Transactions NATURAL JOIN Artworks JOIN Artists ON Artworks.artist_id = Artists.artist_id WHERE sale_date BETWEEN '" + startDate + "' AND '" + endDate + "';";
+        ResultSet r = db.executeQuery(db.getSt(), sql);
+        if (r == null){
+            report = "Brak dostępnych tranzakcji w okresie " + startDate + " - " + endDate;
+        } else {
+            report = db.sqlGetDataByName(r);
+            report += "\n" + db.getDataDouble("SELECT SUM(income) FROM Transactions WHERE sale_date BETWEEN '" + startDate + "' AND '" + endDate + "';");
+        }
+
+        db.callProcedure("addReport", "FINANCIAL REPORT", report, workerID);
+
 
     }
     public void generateEventReport(DB db, String startDate, String endDate){

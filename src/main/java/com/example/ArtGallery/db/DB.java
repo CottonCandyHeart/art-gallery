@@ -57,6 +57,40 @@ public class DB {
         }
         return null;
     }
+    public static Float getDataFloat(String query){
+        ResultSet rs = executeQuery(st, query);
+        try {
+            if(rs.next()){
+                return rs.getFloat(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+    public static Double getDataDouble(String query){
+        ResultSet rs = executeQuery(st, query);
+        try {
+            if(rs.next()){
+                return rs.getDouble(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+    public static Date getDataDate(String query){
+        ResultSet rs = executeQuery(st, query);
+        try {
+            if(rs.next()){
+                return rs.getDate(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
     public static Connection connectToDatabase(String kindOfDatabase, String adress, String dataBaseName, String userName, String password){
         System.out.println("Connecting with database:");
         String baza = kindOfDatabase + adress + "/" + dataBaseName;
@@ -69,13 +103,13 @@ public class DB {
         }
         return connection;
     }
-    public static Connection getConnection(String kindOfDatabase, String adres, int port, String userName, String password){
+    public static Connection getConnection(String kindOfDatabase, String adress, int port, String username, String password){
         Connection conn = null;
         Properties connnectionProps = new Properties();
-        connnectionProps.put("user", userName);
+        connnectionProps.put("user", username);
         connnectionProps.put("password", password);
         try{
-            conn = DriverManager.getConnection(kindOfDatabase + adres + ":" + port + "/", connnectionProps);
+            conn = DriverManager.getConnection(kindOfDatabase + adress + ":" + port + "/", connnectionProps);
         }catch (SQLException e){
             System.out.println("Cannot connect to database! " + e.getMessage() + ": " + e.getErrorCode());
             System.exit(2);
@@ -169,36 +203,56 @@ public class DB {
 
         }
     }
-    public static void sqlGetDataByName(ResultSet r){
+    public static String sqlGetDataByName(ResultSet r){
+        String result = "";
         try{
             ResultSetMetaData rsmd = r.getMetaData();
             int numcols = rsmd.getColumnCount();
             for(int i = 1; i <= numcols; i++){
                 System.out.print(rsmd.getColumnLabel(i) + "\t|\t");
+                result += rsmd.getColumnLabel(i) + "\t|\t";
             }
             System.out.print("\n___________________________________________________________\n");
+            result += "\n___________________________________________________________\n";
+
             while(r.next()){
                 int size = r.getMetaData().getColumnCount();
                 for(int i = 1; i <= size; i++){
                     switch (r.getMetaData().getColumnTypeName(i)){
                         case "INT":
                             System.out.print(r.getInt(r.getMetaData().getColumnName(i)) + "\t|\t");
+                            result += r.getInt(r.getMetaData().getColumnName(i)) + "\t|\t";
+                            break;
+                        case "FLOAT":
+                            System.out.print(r.getFloat(r.getMetaData().getColumnName(i)) + "\t|\t");
+                            result += r.getFloat(r.getMetaData().getColumnName(i)) + "\t|\t";
+                            break;
+                        case "DOUBLE":
+                            System.out.print(r.getDouble(r.getMetaData().getColumnName(i)) + "\t|\t");
+                            result += r.getDouble(r.getMetaData().getColumnName(i)) + "\t|\t";
                             break;
                         case "DATE":
                             System.out.print(r.getDate(r.getMetaData().getColumnName(i)) + "\t|\t");
+                            result += r.getDate(r.getMetaData().getColumnName(i)) + "\t|\t";
                             break;
                         case "VARCHAR":
+                        case "TEXT":
                             System.out.print(r.getString(r.getMetaData().getColumnName(i)) + "\t|\t");
+                            result += r.getString(r.getMetaData().getColumnName(i)) + "\t|\t";
                             break;
                         default:
                             System.out.print(r.getObject(r.getMetaData().getColumnName(i)));
+                            result += r.getObject(r.getMetaData().getColumnName(i));
                     }
                 }
                 System.out.println();
+                result += "\n";
             }
         } catch (SQLException e) {
             System.out.println("Cannot read from database! " + e.getMessage() + ": " + e.getErrorCode());
         }
+
+        return result;
     }
     public static boolean checkDriver(String driver){
         System.out.print("Checking the driver:");
