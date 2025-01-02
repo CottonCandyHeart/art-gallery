@@ -42,7 +42,6 @@ public class EventsController implements Initializable {
     private User user;
     public void setUser(User user) {
         this.user = user;
-        //przypisanie usera po zalogowaniu/rejestracji
     }
 
     @Override

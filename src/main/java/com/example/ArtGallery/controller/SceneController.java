@@ -1,6 +1,7 @@
 package com.example.ArtGallery.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -30,28 +31,52 @@ public class SceneController {
             FXMLLoader loader = new FXMLLoader(SceneController.class.getResource(fxmlFile));
             Parent root = loader.load();
 
-            if(fxmlFile == "\"/com/example/ArtGallery/ClientWindow.fxml\"") {
+            if(fxmlFile.equals("/com/example/ArtGallery/ClientWindow.fxml")) {
                 ClientWindowController controller = loader.getController();
                 controller.setUser(user);
             }
-            else if(fxmlFile == "\"/com/example/ArtGallery/MyAccount.fxml\"") {
+            else if(fxmlFile.equals("/com/example/ArtGallery/MyAccount.fxml")) {
                 MyAccountController controller = loader.getController();
                 controller.setUser(user);
             }
-            else if(fxmlFile == "\"/com/example/ArtGallery/Collection.fxml\"") {
+            else if(fxmlFile.equals("/com/example/ArtGallery/Collection.fxml")) {
                 CollectionController controller = loader.getController();
                 controller.setUser(user);
             }
-            else if(fxmlFile == "\"/com/example/ArtGallery/UserEdit.fxml\"") {
+            else if(fxmlFile.equals("/com/example/ArtGallery/UserEdit.fxml")) {
                 UserEditController controller = loader.getController();
                 controller.setUser(user);
             }
-            else if(fxmlFile == "\"/com/example/ArtGallery/Map.fxml\"") {
+            else if(fxmlFile.equals("/com/example/ArtGallery/Map.fxml")) {
                 MapController controller = loader.getController();
                 controller.setUser(user);
             }
-            else if(fxmlFile == "\"/com/example/ArtGallery/Artists.fxml\"") {
+            else if(fxmlFile.equals("/com/example/ArtGallery/Artists.fxml")) {
                 ArtistsController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/AdminWindow.fxml")) {
+                AdminWindowController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/ManageUsers.fxml")) {
+                ManageUsersController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/EditUsersData.fxml")) {
+                EditUsersDataController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/AddUser.fxml")) {
+                AddUserController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/DeleteUser.fxml")) {
+                DeleteUserController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/Events.fxml")) {
+                EventsController controller = loader.getController();
                 controller.setUser(user);
             }
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

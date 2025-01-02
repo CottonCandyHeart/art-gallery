@@ -32,7 +32,6 @@ public class MyAccountController  implements Initializable {
     User user;
     public void setUser(User user) {
         this.user = user;
-        //przypisanie usera po zalogowaniu/rejestracji
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

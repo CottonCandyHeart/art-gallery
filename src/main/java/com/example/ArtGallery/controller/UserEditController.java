@@ -38,7 +38,6 @@ public class UserEditController implements Initializable {
     private User user;
     public void setUser(User user) {
         this.user = user;
-        //przypisanie usera po zalogowaniu/rejestracji
     }
 
     @Override
@@ -65,13 +64,14 @@ public class UserEditController implements Initializable {
 
                 user.modUser(db);
 
-
+                //obsługa zmiany danych
+                sc.changeSceneUser(event, "/com/example/ArtGallery/MyAccount.fxml", "My Account", user);
             }
         });
         cancelButton4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/MyAccount.fxml", "My Account", user);
             }
         });
     }
