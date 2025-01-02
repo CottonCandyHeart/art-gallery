@@ -1,6 +1,7 @@
 package com.example.ArtGallery.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -55,23 +56,27 @@ public class SceneController {
                 controller.setUser(user);
             }
             else if(fxmlFile == "\"/com/example/ArtGallery/AdminWindow.fxml\"") {
-                ArtistsController controller = loader.getController();
+                AdminWindowController controller = loader.getController();
                 controller.setUser(user);
             }
             else if(fxmlFile == "\"/com/example/ArtGallery/ManageUsers.fxml\"") {
-                ArtistsController controller = loader.getController();
+                ManageUsersController controller = loader.getController();
                 controller.setUser(user);
             }
             else if(fxmlFile == "\"/com/example/ArtGallery/EditUsersData.fxml\"") {
-                ArtistsController controller = loader.getController();
+                EditUsersDataController controller = loader.getController();
                 controller.setUser(user);
             }
             else if(fxmlFile == "\"/com/example/ArtGallery/AddUser.fxml\"") {
-                ArtistsController controller = loader.getController();
+                AddUserController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile == "\"/com/example/ArtGallery/DeleteUser.fxml\"") {
+                DeleteUserController controller = loader.getController();
                 controller.setUser(user);
             }
             else if(fxmlFile == "\"/com/example/ArtGallery/Events.fxml\"") {
-                ArtistsController controller = loader.getController();
+                EventsController controller = loader.getController();
                 controller.setUser(user);
             }
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
