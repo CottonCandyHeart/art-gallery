@@ -15,7 +15,6 @@ public class Client extends User {
     @Override
     public void addUser(DB db, String password, String userType){
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-        System.out.println(hashedPassword);
         db.callProcedure("addUser", userType, super.getUsername(), hashedPassword, super.getName(), super.getSurname(), phoneNo, "NULL");
         String id = db.getDataString("SELECT user_id FROM Users WHERE username LIKE \"" + super.getUsername() + "\";");
         super.setID(id);

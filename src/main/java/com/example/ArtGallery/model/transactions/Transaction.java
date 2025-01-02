@@ -1,4 +1,5 @@
 package com.example.ArtGallery.model.transactions;
+import com.example.ArtGallery.db.DB;
 import com.example.ArtGallery.model.users.*;
 import com.example.ArtGallery.model.artworks.*;
 
@@ -15,6 +16,16 @@ public class Transaction {
         this.artwork = artwork;
         this.saleDate = saleDate;
         this.price = price;
+    }
+
+    // ---------------- METHODS ----------------
+    public void addTransaction(DB db){
+        db.callProcedure("makeTransaction", client.getID(), artwork.getID());
+        int id = db.getDataInt("SELECT transaction_id FROM Transactions WHERE user_id = " + client.getID() + " AND artwork_id = " + artwork.getID() + ";");
+        this.ID = id;
+    }
+    public void deleteTransaction(DB db) {
+        db.executeUpdate(db.getSt(), "DELETE FROM Transactions WHERE transaction_id = " + ID + ";");
     }
 
     // ---------------- GETTERS ----------------

@@ -1,5 +1,7 @@
 package com.example.ArtGallery.model.exhibitions;
 
+import com.example.ArtGallery.db.DB;
+
 public class Exhibition {
     private int iD;
     private String name;
@@ -15,6 +17,19 @@ public class Exhibition {
         this.endDate = endDate;
         this.location = location;
         this.description = description;
+    }
+
+    // ---------------- METHODS ----------------
+    public void addExhibition(DB db){
+        db.callProcedure("addExhibition", name, startDate, endDate, location, description);
+        int id = db.getDataInt("SELECT exhibition_id FROM Exhibition WHERE name LIKE \"" + name + "\" AND start_date = \'" + startDate + "\';");
+        this.iD = id;
+    }
+    public void modExhibition(DB db){
+        db.callProcedure("modExhibition", iD, name, startDate, endDate, location, description);
+    }
+    public void deleteExhibition(DB db){
+        db.executeUpdate(db.getSt(), "DELETE FROM Exhibition WHERE exhibition_id = " + iD + ";");
     }
 
     // ---------------- GETTERS ----------------

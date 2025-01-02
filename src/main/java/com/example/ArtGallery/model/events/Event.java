@@ -1,4 +1,5 @@
 package com.example.ArtGallery.model.events;
+import com.example.ArtGallery.db.DB;
 import com.example.ArtGallery.model.exhibitions.Exhibition;
 
 import java.time.ZonedDateTime;
@@ -18,6 +19,19 @@ public class Event {
         this.exhibition = exhibition;
         this.capacity = capacity;
         this.type = type;
+    }
+
+    // ---------------- METHODS ----------------
+    public void addEvent(DB db){
+        db.callProcedure("addEvent", name, eventDate, exhibition.getiD(), capacity, type);
+        int id = db.getDataInt("SELECT event_id FROM Events WHERE name LIKE \"" + name + "\" AND event_date = \"" +eventDate + "\";");
+        this.ID = id;
+    }
+    public void modEvent(DB db){
+        db.callProcedure("modEvent",  ID, name, eventDate, exhibition.getiD(), capacity, type);
+    }
+    public void deleteEvent(DB db){
+        db.executeUpdate(db.getSt(), "DELETE FROM Events WHERE event_id = " + ID + ";");
     }
 
     // ---------------- GETTERS ----------------

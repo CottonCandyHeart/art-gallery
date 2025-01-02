@@ -1,4 +1,5 @@
 package com.example.ArtGallery.model.artworks;
+import com.example.ArtGallery.db.DB;
 import com.example.ArtGallery.model.artists.*;
 
 public class Artwork {
@@ -6,20 +7,35 @@ public class Artwork {
     private String title;
     private Artist artist;
     private String creationDate;
+    private String method;
     private String description;
     private String location;
     private String status;
-    private String attribute;
+    private String picturePath;
 
-    public Artwork(int ID, String title, Artist artist, String creationDate, String description, String location, String status, String attribute) {
+    public Artwork(int ID, String title, Artist artist, String creationDate, String method, String description, String location, String status, String picturePath) {
         this.ID = ID;
         this.title = title;
         this.artist = artist;
         this.creationDate = creationDate;
+        this.method = method;
         this.description = description;
         this.location = location;
         this.status = status;
-        this.attribute = attribute;
+        this.picturePath = picturePath;
+    }
+
+    // ---------------- METHODS ----------------
+    public void addArtwork(DB db){
+        db.callProcedure("addArtwork", title, artist.getName(), artist.getSurname(), creationDate, method, description, location, status, picturePath);
+        int id = db.getDataInt("SELECT artwork_id FROM Artworks WHERE title LIKE \"" + title + "\" AND artist_id = " + artist.getID() + ";");
+        this.ID = id;
+    }
+    public void modArtwork(DB db){
+        db.callProcedure("modArtwork",  ID, title, description, location, status, picturePath);
+    }
+    public void deleteArtwork(DB db){
+        db.executeUpdate(db.getSt(), "DELETE FROM Artworks WHERE artwork_id = " + ID + ";");
     }
 
     // ---------------- GETTERS ----------------
@@ -30,7 +46,7 @@ public class Artwork {
     public String getDescription() {return description;}
     public String getLocation() {return location;}
     public String getStatus() {return status;}
-    public String getAttribute() {return attribute;}
+    public String getPicturePath() {return picturePath;}
 
     // ---------------- SETTERS ----------------
     public void setID(int ID) {this.ID = ID;}
@@ -40,5 +56,5 @@ public class Artwork {
     public void setDescription(String description) {this.description = description;}
     public void setLocation(String location) {this.location = location;}
     public void setStatus(String status) {this.status = status;}
-    public void setAttribute(String attribute) {this.attribute = attribute;}
+    public void setPicturePath(String picturePath) {this.picturePath = picturePath;}
 }
