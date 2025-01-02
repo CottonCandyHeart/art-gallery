@@ -1,5 +1,6 @@
 package com.example.ArtGallery.controller;
 
+import com.example.ArtGallery.model.users.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -35,6 +36,14 @@ public class EventsController implements Initializable {
     private Button rightButton;
     @FXML
     private Button leftButton;
+
+
+    private SceneController sc = new SceneController();
+    private User user;
+    public void setUser(User user) {
+        this.user = user;
+        //przypisanie usera po zalogowaniu/rejestracji
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

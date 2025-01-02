@@ -30,9 +30,30 @@ public class SceneController {
             FXMLLoader loader = new FXMLLoader(SceneController.class.getResource(fxmlFile));
             Parent root = loader.load();
 
-            StartingController startingController = loader.getController();
-            //StartingController.setUser(user);
-
+            if(fxmlFile == "\"/com/example/ArtGallery/ClientWindow.fxml\"") {
+                ClientWindowController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile == "\"/com/example/ArtGallery/MyAccount.fxml\"") {
+                MyAccountController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile == "\"/com/example/ArtGallery/Collection.fxml\"") {
+                CollectionController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile == "\"/com/example/ArtGallery/UserEdit.fxml\"") {
+                UserEditController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile == "\"/com/example/ArtGallery/Map.fxml\"") {
+                MapController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile == "\"/com/example/ArtGallery/Artists.fxml\"") {
+                ArtistsController controller = loader.getController();
+                controller.setUser(user);
+            }
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
             stage.setScene(new Scene(root));

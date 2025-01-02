@@ -30,7 +30,11 @@ public class LogInController implements Initializable {
 
     private DB db = new DB();
     private SceneController sc = new SceneController();
-    User user;
+    private User user;
+    public void setUser(User user) {
+        this.user = user;
+        //przypisanie usera po zalogowaniu/rejestracji
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,7 +73,7 @@ public class LogInController implements Initializable {
                             user = new Worker(ID, username, name, surname, role);
                         }
 
-                        sc.changeSceneUser(event, "MainWindowGUI.fxml", "Art Haven", user);
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
                         db.closeConnection(db.getCon(), db.getSt());
                         try {
                             Thread.sleep(2000);

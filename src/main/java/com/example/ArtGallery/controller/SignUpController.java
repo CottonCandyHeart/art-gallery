@@ -28,6 +28,8 @@ public class SignUpController implements Initializable {
     @FXML
     private TextField ageTextField;
     @FXML
+    private TextField phoneTextField;
+    @FXML
     private TextField usernameTextField1;
     @FXML
     private PasswordField passwordField1;
@@ -75,7 +77,7 @@ public class SignUpController implements Initializable {
                         }
 
                         db.closeConnection(db.getCon(), db.getSt());
-                        sc.changeSceneUser(event, "MainWindowGUI.fxml", "Art Haven", user);
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
                     }
 
                 } else {
