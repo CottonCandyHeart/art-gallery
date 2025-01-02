@@ -7,6 +7,5 @@ public class MapController {
     private User user;
     public void setUser(User user) {
         this.user = user;
-        //przypisanie usera po zalogowaniu/rejestracji
     }
 }

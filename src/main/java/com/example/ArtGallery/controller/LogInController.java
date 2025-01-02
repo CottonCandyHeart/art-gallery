@@ -33,7 +33,6 @@ public class LogInController implements Initializable {
     private User user;
     public void setUser(User user) {
         this.user = user;
-        //przypisanie usera po zalogowaniu/rejestracji
     }
 
     @Override
@@ -72,8 +71,10 @@ public class LogInController implements Initializable {
                             String role = db.getDataString("SELECT role FROM Users WHERE username LIKE \"" + usernameTextField.getText() + "\";");
                             user = new Worker(ID, username, name, surname, role);
                         }
-
+                        //jeżeli klient
                         sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
+                        //jeżeli admin
+                        //sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
                         db.closeConnection(db.getCon(), db.getSt());
                         try {
                             Thread.sleep(2000);

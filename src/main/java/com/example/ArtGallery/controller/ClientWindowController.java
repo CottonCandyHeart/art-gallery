@@ -18,13 +18,13 @@ public class ClientWindowController implements Initializable
     @FXML
     private Button myArtworkButton;
     @FXML
-    private Button collectionButton;
+    private Button collectionButton1;
     @FXML
-    private Button artistsButton;
+    private Button artistsButton1;
     @FXML
-    private Button eventsButton;
+    private Button eventsButton1;
     @FXML
-    private Button mapButton;
+    private Button mapButton1;
 
     private SceneController sc = new SceneController();
     private User user;
@@ -48,28 +48,28 @@ public class ClientWindowController implements Initializable
             }
         });
 
-        collectionButton.setOnAction(new EventHandler<ActionEvent>() {
+        collectionButton1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 sc.changeSceneUser(event, "/com/example/ArtGallery/Collection.fxml", "Collection", user);
             }
         });
 
-        artistsButton.setOnAction(new EventHandler<ActionEvent>() {
+        artistsButton1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 sc.changeSceneUser(event, "/com/example/ArtGallery/Artists.fxml", "Artists", user);
             }
         });
 
-        eventsButton.setOnAction(new EventHandler<ActionEvent>() {
+        eventsButton1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 sc.changeSceneUser(event, "/com/example/ArtGallery/Events.fxml", "Events", user);
             }
         });
 
-        mapButton.setOnAction(new EventHandler<ActionEvent>() {
+        mapButton1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 sc.changeSceneUser(event, "/com/example/ArtGallery/Map.fxml", "Map", user);
