@@ -28,8 +28,6 @@ public class UserEditController implements Initializable {
     @FXML
     private TextField phoneTextField1;
     @FXML
-    private TextField usernameTextField2;
-    @FXML
     private PasswordField passwordField2;
     @FXML
     private PasswordField confirmPasswordField1;
@@ -48,7 +46,26 @@ public class UserEditController implements Initializable {
         confirmButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //obsługa zmiany danych
+
+                String name = nameTextField1.getText();
+                String surname = surnameTextField1.getText();
+                String phoneNo = phoneTextField1.getText();
+                String password = passwordField2.getText();
+
+                if (name != null) {user.setName(name);}
+                if (surname != null) {user.setSurname(surname);}
+                if (phoneNo != null) { ((Client) user).setPhoneNo(Integer.parseInt(phoneNo));}
+
+                if (password != null) {
+                    String checkpasswd = confirmPasswordField1.getText();
+                    if (password.equals(checkpasswd)){
+                        user.modPasswd(db, password);
+                    }
+                }
+
+                user.modUser(db);
+
+
             }
         });
         cancelButton4.setOnAction(new EventHandler<ActionEvent>() {

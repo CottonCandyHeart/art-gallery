@@ -1,5 +1,6 @@
 package com.example.ArtGallery.controller;
 
+import com.example.ArtGallery.model.users.Client;
 import com.example.ArtGallery.model.users.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -38,6 +39,11 @@ public class MyAccountController  implements Initializable {
         cancelButton3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                usernameText.setText(user.getUsername());
+                nameText.setText(user.getName());
+                surnameText.setText(user.getSurname());
+                phoneText.setText("" + ((Client) user).getPhoneNo());
+
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
             }
         });
