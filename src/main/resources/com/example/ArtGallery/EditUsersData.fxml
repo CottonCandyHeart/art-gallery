@@ -29,12 +29,11 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <ImageView fitHeight="129.0" fitWidth="128.0" layoutX="344.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="178.0" layoutX="209.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../img/Logo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usernameTextField3" layoutX="376.0" layoutY="360.0" prefHeight="30.0" prefWidth="240.0" />
       <Text layoutX="200.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
@@ -112,40 +111,45 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Text layoutX="199.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="169.44332885742188">
-         <font>
-            <Font name="Microsoft JhengHei UI Light" size="18.0" />
-         </font>
-      </Text>
       <Text layoutX="199.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="confirm password" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <PasswordField fx:id="confirmPasswordField3" layoutX="377.0" layoutY="455.0" prefHeight="30.0" prefWidth="240.0" />
-      <Text layoutX="201.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <PasswordField fx:id="confirmPasswordField2" layoutX="377.0" layoutY="455.0" prefHeight="30.0" prefWidth="240.0" />
+      <Text layoutX="200.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="200.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="surname" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="199.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="surname" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="surnameTextField2" layoutX="378.0" layoutY="265.0" prefHeight="30.0" prefWidth="240.0" />
-      <TextField fx:id="nameTextField2" layoutX="377.0" layoutY="220.0" prefHeight="30.0" prefWidth="240.0" />
-      <Text layoutX="200.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="phone number" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <TextField fx:id="surnameTextField2" layoutX="377.0" layoutY="309.0" prefHeight="30.0" prefWidth="240.0" />
+      <TextField fx:id="nameTextField2" layoutX="376.0" layoutY="264.0" prefHeight="30.0" prefWidth="240.0" />
+      <Text layoutX="199.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="phone number" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="phoneTextField2" layoutX="378.0" layoutY="314.0" prefHeight="30.0" prefWidth="240.0" />
-      <Text layoutX="201.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="user" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <TextField fx:id="phoneTextField2" layoutX="377.0" layoutY="358.0" prefHeight="30.0" prefWidth="240.0" />
+      <Text layoutX="200.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="user" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="choseUserChoiceBox" layoutX="378.0" layoutY="168.0" prefHeight="26.0" prefWidth="240.0" />
+      <ChoiceBox fx:id="choseUserChoiceBox" layoutX="377.0" layoutY="212.0" prefHeight="26.0" prefWidth="240.0" />
+      <Text fill="#1b1b1b" layoutX="359.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Users" wrappingWidth="258.0">
+         <font>
+            <Font name="Papyrus" size="48.0" />
+         </font>
+      </Text>
+      <Text fill="#1b1b1b" layoutX="359.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" wrappingWidth="258.0">
+         <font>
+            <Font name="Papyrus" size="48.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

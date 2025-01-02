@@ -28,8 +28,6 @@ public class UserEditController implements Initializable {
     @FXML
     private TextField phoneTextField1;
     @FXML
-    private TextField usernameTextField2;
-    @FXML
     private PasswordField passwordField2;
     @FXML
     private PasswordField confirmPasswordField1;

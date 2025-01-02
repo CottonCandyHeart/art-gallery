@@ -11,26 +11,27 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EditUsersDataController implements Initializable {
+public class AddUserController implements Initializable {
     @FXML
-    private Button confirmButton1;
+    private Button confirmButton2;
     @FXML
-    private Button cancelButton5;
+    private Button cancelButton6;
     @FXML
-    private ChoiceBox choseUserChoiceBox;
-
+    private ChoiceBox choseUsersTypeChoiceBox;
     @FXML
-    private Label warningLabel3;
+    private Label warningLabel4;
     @FXML
-    private TextField nameTextField2;
+    private TextField nameTextField3;
     @FXML
-    private TextField surnameTextField2;
+    private TextField surnameTextField3;
     @FXML
-    private TextField phoneTextField2;
+    private TextField phoneTextField3;
     @FXML
-    private PasswordField passwordField3;
+    private PasswordField usernameField2;
     @FXML
-    private PasswordField confirmPasswordField2;
+    private PasswordField passwordField4;
+    @FXML
+    private PasswordField confirmPasswordField3;
 
     private DB db = new DB();
     private SceneController sc = new SceneController();
@@ -41,14 +42,14 @@ public class EditUsersDataController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        confirmButton1.setOnAction(new EventHandler<ActionEvent>() {
+        confirmButton2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //obsługa zmiany danych użytkownika
+                //obsługa dodania usera
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ManageUsers.fxml", "Manage users - Admin", user);
             }
         });
-        cancelButton5.setOnAction(new EventHandler<ActionEvent>() {
+        cancelButton6.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ManageUsers.fxml", "Manage users - Admin", user);

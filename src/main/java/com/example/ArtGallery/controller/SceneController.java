@@ -54,6 +54,26 @@ public class SceneController {
                 ArtistsController controller = loader.getController();
                 controller.setUser(user);
             }
+            else if(fxmlFile == "\"/com/example/ArtGallery/AdminWindow.fxml\"") {
+                ArtistsController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile == "\"/com/example/ArtGallery/ManageUsers.fxml\"") {
+                ArtistsController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile == "\"/com/example/ArtGallery/EditUsersData.fxml\"") {
+                ArtistsController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile == "\"/com/example/ArtGallery/AddUser.fxml\"") {
+                ArtistsController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile == "\"/com/example/ArtGallery/Events.fxml\"") {
+                ArtistsController controller = loader.getController();
+                controller.setUser(user);
+            }
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
             stage.setScene(new Scene(root));
