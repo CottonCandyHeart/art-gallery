@@ -29,13 +29,17 @@ public class ClientWindowController implements Initializable
     private SceneController sc = new SceneController();
     private User user;
     public void setUser(User user) {
+        if (user != null)
+            System.out.println("setUser - " + user.getID());
+        else
+            System.out.println("setUser - no user");
         this.user = user;
         //przypisanie usera po zalogowaniu/rejestracji
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (user != null)
-            System.out.println("ClientWindow - " + user.getID());
+        if (this.user != null)
+            System.out.println("ClientWindow - " + this.user.getID());
         else
             System.out.println("ClientWindow - no user");
         myAccountButton.setOnAction(new EventHandler<ActionEvent>() {

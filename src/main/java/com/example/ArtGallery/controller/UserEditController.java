@@ -40,6 +40,19 @@ public class UserEditController implements Initializable {
         this.user = user;
     }
 
+    public void modUser(String name, String surname, String phoneNo){
+        this.user.modUser(db);
+        System.out.println(name);
+        System.out.println(surname);
+
+    }
+
+    public void modUserPasswd(String password){
+
+        System.out.println(password);
+        user.modPasswd(db, password);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         confirmButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -51,18 +64,16 @@ public class UserEditController implements Initializable {
                 String phoneNo = phoneTextField1.getText();
                 String password = passwordField2.getText();
 
-                if (name != null) {user.setName(name);}
-                if (surname != null) {user.setSurname(surname);}
-                if (phoneNo != null) { ((Client) user).setPhoneNo(Integer.parseInt(phoneNo));}
+                if (!nameTextField1.getText().isEmpty()) {user.setName(name);}
+                if (!surnameTextField1.getText().isEmpty()) {user.setSurname(surname);}
+                if (!phoneTextField1.getText().isEmpty()) { ((Client) user).setPhoneNo(Integer.parseInt(phoneNo));}
 
-                if (password != null) {
+                if (!passwordField2.getText().isEmpty()) {
                     String checkpasswd = confirmPasswordField1.getText();
                     if (password.equals(checkpasswd)){
-                        user.modPasswd(db, password);
+                        modUserPasswd(password);
                     }
                 }
-
-                user.modUser(db);
 
                 //obsługa zmiany danych
                 sc.changeSceneUser(event, "/com/example/ArtGallery/MyAccount.fxml", "My Account", user);

@@ -35,7 +35,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="collectionButton" layoutX="85.0" layoutY="337.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Collection" textAlignment="CENTER">
+                  <Button fx:id="collectionButton2" layoutX="85.0" layoutY="337.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Collection" textAlignment="CENTER">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>
@@ -44,7 +44,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="mapButton" layoutX="98.0" layoutY="494.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Map" textAlignment="CENTER">
+                  <Button fx:id="mapButton2" layoutX="98.0" layoutY="494.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Map" textAlignment="CENTER">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>
@@ -53,7 +53,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="eventsButton" layoutX="94.0" layoutY="442.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Events" textAlignment="CENTER">
+                  <Button fx:id="eventsButton2" layoutX="94.0" layoutY="442.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Events" textAlignment="CENTER">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>
@@ -62,7 +62,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="artistsButton" layoutX="94.0" layoutY="388.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Artists" textAlignment="CENTER">
+                  <Button fx:id="artistsButton2" layoutX="94.0" layoutY="388.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Artists" textAlignment="CENTER">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>
@@ -71,7 +71,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="myAccountButton" layoutX="72.0" layoutY="544.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Manage Users">
+                  <Button fx:id="manageUsersButton" layoutX="72.0" layoutY="544.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Manage Users">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>

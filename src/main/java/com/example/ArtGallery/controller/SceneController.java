@@ -33,6 +33,10 @@ public class SceneController {
 
             if(fxmlFile.equals("/com/example/ArtGallery/ClientWindow.fxml")) {
                 ClientWindowController controller = loader.getController();
+                if (user != null)
+                    System.out.println("Scene controller - " + user.getID());
+                else
+                    System.out.println("Scene controller - no user");
                 controller.setUser(user);
             }
             else if(fxmlFile.equals("/com/example/ArtGallery/MyAccount.fxml")) {

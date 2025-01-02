@@ -30,7 +30,7 @@ public class LogInController implements Initializable {
 
     private DB db = new DB();
     private SceneController sc = new SceneController();
-    private User user = null;
+    private User user;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -64,15 +64,15 @@ public class LogInController implements Initializable {
                         if (userType.equals("CLI")){
                             int phoneNo = db.getDataInt("SELECT phoneNo FROM Users WHERE username LIKE \"" + usernameTextField.getText() + "\";");
                             user = new Client(ID, username, name, surname, phoneNo);
+                            sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
                         } else {
                             String role = db.getDataString("SELECT role FROM Users WHERE username LIKE \"" + usernameTextField.getText() + "\";");
                             user = new Worker(ID, username, name, surname, role);
+                            if (ID.substring(0,3).equals("ADM")){
+                                sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
+                            }
                         }
                         System.out.println("Log in" + user.getID());
-                        //jeżeli klient
-                        sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
-                        //jeżeli admin
-                        //sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
                         db.closeConnection(db.getCon(), db.getSt());
                         try {
                             Thread.sleep(2000);

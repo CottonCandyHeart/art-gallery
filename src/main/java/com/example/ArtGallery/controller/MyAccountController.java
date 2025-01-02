@@ -32,17 +32,16 @@ public class MyAccountController  implements Initializable {
     User user;
     public void setUser(User user) {
         this.user = user;
+        usernameText.setText(user.getUsername());
+        nameText.setText(user.getName());
+        surnameText.setText(user.getSurname());
+        phoneText.setText("" + ((Client) user).getPhoneNo());
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cancelButton3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                usernameText.setText(user.getUsername());
-                nameText.setText(user.getName());
-                surnameText.setText(user.getSurname());
-                phoneText.setText("" + ((Client) user).getPhoneNo());
-
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
             }
         });

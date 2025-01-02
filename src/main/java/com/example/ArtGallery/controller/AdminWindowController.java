@@ -35,7 +35,7 @@ public class AdminWindowController implements Initializable
         manageUsersButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Manage Users - Admin", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/ManageUsers.fxml", "Manage Users - Admin", user);
             }
         });
 

@@ -59,8 +59,7 @@ public class SignUpController implements Initializable {
                 String name = nameTextField.getText();
                 String surname = surnameTextField.getText();
                 int age = Integer.parseInt(ageTextField.getText());
-                //int phoneNo = Integer.parseInt(ageTextField.getText());
-                int phoneNo = 123456789; // TODO nr tel do ogarnięcia
+                int phoneNo = Integer.parseInt(phoneTextField.getText());
 
 
                 if (loginExists != null) {
