@@ -25,6 +25,8 @@ public class ClientWindowController implements Initializable
     private Button eventsButton1;
     @FXML
     private Button mapButton1;
+    @FXML
+    private Button LogOutButton;
 
     private SceneController sc = new SceneController();
     private User user;
@@ -81,6 +83,13 @@ public class ClientWindowController implements Initializable
             @Override
             public void handle(ActionEvent event) {
                 sc.changeSceneUser(event, "/com/example/ArtGallery/Map.fxml", "Map", user);
+            }
+        });
+
+        LogOutButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                sc.changeScene(event, "/com/example/ArtGallery/hello-view.fxml", "Welcome!" );
             }
         });
 

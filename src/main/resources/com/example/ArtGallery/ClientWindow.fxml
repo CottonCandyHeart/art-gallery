@@ -53,7 +53,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="myArtworkButton" layoutX="78.0" layoutY="592.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="My Artwork">
+                  <Button fx:id="myArtworkButton" layoutX="128.0" layoutY="547.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="My Artwork">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>
@@ -80,7 +80,16 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="myAccountButton" layoutX="77.0" layoutY="544.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="My Account">
+                  <Button fx:id="myAccountButton" layoutX="28.0" layoutY="547.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="My Account">
+                     <effect>
+                        <DropShadow offsetY="2.0">
+                           <color>
+                              <Color red="0.6315789222717285" green="0.5801169872283936" blue="0.5801169872283936" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="LogOutButton" layoutX="91.0" layoutY="597.0" mnemonicParsing="false" style="-fx-background-color: #e576a2;" text="Log out">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>

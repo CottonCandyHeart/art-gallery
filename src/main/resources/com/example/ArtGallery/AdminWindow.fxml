@@ -80,6 +80,15 @@
                         </DropShadow>
                      </effect>
                   </Button>
+                  <Button fx:id="LogOutButton1" layoutX="91.0" layoutY="592.0" mnemonicParsing="false" style="-fx-background-color: #e576a2;" text="Log out" textAlignment="CENTER">
+                     <effect>
+                        <DropShadow offsetY="2.0">
+                           <color>
+                              <Color red="0.6315789222717285" green="0.5801169872283936" blue="0.5801169872283936" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="651.0" prefWidth="570.0" style="-fx-background-color: #e9e9e7;">

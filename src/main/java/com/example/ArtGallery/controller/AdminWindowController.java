@@ -23,6 +23,8 @@ public class AdminWindowController implements Initializable
     private Button eventsButton2;
     @FXML
     private Button mapButton2;
+    @FXML
+    private Button LogOutButton1;
 
     private SceneController sc = new SceneController();
     private User user;
@@ -66,6 +68,13 @@ public class AdminWindowController implements Initializable
                 sc.changeSceneUser(event, "/com/example/ArtGallery/Map.fxml", "Map - Admin", user);
             }
         });
+        LogOutButton1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                sc.changeScene(event, "/com/example/ArtGallery/hello-view.fxml", "Welcome!" );
+            }
+        });
+
 
     }
 }
