@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.MarketingWindowController">
+   <content>
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="662.0" prefWidth="816.0">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: EBEAE6;">
+               <children>
+                  <ImageView fitHeight="295.0" fitWidth="231.0" layoutX="4.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/Logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="95.0" layoutY="288.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Home" textAlignment="CENTER">
+                     <effect>
+                        <DropShadow offsetY="2.0">
+                           <color>
+                              <Color red="0.6315789222717285" green="0.5801169872283936" blue="0.5801169872283936" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="collectionButton5" layoutX="85.0" layoutY="337.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Collection" textAlignment="CENTER">
+                     <effect>
+                        <DropShadow offsetY="2.0">
+                           <color>
+                              <Color red="0.6315789222717285" green="0.5801169872283936" blue="0.5801169872283936" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="mapButton5" layoutX="98.0" layoutY="494.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Map" textAlignment="CENTER">
+                     <effect>
+                        <DropShadow offsetY="2.0">
+                           <color>
+                              <Color red="0.6315789222717285" green="0.5801169872283936" blue="0.5801169872283936" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="eventsButton5" layoutX="94.0" layoutY="442.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Events" textAlignment="CENTER">
+                     <effect>
+                        <DropShadow offsetY="2.0">
+                           <color>
+                              <Color red="0.6315789222717285" green="0.5801169872283936" blue="0.5801169872283936" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="artistsButton5" layoutX="94.0" layoutY="388.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Artists" textAlignment="CENTER">
+                     <effect>
+                        <DropShadow offsetY="2.0">
+                           <color>
+                              <Color red="0.6315789222717285" green="0.5801169872283936" blue="0.5801169872283936" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="managePromoButton" layoutX="70.0" layoutY="543.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Manage Events">
+                     <effect>
+                        <DropShadow offsetY="2.0">
+                           <color>
+                              <Color red="0.6315789222717285" green="0.5801169872283936" blue="0.5801169872283936" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="LogOutButton4" layoutX="91.0" layoutY="592.0" mnemonicParsing="false" style="-fx-background-color: #e576a2;" text="Log out" textAlignment="CENTER">
+                     <effect>
+                        <DropShadow offsetY="2.0">
+                           <color>
+                              <Color red="0.6315789222717285" green="0.5801169872283936" blue="0.5801169872283936" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="651.0" prefWidth="570.0" style="-fx-background-color: #e9e9e7;">
+               <children>
+                  <Circle layoutX="402.0" layoutY="102.0" opacity="0.46" radius="79.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.3939393794897831" startY="0.32575759020718664">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9399999976158142" green="0.9024699330329895" blue="0.7802000045776367" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <effect>
+                        <BoxBlur height="90.0" iterations="3" width="90.0" />
+                     </effect>
+                  </Circle>
+                  <Text fill="#3e3e3e" layoutX="57.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Immerse Yourself in the world of" wrappingWidth="226.8947296142578">
+                     <font>
+                        <Font name="Microsoft JhengHei UI Light" size="36.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="167.0" fitWidth="172.0" layoutX="376.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/Zurawie_Chelmonski.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="160.0" fitWidth="200.0" layoutX="11.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/Lilie_Monet.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="199.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/Maskarada_Makowski.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#3e3e3e" layoutX="14.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="przeglądaj kolekcje, wystawy i eksponaty wybitnych artystów" textAlignment="CENTER" wrappingWidth="153.52346801757812">
+                     <font>
+                        <Font name="Palatino Linotype" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#1b1b1b" layoutX="57.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ART" wrappingWidth="190.09474182128906">
+                     <font>
+                        <Font name="Papyrus" size="64.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#3e3e3e" layoutX="197.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="poznaj historie stojące za dziełami i twórcami" textAlignment="CENTER" wrappingWidth="153.52346801757812">
+                     <font>
+                        <Font name="Palatino Linotype" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#3e3e3e" layoutX="382.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="zakup dzieło i zyskuj na jego wartości" textAlignment="CENTER" wrappingWidth="153.52346801757812">
+                     <font>
+                        <Font name="Palatino Linotype" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#1b1b1b" layoutX="20.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ODKRYWAJ" textAlignment="CENTER" wrappingWidth="141.29469299316406">
+                     <font>
+                        <Font name="Papyrus" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#1b1b1b" layoutX="203.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POZNAWAJ" textAlignment="CENTER" wrappingWidth="141.29469299316406">
+                     <font>
+                        <Font name="Papyrus" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#1b1b1b" layoutX="388.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INWESTUJ" textAlignment="CENTER" wrappingWidth="141.29469299316406">
+                     <font>
+                        <Font name="Papyrus" size="18.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="193.0" fitWidth="246.0" layoutX="306.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/Icona1.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#3e3e3e" layoutX="29.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nasza Galeria Sztuki to przestrzeń, w której sztuka spotyka ludzi. Z pasją tworzymy miejsce, gdzie klasyka łączy się z nowoczesnością, a każdy może odkryć coś wyjątkowego dla siebie. Naszym celem jest inspirowanie, edukowanie i budowanie relacji między artystami a publicznością. Wierzymy, że sztuka ma moc zmieniania rzeczywistości i pobudzania do refleksji." textAlignment="CENTER" wrappingWidth="473.5234069824219">
+                     <font>
+                        <Font name="Palatino Linotype" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#3e3e3e" layoutX="29.0" layoutY="643.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nr. tel 123 456 789    Mail abd@xyz.pl   ul. Artystów 1 Kraków" textAlignment="CENTER" wrappingWidth="473.5234069824219">
+                     <font>
+                        <Font name="Palatino Linotype" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </content>
+</ScrollPane>
