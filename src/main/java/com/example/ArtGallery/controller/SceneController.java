@@ -83,6 +83,14 @@ public class SceneController {
                 EventsController controller = loader.getController();
                 controller.setUser(user);
             }
+            else if(fxmlFile.equals("/com/example/ArtGallery/CuratorWindow.fxml")) {
+                CuratorWindowController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/ManageArtwork.fxml")) {
+                ManageArtworksController controller = loader.getController();
+                controller.setUser(user);
+            }
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
             stage.setScene(new Scene(root));
