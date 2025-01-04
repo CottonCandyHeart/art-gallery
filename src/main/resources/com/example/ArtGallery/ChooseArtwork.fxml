@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.CollectionController">
-  <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="591.0" prefWidth="816.0">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.ChooseArtworkToEditControllerController">
+   <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="591.0" prefWidth="816.0">
          <children>
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#eaeaea" height="43.0" layoutX="4.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="793.0">
                <effect>
@@ -24,7 +24,7 @@
                   </DropShadow>
                </effect>
             </Rectangle>
-            <Button fx:id="cancelButton8" layoutX="732.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #e576a2;" text="Cancel">
+            <Button fx:id="cancelButton11" layoutX="732.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #e576a2;" text="Cancel">
                <effect>
                   <DropShadow>
                      <color>
@@ -38,11 +38,12 @@
                   <Image url="@../../../img/Logo2.png" />
                </image>
             </ImageView>
-            <Text fill="#1b1b1b" layoutX="296.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artwork Collection" wrappingWidth="224.4945831298828">
+            <Text fill="#1b1b1b" layoutX="277.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Artwork to edit" wrappingWidth="262.8946075439453">
                <font>
                   <Font name="Papyrus" size="24.0" />
                </font>
             </Text>
-         </children></AnchorPane>
-  </content>
+         </children>
+      </AnchorPane>
+   </content>
 </ScrollPane>

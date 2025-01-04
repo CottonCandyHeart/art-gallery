@@ -87,8 +87,16 @@ public class SceneController {
                 CuratorWindowController controller = loader.getController();
                 controller.setUser(user);
             }
-            else if(fxmlFile.equals("/com/example/ArtGallery/ManageArtwork.fxml")) {
-                ManageArtworksController controller = loader.getController();
+            else if(fxmlFile.equals("/com/example/ArtGallery/ChooseArtwork.fxml")) {
+                ChooseArtworkController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/EditArtwork.fxml")) {
+                EditArtworkController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/AddArtwork.fxml")) {
+                AddArtworkController controller = loader.getController();
                 controller.setUser(user);
             }
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
