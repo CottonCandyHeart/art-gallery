@@ -70,6 +70,12 @@ public class LogInController implements Initializable {
                             user = new Worker(ID, username, name, surname, role);
                             if (ID.substring(0,3).equals("ADM")){
                                 sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
+                            }else if (ID.substring(0,3).equals("CRT")){
+                                sc.changeSceneUser(event, "/com/example/ArtGallery/CuratorWindow.fxml", "Art Haven - Art Curator", user);
+                            }else if (ID.substring(0,3).equals("MRT")){
+                                sc.changeSceneUser(event, "/com/example/ArtGallery/MarketingWindow.fxml", "Art Haven - Marketing", user);
+                            }else if (ID.substring(0,3).equals("MNG")){
+                                sc.changeSceneUser(event, "/com/example/ArtGallery/ManagerWindow.fxml", "Art Haven - Manager", user);
                             }
                         }
                         System.out.println("Log in" + user.getID());

@@ -24,6 +24,8 @@ public class AdminWindowController implements Initializable
     @FXML
     private Button mapButton2;
     @FXML
+    private Button generateRaportsButton;
+    @FXML
     private Button LogOutButton1;
 
     private SceneController sc = new SceneController();
@@ -66,6 +68,12 @@ public class AdminWindowController implements Initializable
             @Override
             public void handle(ActionEvent event) {
                 sc.changeSceneUser(event, "/com/example/ArtGallery/Map.fxml", "Map - Admin", user);
+            }
+        });
+        generateRaportsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                sc.changeSceneUser(event, "/com/example/ArtGallery/GenerateRaports.fxml", "Generate Raports - Admin", user);
             }
         });
         LogOutButton1.setOnAction(new EventHandler<ActionEvent>() {

@@ -21,6 +21,8 @@ public class MarketingWindowController implements Initializable {
     @FXML
     private Button mapButton5;
     @FXML
+    private Button generateRaportsButton;
+    @FXML
     private Button LogOutButton4;
 
     private SceneController sc = new SceneController();
@@ -63,6 +65,12 @@ public class MarketingWindowController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 sc.changeSceneUser(event, "/com/example/ArtGallery/Map.fxml", "Map - Marketing", user);
+            }
+        });
+        generateRaportsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                sc.changeSceneUser(event, "/com/example/ArtGallery/GenerateRaports.fxml", "Generate Raports - Marketing", user);
             }
         });
         LogOutButton4.setOnAction(new EventHandler<ActionEvent>() {

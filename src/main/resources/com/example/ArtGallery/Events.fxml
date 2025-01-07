@@ -15,11 +15,11 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.EventsController">
    <content>
-      <SplitPane prefHeight="714.0" prefWidth="817.0">
+      <SplitPane prefHeight="714.0" prefWidth="900.0">
         <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="651.0" prefWidth="570.0" style="-fx-background-color: #e9e9e7;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="713.0" prefWidth="1000.0" style="-fx-background-color: #e9e9e7;">
                <children>
-                  <FlowPane fx:id="calendar" layoutX="17.0" layoutY="118.0" prefHeight="463.0" prefWidth="782.0" />
+                  <FlowPane fx:id="calendar" layoutX="16.0" layoutY="118.0" prefHeight="463.0" prefWidth="775.0" />
                   <HBox alignment="CENTER" layoutX="244.0" layoutY="50.0" prefHeight="26.0" prefWidth="328.0" spacing="5.0">
                      <children>
                         <Button fx:id="leftButton" mnemonicParsing="false" style="-fx-background-color: #9babd9;" text="&lt;">
@@ -52,7 +52,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="16.0" layoutY="83.0" prefHeight="28.0" prefWidth="773.0" spacing="100.0" style="-fx-background-color: #d5d7e6;">
+                  <HBox alignment="CENTER" layoutX="16.0" layoutY="83.0" prefHeight="28.0" prefWidth="773.0" spacing="94.0" style="-fx-background-color: #d5d7e6;">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Su" textAlignment="CENTER" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mo" textAlignment="CENTER" />

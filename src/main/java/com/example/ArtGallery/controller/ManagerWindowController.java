@@ -21,6 +21,8 @@ public class ManagerWindowController implements Initializable {
     @FXML
     private Button mapButton4;
     @FXML
+    private Button generateRaportsButton;
+    @FXML
     private Button LogOutButton3;
 
     private SceneController sc = new SceneController();
@@ -63,6 +65,13 @@ public class ManagerWindowController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 sc.changeSceneUser(event, "/com/example/ArtGallery/Map.fxml", "Map - Manager", user);
+            }
+        });
+
+        generateRaportsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                sc.changeSceneUser(event, "/com/example/ArtGallery/GenerateRaports.fxml", "Generate Raports - Manager", user);
             }
         });
         LogOutButton3.setOnAction(new EventHandler<ActionEvent>() {
