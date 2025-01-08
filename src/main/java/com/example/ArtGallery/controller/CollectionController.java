@@ -47,7 +47,9 @@ public class CollectionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        for(int i = 0; i<22; i++){
+        Integer count = db.getDataInt("SELECT COUNT(*) FROM artworks;");
+        System.out.println(count);
+        for(int i = 0; i<count; i++){
             int artworkId = i + 1;
             String title = db.getDataString("SELECT title FROM artworks WHERE artwork_id = \"" + artworkId + "\";");
             int artistsID = db.getDataInt("SELECT artist_id FROM artworks WHERE artwork_id = \"" + artworkId + "\";");
@@ -62,7 +64,7 @@ public class CollectionController implements Initializable {
             String description = db.getDataString("SELECT description FROM artworks WHERE artwork_id = \"" + artworkId + "\";");
             String location = db.getDataString("SELECT location FROM artworks WHERE artwork_id = \"" + artworkId + "\";");
             String status = db.getDataString("SELECT status FROM artworks WHERE artwork_id = \"" + artworkId + "\";");
-            String picturePath = "C:/Users/odlug/OneDrive/Desktop/semestr 5/art-gallery/src/main/resources/artwork"+ db.getDataString("SELECT picturePath FROM artworks WHERE artwork_id = \"" + artworkId + "\";");
+            String picturePath = "src/main/resources/artwork"+ db.getDataString("SELECT picturePath FROM artworks WHERE artwork_id = \"" + artworkId + "\";");
             Artwork artwork = new Artwork(artworkId,title,artist,creationDate,method,description,location,status,picturePath);
             allArtwork.add(artwork);
         }
@@ -75,8 +77,9 @@ public class CollectionController implements Initializable {
             imageView.setFitHeight(182);
 
             Button imageButton = new Button("", imageView);
-            imageButton.getStyleClass().add("no-border-button");
-            imageButton.getStyleClass().add("button-transparent");
+            //imageButton.getStyleClass().add("no-border-button");
+            //imageButton.getStyleClass().add("button-transparent");
+            imageButton.setStyle("-fx-background-color: transparent;");
 
             imageButton.setOnAction(e -> {
                 System.out.println("Wybrano obraz: " + artwork.getTitle());

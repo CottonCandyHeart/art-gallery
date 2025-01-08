@@ -1,5 +1,6 @@
 package com.example.ArtGallery.controller;
 
+import com.example.ArtGallery.db.DB;
 import com.example.ArtGallery.model.users.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +15,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.*;
 
@@ -37,7 +40,7 @@ public class EventsController implements Initializable {
     @FXML
     private Button leftButton;
 
-
+    private DB db = new DB();
     private SceneController sc = new SceneController();
     private User user;
     public void setUser(User user) {
@@ -154,35 +157,56 @@ public class EventsController implements Initializable {
                 break;
             }
             Text text = new Text(calendarEvents.get(k).getName() + ", " + calendarEvents.get(k).getEventDate().toLocalTime());
+            text.setWrappingWidth(rectangleWidth * 0.8);
             calendarEventsBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
                 //tekst po naciśnięciu przycisku
                 System.out.println(text.getText());
             });
         }
+
         calendarEventsBox.setTranslateY((rectangleHeight / 2) * 0.20);
         calendarEventsBox.setMaxWidth(rectangleWidth * 0.8);
         calendarEventsBox.setMaxHeight(rectangleHeight * 0.65);
-        calendarEventsBox.setStyle("-fx-background-color:GRAY");
+        calendarEventsBox.setStyle("-fx-background-color:#FFB6C1");
         stackPane.getChildren().add(calendarEventsBox);
     }
-    private Map<Integer, List<Event>> getCalendarEventsMonth(ZonedDateTime dateFocus){
+    private Map<Integer, List<Event>> getCalendarEventsMonth(ZonedDateTime dateFocus) {
         List<Event> calendarEvents = new ArrayList<>();
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
+        Integer count = db.getDataInt("SELECT COUNT(*) FROM events WHERE YEAR(event_date) = " + year + " AND MONTH(event_date) = " + month + ";");
+        System.out.println(count);
+        for(int i  = 0; i < count; i++) {
+            int eventID = i + 1;
+            String name = db.getDataString("SELECT name FROM events WHERE event_id = \"" + eventID + "\";");
+            String date = db.getDataString("SELECT event_date FROM events WHERE event_id = \"" + eventID + "\";");
+            // Wyświtla się dobra data, ale nie ma czasu, więc jest ustawiony 00:00:00 i na sztywno strefa czasowa Europe/Warsaw
+            LocalDate localDate = LocalDate.parse(date);
+            ZonedDateTime zonedDateTime = localDate.atStartOfDay(ZoneId.of("Europe/Warsaw"));
+            int exhibitionID = db.getDataInt("SELECT exhibition_id FROM events WHERE event_id = \"" + eventID + "\";");
+            int capacity = db.getDataInt("SELECT capacity FROM events WHERE event_id = \"" + eventID + "\";");
+            //Nie wiem jak przekazać Enum tutaj, bo do Stringa się nie da więc też jest null i nie stworzyłem jeszcze Obiektu Exhibition
+            Event event = new Event(eventID, name, zonedDateTime, null, capacity, null);
+            calendarEvents.add(event);
 
+        }
         //pobranie z bazy listy eventów na dany miesiąc i rok
         return createCalendarEventsMap(calendarEvents);
     }
     private Map<Integer, List<Event>> createCalendarEventsMap(List<Event> calendarEvents){
         Map<Integer, List<Event>> CalendarEventsMap = new HashMap<>();
 
-        for(Event event: calendarEvents){
+        for (Event event : calendarEvents) {
+            int eventDay = event.getEventDate().getDayOfMonth();
+            CalendarEventsMap.computeIfAbsent(eventDay, k -> new ArrayList<>()).add(event);
+        }
+        /*for(Event event: calendarEvents){
             int eventdate = event.getEventDate().getDayOfMonth();
             //if(!createCalendarEventsMap().containsKey(eventdate)){
 
             //}
-        }
+        }*/
         return CalendarEventsMap;
     }
 }
