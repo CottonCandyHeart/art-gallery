@@ -140,7 +140,7 @@
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="choseUserChoiceBox" layoutX="377.0" layoutY="212.0" prefHeight="26.0" prefWidth="240.0" />
+      <ChoiceBox fx:id="choseUserChoiceBox" layoutX="376.0" layoutY="179.0" prefHeight="26.0" prefWidth="240.0" />
       <Text fill="#1b1b1b" layoutX="359.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Users" wrappingWidth="258.0">
          <font>
             <Font name="Papyrus" size="48.0" />
@@ -151,5 +151,6 @@
             <Font name="Papyrus" size="48.0" />
          </font>
       </Text>
+      <TextField fx:id="userTextField" layoutX="376.0" layoutY="210.0" prefHeight="30.0" prefWidth="240.0" />
    </children>
 </AnchorPane>

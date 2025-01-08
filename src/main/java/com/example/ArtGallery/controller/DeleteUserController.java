@@ -17,6 +17,8 @@ public class DeleteUserController implements Initializable {
     @FXML
     private Button cancelButton7;
     @FXML
+    private TextField userTextField;
+    @FXML
     private ChoiceBox choseUserChoiceBox1;
 
     private DB db = new DB();
