@@ -48,7 +48,6 @@ public class CollectionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Integer count = db.getDataInt("SELECT COUNT(*) FROM artworks;");
-        System.out.println(count);
         for(int i = 0; i<count; i++){
             int artworkId = i + 1;
             String title = db.getDataString("SELECT title FROM artworks WHERE artwork_id = \"" + artworkId + "\";");

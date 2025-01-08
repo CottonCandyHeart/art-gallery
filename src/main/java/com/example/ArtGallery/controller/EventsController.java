@@ -1,6 +1,7 @@
 package com.example.ArtGallery.controller;
 
 import com.example.ArtGallery.db.DB;
+import com.example.ArtGallery.model.exhibitions.Exhibition;
 import com.example.ArtGallery.model.users.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +22,8 @@ import java.time.ZonedDateTime;
 import java.util.*;
 
 import com.example.ArtGallery.model.events.Event;
+
+import static java.lang.Integer.parseInt;
 
 public class EventsController implements Initializable {
 
@@ -156,12 +159,19 @@ public class EventsController implements Initializable {
                 });
                 break;
             }
-            Text text = new Text(calendarEvents.get(k).getName() + ", " + calendarEvents.get(k).getEventDate().toLocalTime());
+            Event event = calendarEvents.get(k);
+            Text text = new Text("- "+event.getName());
             text.setWrappingWidth(rectangleWidth * 0.8);
             calendarEventsBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
                 //tekst po naciśnięciu przycisku
-                System.out.println(text.getText());
+                System.out.println("Event: " + event.getName());
+                System.out.println("Date: " + event.getEventDate());
+                System.out.println("Exhibition: " + event.getExhibition().getName());
+                System.out.println("Exhibition description: " + event.getExhibition().getDescription());
+                System.out.println("Capacity: " + event.getCapacity());
+                System.out.println("Type: " + event.getType());
+                //System.out.println(text.getText());
             });
         }
 
@@ -176,18 +186,24 @@ public class EventsController implements Initializable {
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();
         Integer count = db.getDataInt("SELECT COUNT(*) FROM events WHERE YEAR(event_date) = " + year + " AND MONTH(event_date) = " + month + ";");
-        System.out.println(count);
         for(int i  = 0; i < count; i++) {
             int eventID = i + 1;
             String name = db.getDataString("SELECT name FROM events WHERE event_id = \"" + eventID + "\";");
             String date = db.getDataString("SELECT event_date FROM events WHERE event_id = \"" + eventID + "\";");
+            /*
             // Wyświtla się dobra data, ale nie ma czasu, więc jest ustawiony 00:00:00 i na sztywno strefa czasowa Europe/Warsaw
             LocalDate localDate = LocalDate.parse(date);
-            ZonedDateTime zonedDateTime = localDate.atStartOfDay(ZoneId.of("Europe/Warsaw"));
+            ZonedDateTime zonedDateTime = localDate.atStartOfDay(ZoneId.of("Europe/Warsaw"));*/
             int exhibitionID = db.getDataInt("SELECT exhibition_id FROM events WHERE event_id = \"" + eventID + "\";");
             int capacity = db.getDataInt("SELECT capacity FROM events WHERE event_id = \"" + eventID + "\";");
-            //Nie wiem jak przekazać Enum tutaj, bo do Stringa się nie da więc też jest null i nie stworzyłem jeszcze Obiektu Exhibition
-            Event event = new Event(eventID, name, zonedDateTime, null, capacity, null);
+            String type = db.getDataString("SELECT event_type FROM events WHERE event_id = ?", eventID);
+            String exhibitionName = db.getDataString("SELECT name FROM exhibitions WHERE exhibition_id = \"" + exhibitionID + "\";");
+            String exhibitionStartDate = db.getDataString("SELECT start_date FROM exhibitions WHERE exhibition_id = \"" + exhibitionID + "\";");
+            String exhibitionEndDate = db.getDataString("SELECT end_date FROM exhibitions WHERE exhibition_id = \"" + exhibitionID + "\";");
+            String exhibitionLocation = db.getDataString("SELECT location FROM exhibitions WHERE exhibition_id = \"" + exhibitionID + "\";");
+            String exhibitionDescription = db.getDataString("SELECT description FROM exhibitions WHERE exhibition_id = \"" + exhibitionID + "\";");
+            Exhibition exhibition = new Exhibition(exhibitionID, exhibitionName, exhibitionStartDate, exhibitionEndDate, exhibitionLocation, exhibitionDescription);
+            Event event = new Event(eventID, name, date, exhibition, capacity, type);
             calendarEvents.add(event);
 
         }
@@ -198,7 +214,8 @@ public class EventsController implements Initializable {
         Map<Integer, List<Event>> CalendarEventsMap = new HashMap<>();
 
         for (Event event : calendarEvents) {
-            int eventDay = event.getEventDate().getDayOfMonth();
+            String[] partsOfDate = event.getEventDate().split("-");
+            int eventDay = parseInt(partsOfDate[2]);
             CalendarEventsMap.computeIfAbsent(eventDay, k -> new ArrayList<>()).add(event);
         }
         /*for(Event event: calendarEvents){

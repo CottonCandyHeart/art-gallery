@@ -46,6 +46,22 @@ public class DB {
         }
         return null;
     }
+    public static String getDataString(String query, Object... params) {
+        try (PreparedStatement stmt = st.getConnection().prepareStatement(query)) {
+            for (int i = 0; i < params.length; i++) {
+                stmt.setObject(i + 1, params[i]);
+            }
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString(1);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
     public static Integer getDataInt(String query){
         ResultSet rs = executeQuery(st, query);
         try {

@@ -31,7 +31,7 @@ public class DeleteUserController implements Initializable {
         confirmButton3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //obsługa usunięcia usera
+                //obsługa usuwania usera
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ManageUsers.fxml", "Manage users - Admin", user);
             }
         });

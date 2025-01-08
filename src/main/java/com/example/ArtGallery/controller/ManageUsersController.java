@@ -45,13 +45,13 @@ public class ManageUsersController implements Initializable {
         addUserButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Add user - Admin", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/AddUser.fxml", "Add user - Admin", user);
             }
         });
         deleteUserButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Delete user - Admin", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/DeleteUser.fxml", "Delete user - Admin", user);
             }
         });
 
