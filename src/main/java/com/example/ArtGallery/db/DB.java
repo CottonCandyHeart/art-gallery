@@ -1,5 +1,7 @@
 package com.example.ArtGallery.db;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class DB {
@@ -61,6 +63,26 @@ public class DB {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    public List<String> getDataStringList(String query) {
+        List<String> dataList = new ArrayList<>();
+
+        try {
+            try (Statement stmt = con.createStatement();
+                 ResultSet rs = stmt.executeQuery(query)) {
+
+                while (rs.next()) {
+                    String data = rs.getString(1);
+                    dataList.add(data);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error executing query: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return dataList;
     }
     public static Integer getDataInt(String query){
         ResultSet rs = executeQuery(st, query);
