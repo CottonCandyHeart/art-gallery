@@ -17,9 +17,9 @@ public class DeleteUserController implements Initializable {
     @FXML
     private Button cancelButton7;
     @FXML
-    private TextField userTextField;
+    private ChoiceBox chooseUserTypeChoiceBox;
     @FXML
-    private ChoiceBox choseUserChoiceBox1;
+    private ChoiceBox chooseUsernameChoiceBox;
 
     private DB db = new DB();
     private SceneController sc = new SceneController();

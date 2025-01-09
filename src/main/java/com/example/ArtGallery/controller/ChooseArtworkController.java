@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
+import javafx.scene.layout.FlowPane;
 
 
 import java.net.URL;
@@ -16,6 +17,8 @@ public class ChooseArtworkController implements Initializable {
     private Button cancelButton11;
     @FXML
     private Button addArtworkButton;
+    @FXML
+    private FlowPane artworkPanel;
 
     private SceneController sc = new SceneController();
     private User user;

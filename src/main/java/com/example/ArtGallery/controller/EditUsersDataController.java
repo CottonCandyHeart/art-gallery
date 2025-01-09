@@ -17,9 +17,9 @@ public class EditUsersDataController implements Initializable {
     @FXML
     private Button cancelButton5;
     @FXML
-    private ChoiceBox choseUserChoiceBox;
+    private ChoiceBox choseUserTypeChoiceBox;
     @FXML
-    private TextField userTextField;
+    private ChoiceBox choseUsernameChoiceBox;
 
     @FXML
     private Label warningLabel3;

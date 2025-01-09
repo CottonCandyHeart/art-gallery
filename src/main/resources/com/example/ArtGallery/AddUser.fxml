@@ -34,8 +34,8 @@
             <Image url="@../../../img/Logo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="usernameTextField2" layoutX="376.0" layoutY="356.0" prefHeight="30.0" prefWidth="240.0" />
-      <Text layoutX="200.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <TextField fx:id="usernameTextField2" layoutX="376.0" layoutY="313.0" prefHeight="30.0" prefWidth="240.0" />
+      <Text layoutX="200.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
@@ -52,7 +52,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <PasswordField fx:id="passwordField4" layoutX="377.0" layoutY="402.0" prefHeight="30.0" prefWidth="240.0" />
+      <PasswordField fx:id="passwordField4" layoutX="377.0" layoutY="359.0" prefHeight="30.0" prefWidth="240.0" />
       <Button fx:id="confirmButton2" layoutX="418.0" layoutY="522.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: #9babd9;" text="Confirm">
          <effect>
             <DropShadow>
@@ -107,22 +107,22 @@
             </RadialGradient>
          </fill>
       </Circle>
-      <Label fx:id="warningLabel4" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="493.0" prefHeight="23.0" prefWidth="451.0" textAlignment="CENTER">
+      <Label fx:id="warningLabel4" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="478.0" prefHeight="23.0" prefWidth="451.0" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Text layoutX="199.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="199.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="199.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="confirm password" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="199.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="confirm password" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <PasswordField fx:id="confirmPasswordField3" layoutX="377.0" layoutY="451.0" prefHeight="30.0" prefWidth="240.0" />
+      <PasswordField fx:id="confirmPasswordField3" layoutX="377.0" layoutY="408.0" prefHeight="30.0" prefWidth="240.0" />
       <Text layoutX="201.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
@@ -135,12 +135,6 @@
       </Text>
       <TextField fx:id="surnameTextField3" layoutX="378.0" layoutY="261.0" prefHeight="30.0" prefWidth="240.0" />
       <TextField fx:id="nameTextField3" layoutX="377.0" layoutY="216.0" prefHeight="30.0" prefWidth="240.0" />
-      <Text layoutX="200.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="phone number" textAlignment="CENTER" wrappingWidth="169.44332885742188">
-         <font>
-            <Font name="Microsoft JhengHei UI Light" size="18.0" />
-         </font>
-      </Text>
-      <TextField fx:id="phoneTextField3" layoutX="378.0" layoutY="310.0" prefHeight="30.0" prefWidth="240.0" />
       <Text fill="#1b1b1b" layoutX="337.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add User" wrappingWidth="289.20001220703125">
          <font>
             <Font name="Papyrus" size="60.0" />

@@ -29,7 +29,7 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <ImageView fitHeight="150.0" fitWidth="178.0" layoutX="209.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="126.0" fitWidth="138.0" layoutX="222.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../img/Logo.png" />
          </image>
@@ -135,12 +135,12 @@
          </font>
       </Text>
       <TextField fx:id="phoneTextField2" layoutX="377.0" layoutY="358.0" prefHeight="30.0" prefWidth="240.0" />
-      <Text layoutX="200.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="user" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="200.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="choseUserChoiceBox" layoutX="376.0" layoutY="179.0" prefHeight="26.0" prefWidth="240.0" />
+      <ChoiceBox fx:id="choseUserTypeChoiceBox" layoutX="376.0" layoutY="179.0" prefHeight="26.0" prefWidth="240.0" />
       <Text fill="#1b1b1b" layoutX="359.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Users" wrappingWidth="258.0">
          <font>
             <Font name="Papyrus" size="48.0" />
@@ -151,6 +151,11 @@
             <Font name="Papyrus" size="48.0" />
          </font>
       </Text>
-      <TextField fx:id="userTextField" layoutX="376.0" layoutY="210.0" prefHeight="30.0" prefWidth="240.0" />
+      <Text layoutX="200.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="user type" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+         <font>
+            <Font name="Microsoft JhengHei UI Light" size="18.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="choseUsernameChoiceBox" layoutX="376.0" layoutY="224.0" prefHeight="26.0" prefWidth="240.0" />
    </children>
 </AnchorPane>

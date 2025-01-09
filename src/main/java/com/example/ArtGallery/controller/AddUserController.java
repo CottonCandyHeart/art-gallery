@@ -27,8 +27,6 @@ public class AddUserController implements Initializable {
     @FXML
     private TextField surnameTextField3;
     @FXML
-    private TextField phoneTextField3;
-    @FXML
     private TextField usernameTextField2;
     @FXML
     private PasswordField passwordField4;
@@ -53,7 +51,6 @@ public class AddUserController implements Initializable {
             public void handle(ActionEvent event) {
                 String name = nameTextField3.getText();
                 String surname = surnameTextField3.getText();
-                int phoneNo = Integer.parseInt(phoneTextField3.getText());
                 String login = usernameTextField2.getText();
                 String loginExists = db.getDataString("SELECT username FROM Users WHERE username LIKE \"" + login + "\";");
                 String password = passwordField4.getText();

@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -43,6 +44,7 @@
                   <Font name="Papyrus" size="24.0" />
                </font>
             </Text>
+            <FlowPane fx:id="artworkPanel" layoutX="4.0" layoutY="49.0" prefHeight="662.0" prefWidth="795.0" />
          </children>
       </AnchorPane>
    </content>
