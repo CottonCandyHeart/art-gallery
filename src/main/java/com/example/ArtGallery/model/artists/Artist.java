@@ -39,6 +39,100 @@ public class Artist {
     public String getBio() {return bio;}
     public String getBirthDate() {return birthDate;}
     public String getDeathDate() {return deathDate;}
+    public String getConvertedBirthDate() {
+        if (birthDate == null) return "";
+
+        String d = birthDate.substring(birthDate.lastIndexOf("-")+1, birthDate.length());
+        switch (birthDate.substring(birthDate.indexOf("-")+1, birthDate.lastIndexOf("-"))){
+            case "01":
+                d += " styczeń ";
+                break;
+            case "02":
+                d += " luty ";
+                break;
+            case "03":
+                d += " marzec ";
+                break;
+            case "04":
+                d += " kwiecień ";
+                break;
+            case "05":
+                d += " maj ";
+                break;
+            case "06":
+                d += " czerwiec ";
+                break;
+            case "07":
+                d += " lipiec ";
+                break;
+            case "08":
+                d += " sierpień ";
+                break;
+            case "09":
+                d += " wrzesień ";
+                break;
+            case "10":
+                d += " październik ";
+                break;
+            case "11":
+                d += " listopad ";
+                break;
+            case "12":
+                d += " grudzień ";
+                break;
+        }
+
+        d += birthDate.substring(0, birthDate.indexOf("-"));
+
+        return d;
+    }
+    public String getConvertedDeathDate() {
+        if (deathDate == null) return "";
+
+        String d = deathDate.substring(deathDate.lastIndexOf("-")+1, deathDate.length());
+        switch (deathDate.substring(deathDate.indexOf("-")+1, deathDate.lastIndexOf("-"))){
+            case "01":
+                d += " styczeń ";
+                break;
+            case "02":
+                d += " luty ";
+                break;
+            case "03":
+                d += " marzec ";
+                break;
+            case "04":
+                d += " kwiecień ";
+                break;
+            case "05":
+                d += " maj ";
+                break;
+            case "06":
+                d += " czerwiec ";
+                break;
+            case "07":
+                d += " lipiec ";
+                break;
+            case "08":
+                d += " sierpień ";
+                break;
+            case "09":
+                d += " wrzesień ";
+                break;
+            case "10":
+                d += " październik ";
+                break;
+            case "11":
+                d += " listopad ";
+                break;
+            case "12":
+                d += " grudzień ";
+                break;
+        }
+
+        d += deathDate.substring(0, deathDate.indexOf("-"));
+
+        return d;
+    }
 
     // ---------------- SETTERS ----------------
     public void setID(int ID) {this.ID = ID;}

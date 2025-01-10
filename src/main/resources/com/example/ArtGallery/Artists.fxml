@@ -44,7 +44,10 @@
                   <Font name="Papyrus" size="24.0" />
                </font>
             </Text>
-            <FlowPane fx:id="ArtistsPanel" layoutX="4.0" layoutY="48.0" prefHeight="662.0" prefWidth="801.0" />
+            <!--<ScrollPane fx:id="scrollPane" fitToWidth="true" fitToHeight="true">-->
+               <FlowPane fx:id="artistsPanel" layoutX="4.0" layoutY="48.0" prefHeight="662.0" prefWidth="801.0" />
+            <!--</ScrollPane>-->
+
          </children>
       </AnchorPane>
    </content>
