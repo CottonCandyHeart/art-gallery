@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.ArtistsController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.ArtworkDetailsController">
    <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="9500.0" prefWidth="816.0">
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="591.0" prefWidth="816.0">
          <children>
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#eaeaea" height="43.0" layoutX="4.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="793.0">
                <effect>
@@ -39,15 +39,12 @@
                   <Image url="@../../../img/Logo2.png" />
                </image>
             </ImageView>
-            <Text fill="#1b1b1b" layoutX="296.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artists" textAlignment="CENTER" wrappingWidth="224.4945831298828">
+            <Text fill="#1b1b1b" layoutX="296.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artwork Details" textAlignment="CENTER" wrappingWidth="224.4945831298828">
                <font>
                   <Font name="Papyrus" size="24.0" />
                </font>
             </Text>
-            <!--<ScrollPane fx:id="scrollPane" fitToWidth="true" fitToHeight="true">-->
-               <FlowPane fx:id="artistsPanel" layoutX="-1.0" layoutY="48.0" prefHeight="9500.0" prefWidth="802.0" />
-            <!--</ScrollPane>-->
-
+            <FlowPane fx:id="detailsPanel" layoutX="4.0" layoutY="48.0" prefHeight="662.0" prefWidth="801.0" />
          </children>
       </AnchorPane>
    </content>

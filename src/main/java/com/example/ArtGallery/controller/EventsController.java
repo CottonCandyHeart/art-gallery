@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -36,6 +37,10 @@ public class EventsController implements Initializable {
     private Text month;
     @FXML
     private FlowPane calendar;
+    @FXML
+    private FlowPane EventDetailsPanel;
+    @FXML
+    private Label Info;
     @FXML
     private Button cancelButton2;
     @FXML
@@ -180,13 +185,16 @@ public class EventsController implements Initializable {
             calendarEventsBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
                 //tekst po naciśnięciu przycisku
+                /*
                 System.out.println("Event: " + event.getName());
-                System.out.println("Date: " + event.getEventDate());
-                System.out.println("Exhibition: " + event.getExhibition().getName());
-                System.out.println("Exhibition description: " + event.getExhibition().getDescription());
-                System.out.println("Capacity: " + event.getCapacity());
-                System.out.println("Type: " + event.getType());
+                System.out.println("\nDate: " + event.getEventDate());
+                System.out.println("\nExhibition: " + event.getExhibition().getName());
+                System.out.println("\nExhibition description: " + event.getExhibition().getDescription());
+                System.out.println("\nCapacity: " + event.getCapacity());
+                System.out.println("\nType: " + event.getType());*/
                 //System.out.println(text.getText());
+
+                Info.setText("Event: " + event.getName()+"\nDate: " + event.getEventDate()+"\nExhibition: " + event.getExhibition().getName()+"\nExhibition description: " + event.getExhibition().getDescription()+"\nCapacity: " + event.getCapacity()+"\nType: " + event.getType());
             });
         }
 

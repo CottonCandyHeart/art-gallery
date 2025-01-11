@@ -77,8 +77,6 @@ public class CollectionController implements Initializable {
             imageView.setFitHeight(182);
 
             Button imageButton = new Button("", imageView);
-            //imageButton.getStyleClass().add("no-border-button");
-            //imageButton.getStyleClass().add("button-transparent");
             imageButton.setStyle("-fx-background-color: transparent;");
 
             imageButton.setOnAction(e -> {

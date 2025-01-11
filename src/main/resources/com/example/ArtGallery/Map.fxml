@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.ArtGallery.Map"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.MapController">
+   <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="585.0" prefWidth="816.0">
+         <children>
+            <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#eaeaea" height="43.0" layoutX="4.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="793.0">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.31610938906669617" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Rectangle>
+            <Button fx:id="cancelButton" layoutX="732.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #e576a2;" text="Cancel">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.2036474645137787" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <ImageView fitHeight="37.0" fitWidth="48.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/Logo2.png" />
+               </image>
+            </ImageView>
+            <Text fill="#1b1b1b" layoutX="296.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Map" textAlignment="CENTER" wrappingWidth="224.4945831298828">
+               <font>
+                  <Font name="Papyrus" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="371.0" layoutY="255.0" mnemonicParsing="false" prefHeight="312.0" prefWidth="118.0" style="-fx-background-color: #c3c6c9; -fx-background-radius: 0;" text="HOL" />
+            <Button fx:id="sala8Button" layoutX="489.0" layoutY="413.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="294.0" style="-fx-background-color: #e4cc53; -fx-background-radius: 0;" text="SALA 8" />
+            <Button fx:id="sala7Button" layoutX="489.0" layoutY="255.0" mnemonicParsing="false" prefHeight="159.0" prefWidth="294.0" style="-fx-background-color: #9babd9; -fx-background-radius: 0;" text="SALA 7" />
+            <Button fx:id="sala6Button" layoutX="571.0" layoutY="57.0" mnemonicParsing="false" prefHeight="198.0" prefWidth="212.0" style="-fx-background-color: #ffa6ca; -fx-background-radius: 0;" text="SALA 6" />
+            <Button fx:id="sala5Button" layoutX="370.0" layoutY="57.0" mnemonicParsing="false" prefHeight="198.0" prefWidth="201.0" style="-fx-background-color: #97c3ec; -fx-background-radius: 0;" text="SALA 5" />
+            <Button fx:id="sala4Button" layoutX="13.0" layoutY="57.0" mnemonicParsing="false" prefHeight="198.0" prefWidth="358.0" style="-fx-background-color: #e576a2; -fx-background-radius: 0;" text="SALA 4" />
+            <Button fx:id="sala3Button" layoutX="13.0" layoutY="256.0" mnemonicParsing="false" prefHeight="159.0" prefWidth="358.0" style="-fx-background-color: #7ea9d1; -fx-background-radius: 0;" text="SALA 3" />
+            <Button fx:id="sala1Button" layoutX="192.0" layoutY="415.0" mnemonicParsing="false" prefHeight="153.0" prefWidth="179.0" style="-fx-background-color: #99b4ff; -fx-background-radius: 0;" text="SALA 1" />
+            <Button fx:id="sala2Button" layoutX="14.0" layoutY="415.0" mnemonicParsing="false" prefHeight="153.0" prefWidth="179.0" style="-fx-background-color: #efda60; -fx-background-radius: 0;" text="SALA 2" />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
