@@ -84,6 +84,14 @@ public class DeleteUserController implements Initializable {
                 }
 
                 db.executeUpdate(db.getSt(), "DELETE FROM Users WHERE username = \"" + username + "\" AND user_type = \"" + role_type + "\";");
+
+                /*
+                warningLabel3.setText("User modified!");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }  */
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ManageUsers.fxml", "Manage users - Admin", user);
             }
         });
