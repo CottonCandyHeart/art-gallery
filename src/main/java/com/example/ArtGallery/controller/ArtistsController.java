@@ -44,7 +44,8 @@ public class ArtistsController  implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         VBox artistsVBox = new VBox();
-        artistsVBox.setSpacing(50);
+        artistsVBox.setSpacing(10);
+        artistsPanel.setVgap(10);
 
         Integer count = db.getDataInt("SELECT COUNT(*) FROM Artists;");
         for (int i=0; i<count; i++){
@@ -57,32 +58,24 @@ public class ArtistsController  implements Initializable {
             Artist artist = new Artist(ID, name, surname, bio, birthDate, deathDate);
             allArtists.add(artist);
 
-            //String artistInfo = artist.getName() + " " + artist.getSurname() + "\t(ur. "+ artist.getConvertedBirthDate() + (deathDate == null || deathDate.isEmpty() ? ")" : ", zm." + artist.getConvertedDeathDate() + ")");
-            //artistInfo += "\n" + artist.getBio();
-
             Label nameLabel = new Label(artist.getName() + " " + artist.getSurname());
             nameLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+            nameLabel.setPadding(new Insets(20, 0, 0, 20));
 
-            Label dateLabel = new Label("(ur. " + artist.getConvertedBirthDate() +
-                    (deathDate == null || deathDate.isEmpty() ? ")" : ", zm." + artist.getConvertedDeathDate() + ")"));
+            Label dateLabel = new Label("(ur. " + (birthDate == null || birthDate.isEmpty() ? "Dawno temu" : artist.getConvertedBirthDate()) + (deathDate == null || deathDate.isEmpty() ? ")" : ", zm. " + artist.getConvertedDeathDate() + ")"));
             dateLabel.setStyle("-fx-font-size: 14px; -fx-font-style: italic;");
+            dateLabel.setPadding(new Insets(0, 0, 0, 20));
 
             Label bioLabel = new Label(artist.getBio());
             bioLabel.setWrapText(true);
-            bioLabel.setMaxWidth(600);
+            bioLabel.setMaxWidth(690);
+            bioLabel.setStyle("-fx-text-alignment: justify;");
             artistsVBox.getChildren().addAll(nameLabel, dateLabel, bioLabel);
 
 
             artistsVBox.setPadding(new Insets(0, 50, 0, 50));
             bioLabel.setPadding(new Insets(20, 0, 0, 20));
 
-/*
-            Label artistLabel = new Label(artistInfo);
-            artistLabel.setPadding(new Insets(20, 50, 0, 50));
-            artistLabel.setWrapText(true);
-            artistLabel.setMaxWidth(800);
-            artistsVBox.getChildren().add(artistLabel); */
-            //artistsPanel.getChildren().add(artistLabel);
         }
         artistsPanel.getChildren().add(artistsVBox);
 
