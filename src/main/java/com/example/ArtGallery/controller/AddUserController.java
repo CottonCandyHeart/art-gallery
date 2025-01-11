@@ -42,7 +42,7 @@ public class AddUserController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<String> types = db.getDataStringList("SELECT role FROM roles;");
+        List<String> types = db.getDataStringList("SELECT role FROM roles WHERE role_id NOT LIKE \"CLI\";");
         choseUsersTypeChoiceBox.getItems().addAll(types);
         choseUsersTypeChoiceBox.setValue(types.get(0));
 
@@ -65,7 +65,7 @@ public class AddUserController implements Initializable {
                         role_type = "CRT";
                         break;
                     case "Manager":
-                        role_type = "Mng";
+                        role_type = "MNG";
                         break;
                     case "Marketingowiec":
                         role_type = "MRT";
@@ -74,9 +74,7 @@ public class AddUserController implements Initializable {
                 if (loginExists != null) {
                     warningLabel4.setText("User already exists!");
                 } else if (password.equals(confirmPassword)) {
-                    Integer countRole = db.getDataInt("SELECT COUNT(*) FROM users WHERE user_type LIKE \"" + role_type + "\";");
-                    String ID = role_type + countRole.toString();
-                    User user = new Worker(ID, login, name, surname,role);
+                    User user = new Worker("NULL", login, name, surname,role);
                     user.addUser(db, password, role_type);
                     warningLabel4.setText("Worker created!");
                     try {

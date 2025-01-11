@@ -113,7 +113,7 @@
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="chooseUseTypeChoiceBox" layoutX="377.0" layoutY="265.0" prefHeight="26.0" prefWidth="240.0" />
+      <ChoiceBox fx:id="chooseUserTypeChoiceBox" layoutX="377.0" layoutY="265.0" prefHeight="26.0" prefWidth="240.0" />
       <Text layoutX="208.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="user type" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
