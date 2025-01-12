@@ -86,7 +86,6 @@ public class ArtistsController  implements Initializable {
                 if(user != null){
                     type = db.getDataString("SELECT user_type FROM users WHERE user_id = \"" + user.getID() + "\";");
                 }
-                //jeżeli admin
                 switch (type){
                     case "ADM":
                         sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
