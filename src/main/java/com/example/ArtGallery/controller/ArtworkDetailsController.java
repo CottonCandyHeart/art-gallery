@@ -80,9 +80,25 @@ public class ArtworkDetailsController implements Initializable {
         descriptionLabel.setMaxWidth(690);
         descriptionLabel.setStyle("-fx-text-alignment: justify;");
 
+        Integer isOnSale = db.getDataInt("SELECT artwork_id FROM ArtworkForSale WHERE artwork_id = " + artwork.getID());
+        Button buyButton = new Button("Kup");
+        buyButton.setStyle("-fx-background-color: #e576a2;");
+        buyButton.setOnAction(event -> {
+            artwork.makeTransaction(db, user);
+            buyButton.setText("Kupione!");
+            buyButton.setDisable(true);
+            buyButton.setStyle("-fx-opacity: 0.5; -fx-cursor: default; -fx-background-color: #e576a2;" );
+        });
+
         HBox nameAndMethodBox = new HBox(10, nameLabel, dateLabel);
 
-        VBox detailsBox = new VBox(10, titleLabel, nameAndMethodBox, methodLabel);
+        VBox detailsBox;
+        if (isOnSale != null && user != null){
+            detailsBox = new VBox(10, titleLabel, nameAndMethodBox, methodLabel, buyButton);
+        } else {
+            detailsBox = new VBox(10, titleLabel, nameAndMethodBox, methodLabel);
+        }
+
         detailsBox.setPadding(new Insets(100,0,0,20));
         detailsBox.setPrefWidth(300);
 

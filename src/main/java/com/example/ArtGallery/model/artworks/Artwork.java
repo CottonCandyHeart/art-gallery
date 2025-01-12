@@ -1,6 +1,7 @@
 package com.example.ArtGallery.model.artworks;
 import com.example.ArtGallery.db.DB;
 import com.example.ArtGallery.model.artists.*;
+import com.example.ArtGallery.model.users.User;
 
 public class Artwork {
     private int ID;
@@ -36,6 +37,9 @@ public class Artwork {
     }
     public void deleteArtwork(DB db){
         db.executeUpdate(db.getSt(), "DELETE FROM Artworks WHERE artwork_id = " + ID + ";");
+    }
+    public void makeTransaction(DB db, User user){
+        db.callProcedure("makeTransaction", user.getID(), this.ID);
     }
 
     // ---------------- GETTERS ----------------
