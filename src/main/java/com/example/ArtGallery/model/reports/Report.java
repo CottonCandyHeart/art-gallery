@@ -3,21 +3,10 @@ package com.example.ArtGallery.model.reports;
 import com.example.ArtGallery.db.*;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 public class Report {
-    /* private int ID;
-     private String type;
-     private String generationDate;
-     private String details;
 
-
-     public Report(int ID, String type, String generationDate, String details) {
-         this.ID = ID;
-         this.type = type;
-         this.generationDate = generationDate;
-         this.details = details;
-     }
- */
     // ---------------- METHODS ----------------
     public void generateFinancialReport(DB db, String startDate, String endDate, String workerID){ // 2025-01-01
         String report = "";
@@ -36,29 +25,29 @@ public class Report {
     }
     public void generateEventReport(DB db, String startDate, String endDate, String workerID){
         // RAPORT Z ILOŚCI OSÓB BIORĄCYCH UDZIAŁ W WYDARZENIU
-        // Nową tabela
+        String report = "";
+        List<Integer> result = db.getDataIntList("SELECT DISTINCT(event_id) FROM EventReservations WHERE reservationDate BETWEEN '" + startDate + "' AND '" + endDate + "';");
+
+        for (int r : result){
+            int count = db.getDataInt("SELECT COUNT(*) FROM EventReservations WHERE event_id =" + result);
+            report += r + " - " + count + " uczestników; \n";
+        }
+
+        db.callProcedure("addReport", "EVENT REPORT", report, workerID);
+
     }
-    public void generateCollectionReport(DB db, String startDate, String endDate, String workerID){
-        // Stan konserwacji dzieł:
-        //Lista dzieł wymagających renowacji, z podziałem na kategorie.
-        //Popularność eksponatów:
-        //Dane o liczbie odwiedzających oglądających poszczególne dzieła.
-        //Raport wypożyczeń
-        //Informacje o dziełach wypożyczonych innym instytucjom, z datami i warunkami.
+    public void generateExhibitionReport(DB db, String startDate, String endDate, String workerID){
+        String report = "";
+        String sql = "SELECT transaction_id, name, location FROM Transactions ist_id = Artists.artist_id WHERE sale_date BETWEEN '" + startDate + "' AND '" + endDate + "';";
+        ResultSet r = db.executeQuery(db.getSt(), sql);
+        if (r == null){
+            report = "Brak dostępnych tranzakcji w okresie " + startDate + " - " + endDate;
+        } else {
+            report = db.sqlGetDataByName(r);
+            report += "\n" + db.getDataDouble("SELECT SUM(income) FROM Exhibitions WHERE start_date BETWEEN '" + startDate + "' AND '" + endDate + "';");
+        }
+
+        db.callProcedure("addReport", "EXHIBITION REPORT", report, workerID);
     }
 
-    // ---------------- GETTERS ----------------
-    /*
-    public int getID() {return ID;}
-    public String getType() {return type;}
-    public String getGenerationDate() {return generationDate;}
-    public String getDetails() {return details;}
-
-    // ---------------- SETTERS ----------------
-    public void setID(int ID) {this.ID = ID;}
-    public void setType(String type) {this.type = type;}
-    public void setGenerationDate(String generationDate) {this.generationDate = generationDate;}
-    public void setDetails(String details) {this.details = details;}
-
-     */
 }

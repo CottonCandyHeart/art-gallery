@@ -84,6 +84,25 @@ public class DB {
 
         return dataList;
     }
+    public List<Integer> getDataIntList(String query) {
+        List<Integer> dataList = new ArrayList<>();
+
+        try {
+            try (Statement stmt = con.createStatement();
+                 ResultSet rs = stmt.executeQuery(query)) {
+
+                while (rs.next()) {
+                    int data = rs.getInt(1);
+                    dataList.add(data);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error executing query: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return dataList;
+    }
     public static Integer getDataInt(String query){
         ResultSet rs = executeQuery(st, query);
         try {
