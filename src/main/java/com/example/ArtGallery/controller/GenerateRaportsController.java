@@ -19,6 +19,12 @@ public class GenerateRaportsController implements Initializable {
     private Button cancelButton;
     @FXML
     private ChoiceBox choseRaportChoiceBox;
+    @FXML
+    private DatePicker fromDatePicker;
+    @FXML
+    private DatePicker toDatePicker;
+    @FXML
+    private Label warningLabel;
 
     private DB db = new DB();
     private SceneController sc = new SceneController();
