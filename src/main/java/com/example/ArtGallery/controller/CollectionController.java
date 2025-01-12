@@ -43,7 +43,6 @@ public class CollectionController implements Initializable {
     private User user;
     public void setUser(User user) {
         this.user = user;
-        System.out.println("setUser - " + user.getID());
     }
 
     @Override
@@ -59,6 +58,7 @@ public class CollectionController implements Initializable {
             String birthDate = db.getDataString("SELECT birth_date FROM Artists WHERE artist_id = \"" + artistsID + "\";");
             String deathDate = db.getDataString("SELECT death_date FROM Artists WHERE artist_id = \"" + artistsID + "\";");
             Artist artist = new Artist(artistsID, name, surname, bio,  birthDate, deathDate);
+
             String creationDate = db.getDataString("SELECT creation_date FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
             String method= db.getDataString("SELECT method FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
             String description = db.getDataString("SELECT description FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
@@ -66,6 +66,7 @@ public class CollectionController implements Initializable {
             String status = db.getDataString("SELECT status FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
             String picturePath = "src/main/resources/artwork"+ db.getDataString("SELECT picturePath FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
             Artwork artwork = new Artwork(artworkId,title,artist,creationDate,method,description,location,status,picturePath);
+
             allArtwork.add(artwork);
         }
 
@@ -82,6 +83,8 @@ public class CollectionController implements Initializable {
             imageButton.setOnAction(e -> {
                 System.out.println("Wybrano obraz: " + artwork.getTitle());
                 //otwieranie okna ze szczegółami i przyciskami
+
+                sc.changeSceneWithUserAndArtwork(e, "/com/example/ArtGallery/ArtworkDetails.fxml", "Artwork - Details", user, artwork);
             });
 
 

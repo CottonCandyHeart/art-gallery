@@ -47,6 +47,7 @@ public class Artwork {
     public String getLocation() {return location;}
     public String getStatus() {return status;}
     public String getPicturePath() {return picturePath;}
+    public String getMethod(){return method;}
 
     // ---------------- SETTERS ----------------
     public void setID(int ID) {this.ID = ID;}
@@ -57,4 +58,5 @@ public class Artwork {
     public void setLocation(String location) {this.location = location;}
     public void setStatus(String status) {this.status = status;}
     public void setPicturePath(String picturePath) {this.picturePath = picturePath;}
+    public void setMethod(String method) {this.method = method;}
 }

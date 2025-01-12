@@ -1,5 +1,6 @@
 package com.example.ArtGallery.controller;
 
+import com.example.ArtGallery.model.artworks.Artwork;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -111,6 +112,25 @@ public class SceneController {
                 ArtworkDetailsController controller = loader.getController();
                 controller.setUser(user);
             }
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void changeSceneWithUserAndArtwork(ActionEvent event, String fxmlFile, String title, User user, Artwork artwork) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneController.class.getResource(fxmlFile));
+            Parent root = loader.load();
+
+            ArtworkDetailsController controller = loader.getController();
+            controller.setUser(user);
+            controller.setArtwork(artwork);
+
+
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
             stage.setScene(new Scene(root));
