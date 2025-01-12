@@ -5,18 +5,19 @@ import com.example.ArtGallery.db.*;
 import java.sql.ResultSet;
 
 public class Report {
-    private int ID;
-    private String type;
-    private String generationDate;
-    private String details;
+    /* private int ID;
+     private String type;
+     private String generationDate;
+     private String details;
 
-    public Report(int ID, String type, String generationDate, String details) {
-        this.ID = ID;
-        this.type = type;
-        this.generationDate = generationDate;
-        this.details = details;
-    }
 
+     public Report(int ID, String type, String generationDate, String details) {
+         this.ID = ID;
+         this.type = type;
+         this.generationDate = generationDate;
+         this.details = details;
+     }
+ */
     // ---------------- METHODS ----------------
     public void generateFinancialReport(DB db, String startDate, String endDate, String workerID){ // 2025-01-01
         String report = "";
@@ -33,11 +34,11 @@ public class Report {
 
 
     }
-    public void generateEventReport(DB db, String startDate, String endDate){
+    public void generateEventReport(DB db, String startDate, String endDate, String workerID){
         // RAPORT Z ILOŚCI OSÓB BIORĄCYCH UDZIAŁ W WYDARZENIU
         // Nową tabela
     }
-    public void generateCollectionReport(DB db){
+    public void generateCollectionReport(DB db, String startDate, String endDate, String workerID){
         // Stan konserwacji dzieł:
         //Lista dzieł wymagających renowacji, z podziałem na kategorie.
         //Popularność eksponatów:
@@ -47,6 +48,7 @@ public class Report {
     }
 
     // ---------------- GETTERS ----------------
+    /*
     public int getID() {return ID;}
     public String getType() {return type;}
     public String getGenerationDate() {return generationDate;}
@@ -57,4 +59,6 @@ public class Report {
     public void setType(String type) {this.type = type;}
     public void setGenerationDate(String generationDate) {this.generationDate = generationDate;}
     public void setDetails(String details) {this.details = details;}
+
+     */
 }

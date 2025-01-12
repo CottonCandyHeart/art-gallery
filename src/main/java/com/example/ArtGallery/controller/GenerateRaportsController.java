@@ -1,6 +1,7 @@
 package com.example.ArtGallery.controller;
 
 import com.example.ArtGallery.db.DB;
+import com.example.ArtGallery.model.reports.Report;
 import com.example.ArtGallery.model.users.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,41 +23,90 @@ public class GenerateRaportsController implements Initializable {
     private DB db = new DB();
     private SceneController sc = new SceneController();
     private User user;
+    private Report report;
     public void setUser(User user) {
         this.user = user;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        choseRaportChoiceBox.getItems().add("Raport finansowy");
+        choseRaportChoiceBox.getItems().add("Raport wydarzeń");
+        choseRaportChoiceBox.getItems().add("Raport kolekcji");
+        choseRaportChoiceBox.setValue("Raport finansowy");
+
         confirmButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //obsługa usunięcia usera
-                //jeżeli admin
-                sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
-                //jeżeli client
-                //sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
-                //jeżeli kurator
-                //sc.changeSceneUser(event, "/com/example/ArtGallery/CuratorWindow.fxml", "Art Haven - Art Curator", user);
-                //jeżeli manager
-                //sc.changeSceneUser(event, "/com/example/ArtGallery/ManagerWindow.fxml", "Art Haven - Manager", user);
-                //jeżeli marketingowca
-                //sc.changeSceneUser(event, "/com/example/ArtGallery/MarketingWindow.fxml", "Art Haven - Marketing", user);
+                String r = (String) choseRaportChoiceBox.getValue();
+                report = new Report();
+                switch(r){
+                    case "Raport finansowy":
+                        report.generateFinancialReport(db, "", "", "");
+                        break;
+                    case "Raport wydarzeń":
+                        report.generateEventReport(db, "", "", "");
+                        break;
+                    case "Raport kolekcji":
+                        report.generateCollectionReport(db, "", "", "");
+                }
+
+
+                String type = "LOG";
+                if(user != null){
+                    type = db.getDataString("SELECT user_type FROM users WHERE user_id = \"" + user.getID() + "\";");
+                }
+
+                switch (type){
+                    case "ADM":
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
+                        break;
+                    case "CLI":
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
+                        break;
+                    case "CRT":
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/CuratorWindow.fxml", "Art Haven - Art Curator", user);
+                        break;
+                    case "MNG":
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/ManagerWindow.fxml", "Art Haven - Manager", user);
+                        break;
+                    case "MRT":
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/MarketingWindow.fxml", "Art Haven - Marketing", user);
+                        break;
+                    default:
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/hello-view.fxml", "Art Haven", user);
+                        break;
+                }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //jeżeli admin
-                sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
-                //jeżeli client
-                //sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
-                //jeżeli kurator
-                //sc.changeSceneUser(event, "/com/example/ArtGallery/CuratorWindow.fxml", "Art Haven - Art Curator", user);
-                //jeżeli manager
-                //sc.changeSceneUser(event, "/com/example/ArtGallery/ManagerWindow.fxml", "Art Haven - Manager", user);
-                //jeżeli marketingowca
-                //sc.changeSceneUser(event, "/com/example/ArtGallery/MarketingWindow.fxml", "Art Haven - Marketing", user);
+                String type = "LOG";
+                if(user != null){
+                    type = db.getDataString("SELECT user_type FROM users WHERE user_id = \"" + user.getID() + "\";");
+                }
+
+                switch (type){
+                    case "ADM":
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
+                        break;
+                    case "CLI":
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
+                        break;
+                    case "CRT":
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/CuratorWindow.fxml", "Art Haven - Art Curator", user);
+                        break;
+                    case "MNG":
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/ManagerWindow.fxml", "Art Haven - Manager", user);
+                        break;
+                    case "MRT":
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/MarketingWindow.fxml", "Art Haven - Marketing", user);
+                        break;
+                    default:
+                        sc.changeSceneUser(event, "/com/example/ArtGallery/hello-view.fxml", "Art Haven", user);
+                        break;
+                }
             }
         });
     }
