@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class GenerateRaportsController implements Initializable {
@@ -38,7 +40,7 @@ public class GenerateRaportsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choseRaportChoiceBox.getItems().add("Raport finansowy");
         choseRaportChoiceBox.getItems().add("Raport wydarzeń");
-        choseRaportChoiceBox.getItems().add("Raport kolekcji");
+        choseRaportChoiceBox.getItems().add("Raport z wystaw");
         choseRaportChoiceBox.setValue("Raport finansowy");
 
         confirmButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -46,15 +48,23 @@ public class GenerateRaportsController implements Initializable {
             public void handle(ActionEvent event) {
                 String r = (String) choseRaportChoiceBox.getValue();
                 report = new Report();
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate startDate = fromDatePicker.getValue();
+                LocalDate endDate = toDatePicker.getValue();
+
+                String formattedStartDate = startDate.format(formatter);
+                String formattedEndDate = endDate.format(formatter);
+
                 switch(r){
                     case "Raport finansowy":
-                        report.generateFinancialReport(db, "", "", "");
+                        report.generateFinancialReport(db, formattedStartDate, formattedEndDate, user.getID());
                         break;
                     case "Raport wydarzeń":
-                        report.generateEventReport(db, "", "", "");
+                        report.generateEventReport(db, formattedStartDate, formattedEndDate, user.getID());
                         break;
-                    case "Raport kolekcji":
-                        report.generateCollectionReport(db, "", "", "");
+                    case "Raport z wystaw":
+                        report.generateExhibitionReport(db, formattedStartDate, formattedEndDate, user.getID());
                 }
 
 

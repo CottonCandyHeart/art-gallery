@@ -9,8 +9,9 @@ public class Report {
 
     // ---------------- METHODS ----------------
     public void generateFinancialReport(DB db, String startDate, String endDate, String workerID){ // 2025-01-01
+        System.out.println(startDate + " --- " + endDate);
         String report = "";
-        String sql = "SELECT transaction_id, user_id, title, CONCAT(Artists.name, \" \", Artists.surname), sale_date, price, income FROM Transactions NATURAL JOIN Artworks JOIN Artists ON Artworks.artist_id = Artists.artist_id WHERE sale_date BETWEEN '" + startDate + "' AND '" + endDate + "';";
+        String sql = "SELECT transaction_id, user_id, title, CONCAT(Artists.name, \" \", Artists.surname) as artist_name, sale_date, price, income FROM Transactions NATURAL JOIN Artworks JOIN Artists ON Artworks.artist_id = Artists.artist_id WHERE sale_date BETWEEN '" + startDate + "' AND '" + endDate + "';";
         ResultSet r = db.executeQuery(db.getSt(), sql);
         if (r == null){
             report = "Brak dostępnych tranzakcji w okresie " + startDate + " - " + endDate;
@@ -24,7 +25,6 @@ public class Report {
 
     }
     public void generateEventReport(DB db, String startDate, String endDate, String workerID){
-        // RAPORT Z ILOŚCI OSÓB BIORĄCYCH UDZIAŁ W WYDARZENIU
         String report = "";
         List<Integer> result = db.getDataIntList("SELECT DISTINCT(event_id) FROM EventReservations WHERE reservationDate BETWEEN '" + startDate + "' AND '" + endDate + "';");
 
@@ -38,13 +38,12 @@ public class Report {
     }
     public void generateExhibitionReport(DB db, String startDate, String endDate, String workerID){
         String report = "";
-        String sql = "SELECT transaction_id, name, location FROM Transactions ist_id = Artists.artist_id WHERE sale_date BETWEEN '" + startDate + "' AND '" + endDate + "';";
+        String sql = "SELECT exhibitionn_id, name, location FROM Exhibitions WHERE start_date BETWEEN '" + startDate + "' AND '" + endDate + "';";
         ResultSet r = db.executeQuery(db.getSt(), sql);
         if (r == null){
             report = "Brak dostępnych tranzakcji w okresie " + startDate + " - " + endDate;
         } else {
             report = db.sqlGetDataByName(r);
-            report += "\n" + db.getDataDouble("SELECT SUM(income) FROM Exhibitions WHERE start_date BETWEEN '" + startDate + "' AND '" + endDate + "';");
         }
 
         db.callProcedure("addReport", "EXHIBITION REPORT", report, workerID);
