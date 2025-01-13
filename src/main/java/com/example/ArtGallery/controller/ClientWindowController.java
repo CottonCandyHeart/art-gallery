@@ -54,7 +54,7 @@ public class ClientWindowController implements Initializable
         myArtworkButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/MyArtwork.fxml", "My Artworks", user);
             }
         });
 

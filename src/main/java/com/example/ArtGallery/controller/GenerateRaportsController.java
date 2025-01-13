@@ -67,6 +67,12 @@ public class GenerateRaportsController implements Initializable {
                         report.generateExhibitionReport(db, formattedStartDate, formattedEndDate, user.getID());
                 }
 
+                warningLabel.setText("Report generated!");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
 
                 String type = "LOG";
                 if(user != null){

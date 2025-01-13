@@ -111,6 +111,9 @@ public class SceneController {
             else if(fxmlFile.equals("/com/example/ArtGallery/ArtworkDetails.fxml")) {
                 ArtworkDetailsController controller = loader.getController();
                 controller.setUser(user);
+            } else if(fxmlFile.equals("/com/example/ArtGallery/MyArtwork.fxml")) {
+                MyArtworkController controller = loader.getController();
+                controller.setUser(user);
             }
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
@@ -126,10 +129,16 @@ public class SceneController {
             FXMLLoader loader = new FXMLLoader(SceneController.class.getResource(fxmlFile));
             Parent root = loader.load();
 
-            ArtworkDetailsController controller = loader.getController();
-            controller.setUser(user);
-            controller.setArtwork(artwork);
-
+            if(fxmlFile.equals("/com/example/ArtGallery/ArtworkDetails.fxml")) {
+                ArtworkDetailsController controller = loader.getController();
+                controller.setUser(user);
+                controller.setArtwork(artwork);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/MyArtworkDetails.fxml")) {
+                MyArtworkDetailsController controller = loader.getController();
+                controller.setUser(user);
+                controller.setArtwork(artwork);
+            }
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
