@@ -41,7 +41,6 @@ public class MapController implements Initializable {
 
     public void setUser(User user) {
         this.user = user;
-        System.out.println("setUser - " + user.getID());
     }
 
     @Override

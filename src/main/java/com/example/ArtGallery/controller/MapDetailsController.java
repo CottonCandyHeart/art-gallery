@@ -65,6 +65,9 @@ public class MapDetailsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        detailsPanel.setAlignment(Pos.TOP_CENTER);
+        detailsPanel.setPadding(new Insets(20,0,0,0));
+        detailsPanel.getChildren().clear();
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -98,16 +101,6 @@ public class MapDetailsController implements Initializable {
     }
 
     public void room1() {
-        // Background square
-        Rectangle square = new Rectangle(500, 500);
-        square.setStroke(Color.BLACK);
-        square.setFill(Color.TRANSPARENT);
-        square.setStrokeWidth(2);
-
-        detailsPanel.setAlignment(Pos.TOP_CENTER);
-        detailsPanel.setPadding(new Insets(20,0,0,0));
-        detailsPanel.getChildren().clear();
-
         // Main container
         StackPane mainPane = new StackPane();
         mainPane.setAlignment(Pos.CENTER);
@@ -119,8 +112,8 @@ public class MapDetailsController implements Initializable {
         // Positions for artwork (x, y coordinates for each place)
         double[][] positions = {
                 // Top edge (places 1-2)
-                {100, 0},
-                {300, 0},
+                {100, 10},
+                {300, 10},
                 // Right edge (places 3-4)
                 {400, 100},
                 {400, 300},
@@ -128,8 +121,8 @@ public class MapDetailsController implements Initializable {
                 {300, 400},
                 {100, 400},
                 // Left edge (places 7-8)
-                {0, 300},
-                {0, 100}
+                {10, 300},
+                {10, 100}
         };
 
         // Place artworks
@@ -137,59 +130,360 @@ public class MapDetailsController implements Initializable {
             int placeNo = i + 1;
             Integer artwork_id = db.getDataInt("SELECT artwork_id FROM roomLayout WHERE room_no = " + room + " AND place_no = " + placeNo);
 
-            if (artwork_id != null) {
-                Image artworkImage = new Image("file:src/main/resources/artwork" +
-                        db.getDataString("SELECT picturePath FROM Artworks WHERE artwork_id =" + artwork_id));
-                ImageView imageView = new ImageView(artworkImage);
-                imageView.setFitWidth(placeSize - 10);
-                imageView.setFitHeight(placeSize - 10);
-                imageView.setPreserveRatio(true);
-
-                // Position the artwork
-                //imageView.setLayoutX(positions[i][0]);
-                //imageView.setLayoutY(positions[i][1]);
-
-                Button imageButton = new Button("", imageView);
-                imageButton.setStyle("-fx-background-color: transparent;");
-                imageButton.setLayoutX(positions[i][0]);
-                imageButton.setLayoutY(positions[i][1]);
-
-                imageButton.setOnAction(event -> {
-                    sc.changeSceneMap(event, "/com/example/ArtGallery/MapArtworkDetails.fxml", "Map Details", user, artwork_id, room);
-                });
-
-                artworkPane.getChildren().add(imageButton);
+            if (artwork_id != 0) {
+                artworkPane.getChildren().add(getArtwork(placeSize, positions, i, artwork_id));
             } else {
-                Rectangle emptyPlace = new Rectangle(placeSize, placeSize);
-                square.setStroke(Color.LIGHTPINK);
-                square.setFill(Color.LIGHTPINK);
-
-                artworkPane.getChildren().add(emptyPlace);
+                artworkPane.getChildren().add(emptyPlace(placeSize, positions, i));
             }
         }
 
-        mainPane.getChildren().addAll(square, artworkPane);
+        mainPane.getChildren().addAll(getRectangle(500,500), artworkPane);
         detailsPanel.getChildren().add(mainPane);
     }
     public void room2(){
+        // Main container
+        StackPane mainPane = new StackPane();
+        mainPane.setAlignment(Pos.CENTER);
 
+        // Container for artwork
+        Pane artworkPane = new Pane();
+
+        int placeSize = 100;
+        // Positions for artwork (x, y coordinates for each place)
+        double[][] positions = {
+                // Top edge (places 1-2)
+                {100, 10},
+                {300, 10},
+                // Right edge (places 3-4)
+                {400, 100},
+                {400, 300},
+                // Bottom edge (places 5-6)
+                {300, 400},
+                {100, 400},
+                // Left edge (places 7-8)
+                {10, 300},
+                {10, 100}
+        };
+
+        // Place artworks
+        for (int i = 0; i < 8; i++) {
+            int placeNo = i + 1;
+            Integer artwork_id = db.getDataInt("SELECT artwork_id FROM roomLayout WHERE room_no = " + room + " AND place_no = " + placeNo);
+
+            if (artwork_id != 0) {
+                artworkPane.getChildren().add(getArtwork(placeSize, positions, i, artwork_id));
+            } else {
+                artworkPane.getChildren().add(emptyPlace(placeSize, positions, i));
+            }
+        }
+
+        mainPane.getChildren().addAll(getRectangle(500,500), artworkPane);
+        detailsPanel.getChildren().add(mainPane);
     }
     public void room3(){
+        // Main container
+        StackPane mainPane = new StackPane();
+        mainPane.setAlignment(Pos.CENTER);
 
+        // Container for artwork
+        Pane artworkPane = new Pane();
+
+        int placeSize = 100;
+        // Positions for artwork (x, y coordinates for each place)
+        double[][] positions = {
+                // Top edge (places 1-2)
+                {20, 10},
+                {160, 10},
+                {320, 10},
+                {480, 10},
+                // Right edge (places 3-4)
+                {490, 120},
+                {490, 220},
+                // Bottom edge (places 5-6)
+                {480, 320},
+                {320, 320},
+                {160, 320},
+                {10, 320},
+                // Left edge (places 7-8)
+                {10, 220},
+                {10, 120}
+
+        };
+
+        // Place artworks
+        for (int i = 0; i < 12; i++) {
+            int placeNo = i + 1;
+            Integer artwork_id = db.getDataInt("SELECT artwork_id FROM roomLayout WHERE room_no = " + room + " AND place_no = " + placeNo);
+
+            if (artwork_id != 0) {
+                artworkPane.getChildren().add(getArtwork(placeSize, positions, i, artwork_id));
+            } else {
+                artworkPane.getChildren().add(emptyPlace(placeSize, positions, i));
+            }
+        }
+
+        mainPane.getChildren().addAll(getRectangle(600,420), artworkPane);
+        detailsPanel.getChildren().add(mainPane);
     }
     public void room4(){
+        // Main container
+        StackPane mainPane = new StackPane();
+        mainPane.setAlignment(Pos.CENTER);
 
+        // Container for artwork
+        Pane artworkPane = new Pane();
+
+        int placeSize = 100;
+        // Positions for artwork (x, y coordinates for each place)
+        double[][] positions = {
+                // Top edge (places 1-2)
+                {20, 10},
+                {160, 10},
+                {300, 10},
+                {440, 10},
+                {580, 10},
+                // Right edge (places 3-4)
+                {590, 150},
+                {590, 300},
+                // Bottom edge (places 5-6)
+                {580, 420},
+                {440, 420},
+                {300, 420},
+                {160, 420},
+                {20, 420},
+                // Left edge (places 7-8)
+                {10, 300},
+                {10, 150},
+        };
+
+        // Place artworks
+        for (int i = 0; i < 14; i++) {
+            int placeNo = i + 1;
+            Integer artwork_id = db.getDataInt("SELECT artwork_id FROM roomLayout WHERE room_no = " + room + " AND place_no = " + placeNo);
+
+            if (artwork_id != 0) {
+                artworkPane.getChildren().add(getArtwork(placeSize, positions, i, artwork_id));
+            } else {
+                artworkPane.getChildren().add(emptyPlace(placeSize, positions, i));
+            }
+        }
+
+        mainPane.getChildren().addAll(getRectangle(700,520), artworkPane);
+        detailsPanel.getChildren().add(mainPane);
     }
     public void room5(){
+        // Main container
+        StackPane mainPane = new StackPane();
+        mainPane.setAlignment(Pos.CENTER);
 
+        // Container for artwork
+        Pane artworkPane = new Pane();
+
+        int placeSize = 100;
+        // Positions for artwork (x, y coordinates for each place)
+        double[][] positions = {
+                // Top edge (places 1-2)
+                {75, 10},
+                {200, 10},
+                {325, 10},
+                // Right edge (places 3-4)
+                {400, 75},
+                {400, 200},
+                {400, 325},
+                // Bottom edge (places 5-6)
+                {325, 400},
+                {200, 400},
+                {75, 400},
+                // Left edge (places 7-8)
+                {10, 325},
+                {10, 200},
+                {10, 75}
+        };
+
+        // Place artworks
+        for (int i = 0; i < 12; i++) {
+            int placeNo = i + 1;
+            Integer artwork_id = db.getDataInt("SELECT artwork_id FROM roomLayout WHERE room_no = " + room + " AND place_no = " + placeNo);
+
+            if (artwork_id != 0) {
+                artworkPane.getChildren().add(getArtwork(placeSize, positions, i, artwork_id));
+            } else {
+                artworkPane.getChildren().add(emptyPlace(placeSize, positions, i));
+            }
+        }
+
+        mainPane.getChildren().addAll(getRectangle(500,500), artworkPane);
+        detailsPanel.getChildren().add(mainPane);
     }
     public void room6(){
+        // Main container
+        StackPane mainPane = new StackPane();
+        mainPane.setAlignment(Pos.CENTER);
 
+        // Container for artwork
+        Pane artworkPane = new Pane();
+
+        int placeSize = 100;
+        // Positions for artwork (x, y coordinates for each place)
+        double[][] positions = {
+                // Top edge (places 1-2)
+                {75, 10},
+                {200, 10},
+                {325, 10},
+                // Right edge (places 3-4)
+                {400, 75},
+                {400, 200},
+                {400, 325},
+                // Bottom edge (places 5-6)
+                {325, 400},
+                {200, 400},
+                {75, 400},
+                // Left edge (places 7-8)
+                {10, 325},
+                {10, 200},
+                {10, 75}
+        };
+
+        // Place artworks
+        for (int i = 0; i < 12; i++) {
+            int placeNo = i + 1;
+            Integer artwork_id = db.getDataInt("SELECT artwork_id FROM roomLayout WHERE room_no = " + room + " AND place_no = " + placeNo);
+
+            if (artwork_id != 0) {
+                artworkPane.getChildren().add(getArtwork(placeSize, positions, i, artwork_id));
+            } else {
+                artworkPane.getChildren().add(emptyPlace(placeSize, positions, i));
+            }
+        }
+
+        mainPane.getChildren().addAll(getRectangle(500,500), artworkPane);
+        detailsPanel.getChildren().add(mainPane);
     }
     public void room7(){
+        // Main container
+        StackPane mainPane = new StackPane();
+        mainPane.setAlignment(Pos.CENTER);
 
+        // Container for artwork
+        Pane artworkPane = new Pane();
+
+        int placeSize = 100;
+        // Positions for artwork (x, y coordinates for each place)
+        double[][] positions = {
+                // Top edge (places 1-2)
+                {100, 10},
+                {250, 10},
+                {400, 10},
+                // Right edge (places 3-4)
+                {490, 120},
+                {490, 220},
+                // Bottom edge (places 5-6)
+                {400, 320},
+                {250, 320},
+                {100, 320},
+                // Left edge (places 7-8)
+                {10, 220},
+                {10, 120}
+
+        };
+
+        // Place artworks
+        for (int i = 0; i < 10; i++) {
+            int placeNo = i + 1;
+            Integer artwork_id = db.getDataInt("SELECT artwork_id FROM roomLayout WHERE room_no = " + room + " AND place_no = " + placeNo);
+
+            if (artwork_id != 0) {
+                artworkPane.getChildren().add(getArtwork(placeSize, positions, i, artwork_id));
+            } else {
+                artworkPane.getChildren().add(emptyPlace(placeSize, positions, i));
+            }
+        }
+
+        mainPane.getChildren().addAll(getRectangle(600,420), artworkPane);
+        detailsPanel.getChildren().add(mainPane);
     }
     public void room8(){
+        // Main container
+        StackPane mainPane = new StackPane();
+        mainPane.setAlignment(Pos.CENTER);
 
+        // Container for artwork
+        Pane artworkPane = new Pane();
+
+        int placeSize = 100;
+        // Positions for artwork (x, y coordinates for each place)
+        double[][] positions = {
+                // Top edge (places 1-2)
+                {100, 10},
+                {250, 10},
+                {400, 10},
+                // Right edge (places 3-4)
+                {490, 120},
+                {490, 220},
+                // Bottom edge (places 5-6)
+                {400, 320},
+                {250, 320},
+                {100, 320},
+                // Left edge (places 7-8)
+                {10, 220},
+                {10, 120}
+
+        };
+
+        // Place artworks
+        for (int i = 0; i < 10; i++) {
+            int placeNo = i + 1;
+            Integer artwork_id = db.getDataInt("SELECT artwork_id FROM roomLayout WHERE room_no = " + room + " AND place_no = " + placeNo);
+
+            if (artwork_id != 0) {
+                artworkPane.getChildren().add(getArtwork(placeSize, positions, i, artwork_id));
+            } else {
+                artworkPane.getChildren().add(emptyPlace(placeSize, positions, i));
+            }
+        }
+
+        mainPane.getChildren().addAll(getRectangle(600, 420), artworkPane);
+        detailsPanel.getChildren().add(mainPane);
+    }
+
+    private static Rectangle getRectangle(int w, int h) {
+        Rectangle r = new Rectangle(w, h);
+        r.setStroke(Color.BLACK);
+        r.setFill(Color.TRANSPARENT);
+        r.setStrokeWidth(2);
+        return r;
+    }
+
+    public Button emptyPlace(int placeSize, double[][] positions, int i){
+        Rectangle emptyPlace = new Rectangle(placeSize - 20, placeSize - 20);
+        emptyPlace.setFill(Color.LIGHTPINK);
+
+        Button imageButton = new Button("", emptyPlace);
+        imageButton.setStyle("-fx-background-color: transparent;");
+        imageButton.setLayoutX(positions[i][0]);
+        imageButton.setLayoutY(positions[i][1]);
+
+        return imageButton;
+    }
+
+    public Button getArtwork(int placeSize, double[][] positions, int i, int artwork_id){
+        Image artworkImage = new Image("file:src/main/resources/artwork" +
+                db.getDataString("SELECT picturePath FROM Artworks WHERE artwork_id =" + artwork_id));
+        ImageView imageView = new ImageView(artworkImage);
+        imageView.setFitWidth(placeSize - 10);
+        imageView.setFitHeight(placeSize - 10);
+        imageView.setPreserveRatio(true);
+
+        // Position the artwork
+        Button imageButton = new Button("", imageView);
+        imageButton.setStyle("-fx-background-color: transparent;");
+        imageButton.setLayoutX(positions[i][0]);
+        imageButton.setLayoutY(positions[i][1]);
+
+        imageButton.setOnAction(event -> {
+            sc.changeSceneMap(event, "/com/example/ArtGallery/MapArtworkDetails.fxml", "Map Details", user, artwork_id, room);
+        });
+
+        return imageButton;
     }
 }

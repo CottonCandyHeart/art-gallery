@@ -68,7 +68,7 @@ public class MyArtworkDetailsController implements Initializable {
         Label descriptionLabel = new Label(artwork.getDescription());
 
         Label startDate = new Label("Data wystawienia: " + db.getDataString("SELECT startDate FROM ArtworkForSale WHERE artwork_id = " + artwork.getID()));
-        Label price = new Label(db.getDataString("SELECT price FROM ArtworkForSale WHERE artwork_id = " + artwork.getID()) + " zł");
+        Label price = new Label(db.getDataFloat("SELECT price FROM ArtworkForSale WHERE artwork_id = " + artwork.getID()) + " zł");
 
         titleLabel.setStyle("-fx-font-size: 35px; -fx-font-weight: bold;");
         titleLabel.setWrapText(true);
