@@ -148,4 +148,49 @@ public class SceneController {
             e.printStackTrace();
         }
     }
+
+    public static void changeSceneUserAndRoom(ActionEvent event, String fxmlFile, String title, User user, int num) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneController.class.getResource(fxmlFile));
+            Parent root = loader.load();
+
+            if(fxmlFile.equals("/com/example/ArtGallery/MapDetails.fxml")) {
+                MapDetailsController controller = loader.getController();
+                controller.setUser(user);
+                controller.setRoomNo(num);
+            }
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void changeSceneMap(ActionEvent event, String fxmlFile, String title, User user, int artworkId, int roomId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneController.class.getResource(fxmlFile));
+            Parent root = loader.load();
+
+            if(fxmlFile.equals("/com/example/ArtGallery/MapArtworkDetails.fxml")) {
+                MapArtworkDetailsController controller = loader.getController();
+                controller.setUser(user);
+                controller.setRoom(roomId);
+                controller.setArtwork(artworkId);
+            } else if (fxmlFile.equals("/com/example/ArtGallery/MapDetails.fxml")) {
+                MapDetailsController controller = loader.getController();
+                controller.setUser(user);
+                controller.setRoomNo(roomId);
+            }
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

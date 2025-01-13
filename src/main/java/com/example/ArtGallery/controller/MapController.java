@@ -78,49 +78,49 @@ public class MapController implements Initializable {
         sala1Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user);
+                sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, 1);
             }
         });
         sala2Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user);
+                sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, 2);
             }
         });
         sala3Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user);
+                sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, 3);
             }
         });
         sala4Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user);
+                sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, 4);
             }
         });
         sala5Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user);
+                sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, 5);
             }
         });
         sala6Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user);
+                sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, 6);
             }
         });
         sala7Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user);
+                sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, 7);
             }
         });
         sala8Button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user);
+                sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, 8);
             }
         });
     }
