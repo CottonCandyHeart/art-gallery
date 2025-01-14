@@ -56,23 +56,41 @@ public class EditArtworkController implements Initializable {
         confirmButton2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                titleTextField;
-                artistTextField;
-                ownerTextField;
-                creationDateTextField;
-                methodTextField;
-                locationTextField;
-                statusTextField;
-                descriptionTextField;
 
-                String title;
+                String title = titleTextField.getText();
                 String artist;
-                String owner; // lista rozwijana użytkownikami
-                String date;
-                String method;
-                String description;
-                String location;
-                String status;
+                String owner;
+                String date = creationDateTextField.getText();
+                String method = methodTextField.getText();
+                String description = descriptionTextField.getText();
+                String location = locationTextField.getText();
+                String status = statusTextField.getText();
+
+                if (!titleTextField.getText().isEmpty()){
+                    artwork.setTitle(title);
+                    db.executeUpdate(db.getSt(), "UPDATE Artworks SET title = \"" + title + "\" WHERE artwork_id = " + artwork.getID());
+                }
+
+                if (!creationDateTextField.getText().isEmpty()){
+                    artwork.setCreationDate(date);
+                    db.executeUpdate(db.getSt(), "UPDATE Artworks SET creation_date = \"" + date + "\" WHERE artwork_id = " + artwork.getID());
+                }
+                if (!methodTextField.getText().isEmpty()){
+                    artwork.setMethod(method);
+                    db.executeUpdate(db.getSt(), "UPDATE Artworks SET method = \"" + method + "\" WHERE artwork_id = " + artwork.getID());
+                }
+                if (!descriptionTextField.getText().isEmpty()){
+                    artwork.setDescription(description);
+                    db.executeUpdate(db.getSt(), "UPDATE Artworks SET description = \"" + description + "\" WHERE artwork_id = " + artwork.getID());
+                }
+                if (!locationTextField.getText().isEmpty()){
+                    artwork.setLocation(location);
+                    db.executeUpdate(db.getSt(), "UPDATE Artworks SET location = \"" + location + "\" WHERE artwork_id = " + artwork.getID());
+                }
+                if (!statusTextField.getText().isEmpty()){
+                    artwork.setStatus(status);
+                    db.executeUpdate(db.getSt(), "UPDATE Artworks SET status = \"" + status + "\" WHERE artwork_id = " + artwork.getID());
+                }
 
 
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ManageArtworkAction.fxml", "Manage artwork - Art Curator", user);
