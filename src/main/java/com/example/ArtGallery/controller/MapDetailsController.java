@@ -463,12 +463,21 @@ public class MapDetailsController implements Initializable {
         imageButton.setLayoutX(positions[i][0]);
         imageButton.setLayoutY(positions[i][1]);
 
+        if (user != null){
+            String id = db.getDataString("SELECT user_type FROM Users WHERE user_id = \"" + user.getID() + "\";");
+            if (id.equals("CRT")){
+                imageButton.setOnAction(event -> {
+                    sc.changeSceneMap(event, "/com/example/ArtGallery/MapCollection.fxml", "Choose artwork", user, (i+1), room);
+                });
+            }
+        }
+
         return imageButton;
     }
 
     public Button getArtwork(int placeSize, double[][] positions, int i, int artwork_id){
         Image artworkImage = new Image("file:src/main/resources/artwork" +
-                db.getDataString("SELECT picturePath FROM Artworks WHERE artwork_id =" + artwork_id));
+                db.getDataString("SELECT picturePath FROM Artworks WHERE artwork_id =" + artwork_id + ";"));
         ImageView imageView = new ImageView(artworkImage);
         imageView.setFitWidth(placeSize - 10);
         imageView.setFitHeight(placeSize - 10);
@@ -481,7 +490,8 @@ public class MapDetailsController implements Initializable {
         imageButton.setLayoutY(positions[i][1]);
 
         imageButton.setOnAction(event -> {
-            sc.changeSceneMap(event, "/com/example/ArtGallery/MapArtworkDetails.fxml", "Map Details", user, artwork_id, room);
+            db.executeUpdate(db.getSt(), "UPDATE roomLayout SET artwork_id = 0 WHERE place_no = " + (i+1) + " AND room_no = " + room + ";");
+            sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, room);
         });
 
         return imageButton;

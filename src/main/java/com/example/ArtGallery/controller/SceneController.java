@@ -179,6 +179,11 @@ public class SceneController {
                 MapDetailsController controller = loader.getController();
                 controller.setUser(user);
                 controller.setRoomNo(roomId);
+            } else if (fxmlFile.equals("/com/example/ArtGallery/MapCollection.fxml")) {
+                MapCollectionController controller = loader.getController();
+                controller.setUser(user);
+                controller.setRoomNo(roomId);
+                controller.setPlace(artworkId);
             }
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
