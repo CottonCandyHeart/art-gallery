@@ -62,6 +62,7 @@ public class ChooseArtworkController implements Initializable {
         }
 
         for (Artwork artwork : allArtwork) {
+
             System.out.println(artwork.getPicturePath());
             Image image = new Image("file:" + artwork.getPicturePath());
             ImageView imageView = new ImageView(image);
@@ -77,6 +78,7 @@ public class ChooseArtworkController implements Initializable {
 
 
             artworkPanel.getChildren().add(imageButton);
+
         }
 
             cancelButton11.setOnAction(new EventHandler<ActionEvent>() {
