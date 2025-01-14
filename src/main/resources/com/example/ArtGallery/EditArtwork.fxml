@@ -124,7 +124,7 @@
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="titleField" layoutX="376.0" layoutY="130.0" prefHeight="30.0" prefWidth="240.0" />
+      <TextField fx:id="titleTextField" layoutX="376.0" layoutY="130.0" prefHeight="30.0" prefWidth="240.0" />
       <Text layoutX="199.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="owner" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />

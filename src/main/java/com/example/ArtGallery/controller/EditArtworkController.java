@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class EditArtworkController implements Initializable {
@@ -46,10 +47,23 @@ public class EditArtworkController implements Initializable {
     private SceneController sc = new SceneController();
     private User user;
     private Artwork artwork;
+    private List<String> artistsList;
+    private List<String> usersList;
     public void setUser(User user) {
         this.user = user;
     }
-    public void setArtwork(Artwork artwork){this.artwork = artwork;}
+    public void setArtwork(Artwork artwork){
+        this.artwork = artwork;
+
+        artistsList = db.getDataStringList("SELECT CONCAT(name, \" \", surname) FROM Artists;");
+        artistChoiceBox.getItems().addAll(artistsList);
+        artistChoiceBox.setValue(artwork.getArtist().getName() + " " + artwork.getArtist().getSurname());
+
+        usersList = db.getDataStringList("SELECT username FROM Users;");
+        ownerChoiceBox.getItems().addAll(usersList);
+        String userId = db.getDataString("SELECT owner FROM Artworks WHERE artwork_id = " + artwork.getID() + ";");
+        ownerChoiceBox.setValue(db.getDataString("SELECT username FROM Users WHERE user_id = \"" + userId + "\";"));
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -58,8 +72,8 @@ public class EditArtworkController implements Initializable {
             public void handle(ActionEvent event) {
 
                 String title = titleTextField.getText();
-                String artist;
-                String owner;
+                String artist = (String) artistChoiceBox.getValue();
+                String owner = (String) ownerChoiceBox.getValue();
                 String date = creationDateTextField.getText();
                 String method = methodTextField.getText();
                 String description = descriptionTextField.getText();
@@ -70,6 +84,12 @@ public class EditArtworkController implements Initializable {
                     artwork.setTitle(title);
                     db.executeUpdate(db.getSt(), "UPDATE Artworks SET title = \"" + title + "\" WHERE artwork_id = " + artwork.getID());
                 }
+
+                String artistName = artist.substring(0,artist.indexOf(" "));
+                String artistSurname = artist.substring(artist.indexOf(" ")+1);
+                int artistId = db.getDataInt("SELECT artist_id FROM Artists WHERE name = \"" + artistName + "\" AND surname = \"" + artistSurname + "\";");
+                String ownerId = db.getDataString("SELECT user_id FROM Users WHERE username = \"" + owner + "\";");;
+                db.executeUpdate(db.getSt(), "UPDATE Artworks SET artist_id = " + artistId + ", owner = \"" + ownerId + "\" WHERE artwork_id = " + artwork.getID() + ";");
 
                 if (!creationDateTextField.getText().isEmpty()){
                     artwork.setCreationDate(date);
@@ -93,13 +113,13 @@ public class EditArtworkController implements Initializable {
                 }
 
 
-                sc.changeSceneUser(event, "/com/example/ArtGallery/ManageArtworkAction.fxml", "Manage artwork - Art Curator", user);
+                sc.changeSceneWithUserAndArtwork(event, "/com/example/ArtGallery/ManageArtworkAction.fxml", "Manage artwork - Art Curator", user, artwork);
             }
         });
         cancelButton10.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/ManageArtworkAction.fxml", "Manage artwork - Art Curator", user);
+                sc.changeSceneWithUserAndArtwork(event, "/com/example/ArtGallery/ManageArtworkAction.fxml", "Manage artwork - Art Curator", user, artwork);
             }
         });
     }
