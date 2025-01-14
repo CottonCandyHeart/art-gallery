@@ -134,6 +134,10 @@ public class SceneController {
                 MyArtworkDetailsController controller = loader.getController();
                 controller.setUser(user);
                 controller.setArtwork(artwork);
+            } else if(fxmlFile.equals("/com/example/ArtGallery/EditArtwork.fxml")) {
+                EditArtworkController controller = loader.getController();
+                controller.setUser(user);
+                controller.setArtwork(artwork);
             }
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -34,11 +34,9 @@ public class CollectionController implements Initializable {
     private Button cancelButton8;
     @FXML
     private FlowPane galleryPanel;
-
-    private List<Artwork> allArtwork = new ArrayList<>();;
-
-
+    private List<Artwork> allArtwork = new ArrayList<>();
     private DB db = new DB();
+
     private SceneController sc = new SceneController();
     private User user;
     public void setUser(User user) {
@@ -47,24 +45,23 @@ public class CollectionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Integer count = db.getDataInt("SELECT COUNT(*) FROM artworks;");
-        for(int i = 0; i<count; i++){
-            int artworkId = i + 1;
-            String title = db.getDataString("SELECT title FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
-            int artistsID = db.getDataInt("SELECT artist_id FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
-            String name = db.getDataString("SELECT name FROM Artists WHERE artist_id = \"" + artistsID + "\";");
-            String surname = db.getDataString("SELECT surname FROM Artists WHERE artist_id = \"" + artistsID + "\";");
-            String bio = db.getDataString("SELECT bio FROM Artists WHERE artist_id = \"" + artistsID + "\";");
-            String birthDate = db.getDataString("SELECT birth_date FROM Artists WHERE artist_id = \"" + artistsID + "\";");
-            String deathDate = db.getDataString("SELECT death_date FROM Artists WHERE artist_id = \"" + artistsID + "\";");
+        List<Integer> idList = db.getDataIntList("SELECT artwork_id FROM Artworks;");
+        for(int artworkId : idList){
+            String title = db.getDataString("SELECT title FROM Artworks WHERE artwork_id = " + artworkId + ";");
+            int artistsID = db.getDataInt("SELECT artist_id FROM Artworks WHERE artwork_id = " + artworkId + ";");
+            String name = db.getDataString("SELECT name FROM Artists WHERE artist_id = " + artistsID + ";");
+            String surname = db.getDataString("SELECT surname FROM Artists WHERE artist_id = " + artistsID + ";");
+            String bio = db.getDataString("SELECT bio FROM Artists WHERE artist_id = " + artistsID + ";");
+            String birthDate = db.getDataString("SELECT birth_date FROM Artists WHERE artist_id = " + artistsID + ";");
+            String deathDate = db.getDataString("SELECT death_date FROM Artists WHERE artist_id = " + artistsID + ";");
             Artist artist = new Artist(artistsID, name, surname, bio,  birthDate, deathDate);
 
-            String creationDate = db.getDataString("SELECT creation_date FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
-            String method= db.getDataString("SELECT method FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
-            String description = db.getDataString("SELECT description FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
-            String location = db.getDataString("SELECT location FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
-            String status = db.getDataString("SELECT status FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
-            String picturePath = "src/main/resources/artwork"+ db.getDataString("SELECT picturePath FROM Artworks WHERE artwork_id = \"" + artworkId + "\";");
+            String creationDate = db.getDataString("SELECT creation_date FROM Artworks WHERE artwork_id = " + artworkId + ";");
+            String method= db.getDataString("SELECT method FROM Artworks WHERE artwork_id = " + artworkId + ";");
+            String description = db.getDataString("SELECT description FROM Artworks WHERE artwork_id = " + artworkId + ";");
+            String location = db.getDataString("SELECT location FROM Artworks WHERE artwork_id = " + artworkId + ";");
+            String status = db.getDataString("SELECT status FROM Artworks WHERE artwork_id = " + artworkId + ";");
+            String picturePath = "src/main/resources/artwork"+ db.getDataString("SELECT picturePath FROM Artworks WHERE artwork_id = " + artworkId + ";");
             Artwork artwork = new Artwork(artworkId,title,artist,creationDate,method,description,location,status,picturePath);
 
             allArtwork.add(artwork);
