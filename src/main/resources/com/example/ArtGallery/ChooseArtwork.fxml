@@ -14,7 +14,7 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.ChooseArtworkController">
    <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="591.0" prefWidth="816.0">
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1200.0" prefWidth="816.0">
          <children>
             <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#eaeaea" height="43.0" layoutX="4.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="793.0">
                <effect>
@@ -53,7 +53,7 @@
                   <Font name="Papyrus" size="24.0" />
                </font>
             </Text>
-            <FlowPane fx:id="artworkPanel" layoutX="4.0" layoutY="49.0" prefHeight="662.0" prefWidth="795.0" />
+            <FlowPane fx:id="artworkPanel" layoutX="4.0" layoutY="49.0" prefHeight="1200.0" prefWidth="795.0" />
          </children>
       </AnchorPane>
    </content>

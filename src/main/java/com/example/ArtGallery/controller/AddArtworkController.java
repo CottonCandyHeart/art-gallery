@@ -50,13 +50,13 @@ public class AddArtworkController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 //obsługa dodania dzieła
-                sc.changeSceneUser(event, "/com/example/ArtGallery/ChooseArtwork", "Manage artwork - Art Curator", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/ChooseArtwork.fxml", "Manage artwork - Art Curator", user);
             }
         });
         cancelButton10.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/ChooseArtwork", "Manage artwork - Art Curator", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/ChooseArtwork.fxml", "Manage artwork - Art Curator", user);
             }
         });
     }

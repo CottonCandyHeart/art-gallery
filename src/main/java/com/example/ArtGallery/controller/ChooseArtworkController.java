@@ -73,7 +73,7 @@ public class ChooseArtworkController implements Initializable {
             imageButton.setStyle("-fx-background-color: transparent;");
 
             imageButton.setOnAction(e -> {
-                sc.changeSceneWithUserAndArtwork(e, "/com/example/ArtGallery/EditArtwork.fxml", "Edit Artwork Details", user, artwork);
+                sc.changeSceneWithUserAndArtwork(e, "/com/example/ArtGallery/ManageArtworkAction.fxml", "Manage Artwork ", user, artwork);
             });
 
 
