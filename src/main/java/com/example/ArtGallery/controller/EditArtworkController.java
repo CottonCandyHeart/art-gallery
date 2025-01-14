@@ -56,6 +56,24 @@ public class EditArtworkController implements Initializable {
         confirmButton2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                titleTextField;
+                artistTextField;
+                ownerTextField;
+                creationDateTextField;
+                methodTextField;
+                locationTextField;
+                statusTextField;
+                descriptionTextField;
+
+                String title;
+                String artist;
+                String owner; // lista rozwijana użytkownikami
+                String date;
+                String method;
+                String description;
+                String location;
+                String status;
+
 
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ManageArtworkAction.fxml", "Manage artwork - Art Curator", user);
             }

@@ -47,7 +47,8 @@ public class ManageArtworkActionController implements Initializable {
         deleteArtworkButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-             //usuwanie obrazu
+                db.executeUpdate(db.getSt(), "DELETE FROM Artworks WHERE artwork_id = " + artwork.getID() + ";");
+                sc.changeSceneWithUserAndArtwork(event, "/com/example/ArtGallery/EditArtwork.fxml", "Edit Artwork - Art Curator", user, artwork);
             }
         });
 
