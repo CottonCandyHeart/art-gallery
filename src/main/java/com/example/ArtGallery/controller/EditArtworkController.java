@@ -120,6 +120,12 @@ public class EditArtworkController implements Initializable {
                 }
 
 
+                warningLabel4.setText("Artwork modified!");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 sc.changeSceneWithUserAndArtwork(event, "/com/example/ArtGallery/ManageArtworkAction.fxml", "Manage artwork - Art Curator", user, artwork);
             }
         });
