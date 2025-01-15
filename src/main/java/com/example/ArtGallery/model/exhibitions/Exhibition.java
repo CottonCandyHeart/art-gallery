@@ -22,7 +22,7 @@ public class Exhibition {
     // ---------------- METHODS ----------------
     public void addExhibition(DB db){
         db.callProcedure("addExhibition", name, startDate, endDate, location, description);
-        int id = db.getDataInt("SELECT exhibition_id FROM Exhibition WHERE name LIKE \"" + name + "\" AND start_date = \'" + startDate + "\';");
+        int id = db.getDataInt("SELECT exhibition_id FROM Exhibitions WHERE name LIKE \"" + name + "\" AND start_date = \'" + startDate + "\';");
         this.iD = id;
     }
     public void modExhibition(DB db){
