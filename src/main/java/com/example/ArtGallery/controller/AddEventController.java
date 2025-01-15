@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AddEventController implements Initializable {
@@ -21,11 +22,11 @@ public class AddEventController implements Initializable {
     @FXML
     private TextField eventNameTextField;
     @FXML
-    private TextField eventDateTextField;
+    private DatePicker eventDatePicker;
     @FXML
-    private TextField exhibitionTextField;
+    private ChoiceBox exhibitionChoiceBox;
     @FXML
-    private TextField eventTypeTextField;
+    private ChoiceBox eventChoiceBox;
     @FXML
     private TextField capacityTextField;
 
