@@ -42,6 +42,8 @@ public class EditArtworkController implements Initializable {
     private TextField statusTextField;
     @FXML
     private TextField descriptionTextField;
+    @FXML
+    private TextField picturePathTextField;
 
     private DB db = new DB();
     private SceneController sc = new SceneController();
