@@ -11,6 +11,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DeleteExhibitionController implements Initializable {
@@ -32,6 +33,14 @@ public class DeleteExhibitionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<String> types = db.getDataStringList("SELECT name FROM exhibitions;");
+        if(types.isEmpty()) {
+            warningLabel.setText("No exhibitions to delete");
+            confirmButton.setDisable(true);
+        }else{
+            exhibitionChoiceBox.getItems().addAll(types);
+            exhibitionChoiceBox.setValue(types.get(0));
+        }
         exhibitionChoiceBox.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
@@ -40,8 +49,11 @@ public class DeleteExhibitionController implements Initializable {
         });
 
         confirmButton.setOnAction(new EventHandler<ActionEvent>() {
+
             @Override
             public void handle(ActionEvent event) {
+                Integer id = db.getDataInt("SELECT exhibition_id FROM exhibitions WHERE name = '" + exhibitionChoiceBox.getValue() + "';");
+                db.executeUpdate(db.getSt(),"DELETE FROM exhibitions WHERE exhibition_id = " + id + ";");
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ManageExhibition.fxml", "Manage exhibition - Art Curator", user);
             }
         });

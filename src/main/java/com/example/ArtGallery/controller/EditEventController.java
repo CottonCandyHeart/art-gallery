@@ -41,13 +41,13 @@ public class    EditEventController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<String> types = db.getDataStringList("SELECT name FROM events ;");
-        if(types.isEmpty()) {
+        List<String> events = db.getDataStringList("SELECT name FROM events ;");
+        if(events.isEmpty()) {
             warningLabel7.setText("No events to edit");
             confirmButton5.setDisable(true);
         }else{
-            chooseEventChoiceBox.getItems().addAll(types);
-            chooseEventChoiceBox.setValue(types.get(0));
+            chooseEventChoiceBox.getItems().addAll(events);
+            chooseEventChoiceBox.setValue(events.get(0));
         }
         confirmButton5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
