@@ -80,6 +80,18 @@ public class SceneController {
                 EventsController controller = loader.getController();
                 controller.setUser(user);
             }
+            else if(fxmlFile.equals("/com/example/ArtGallery/EditEvent.fxml")) {
+                EditEventController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/AddEvent.fxml")) {
+                AddEventController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/DeleteEvent.fxml")) {
+                DeleteEventController controller = loader.getController();
+                controller.setUser(user);
+            }
             else if(fxmlFile.equals("/com/example/ArtGallery/CuratorWindow.fxml")) {
                 CuratorWindowController controller = loader.getController();
                 controller.setUser(user);
@@ -107,8 +119,25 @@ public class SceneController {
             else if(fxmlFile.equals("/com/example/ArtGallery/ArtworkDetails.fxml")) {
                 ArtworkDetailsController controller = loader.getController();
                 controller.setUser(user);
-            } else if(fxmlFile.equals("/com/example/ArtGallery/MyArtwork.fxml")) {
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/MyArtwork.fxml")) {
                 MyArtworkController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/ManageArtists.fxml")) {
+                ManageArtistsController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/AddArtist.fxml")) {
+                AddArtistController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/EditArtistData.fxml")) {
+                EditArtistDataController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/DeleteArtist.fxml")) {
+                DeleteArtistController controller = loader.getController();
                 controller.setUser(user);
             }
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -142,18 +171,6 @@ public class SceneController {
                 ManageArtworkActionController controller = loader.getController();
                 controller.setUser(user);
                 controller.setArtwork(artwork);
-            } else if(fxmlFile.equals("/com/example/ArtGallery/ManageArtists.fxml")) {
-                ManageArtistsController controller = loader.getController();
-                controller.setUser(user);
-            }else if(fxmlFile.equals("/com/example/ArtGallery/AddArtist.fxml")) {
-                AddArtistController controller = loader.getController();
-                controller.setUser(user);
-            }else if(fxmlFile.equals("/com/example/ArtGallery/EditArtistData.fxml")) {
-                EditArtistDataController controller = loader.getController();
-                controller.setUser(user);
-            }else if(fxmlFile.equals("/com/example/ArtGallery/DeleteArtist.fxml")) {
-                DeleteArtistController controller = loader.getController();
-                controller.setUser(user);
             }
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
