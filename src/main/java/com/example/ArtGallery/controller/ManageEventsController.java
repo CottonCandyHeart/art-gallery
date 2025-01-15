@@ -33,25 +33,25 @@ public class ManageEventsController implements Initializable {
         cancelButton12.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/ManagerWindow.fxml", "Art Haven - Manager", user);
             }
         });
         editEventButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/EditUsersData.fxml", "Edit users data - Admin", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/EditEvent.fxml", "Edit Event - Manager", user);
             }
         });
         addEventButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Add user - Admin", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/AddEvent.fxml", "Add Event - Manager", user);
             }
         });
         deleteEventButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Delete user - Admin", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/DeleteEvent.fxml", "Delete Event - Manager", user);
             }
         });
 

@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class    EditEventController implements Initializable {
@@ -40,9 +41,15 @@ public class    EditEventController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<String> types = db.getDataStringList("SELECT name FROM events ;");
+        chooseEventChoiceBox.getItems().addAll(types);
+        chooseEventChoiceBox.setValue(types.get(0));
         confirmButton5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                String name = eventNameTextField1.getText();
+                Integer capacity = Integer.parseInt(capacityTextField1.getText());
+
                 //obsługa edycji eventu
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ManageEvents.fxml", "Manage events - Manager", user);
             }
