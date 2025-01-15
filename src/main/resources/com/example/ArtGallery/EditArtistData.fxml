@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -104,7 +105,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Text layoutX="204.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="205.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
@@ -114,30 +115,36 @@
             <Font name="Papyrus" size="36.0" />
          </font>
       </Text>
-      <Text layoutX="204.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="surname" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="205.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="surname" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="204.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bio" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="205.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bio" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="204.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="birth date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="205.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="birth date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="nameTextField" layoutX="381.0" layoutY="166.0" prefHeight="30.0" prefWidth="240.0" />
-      <TextField fx:id="surnameTextField" layoutX="381.0" layoutY="216.0" prefHeight="30.0" prefWidth="240.0" />
-      <TextField fx:id="bioTextField" layoutX="382.0" layoutY="265.0" prefHeight="30.0" prefWidth="240.0" />
-      <Text layoutX="205.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="death date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <TextField fx:id="nameTextField" layoutX="382.0" layoutY="209.0" prefHeight="30.0" prefWidth="240.0" />
+      <TextField fx:id="surnameTextField" layoutX="382.0" layoutY="259.0" prefHeight="30.0" prefWidth="240.0" />
+      <TextField fx:id="bioTextField" layoutX="383.0" layoutY="308.0" prefHeight="30.0" prefWidth="240.0" />
+      <Text layoutX="206.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="death date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <DatePicker fx:id="birthDatePicker" layoutX="380.0" layoutY="320.0" prefHeight="26.0" prefWidth="240.0" />
-      <DatePicker fx:id="deathDatePicker" layoutX="380.0" layoutY="364.0" prefHeight="26.0" prefWidth="240.0" />
+      <DatePicker fx:id="birthDatePicker" layoutX="381.0" layoutY="363.0" prefHeight="26.0" prefWidth="240.0" />
+      <DatePicker fx:id="deathDatePicker" layoutX="381.0" layoutY="407.0" prefHeight="26.0" prefWidth="240.0" />
+      <Text layoutX="205.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="artist" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+         <font>
+            <Font name="Microsoft JhengHei UI Light" size="18.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="artistChoiceBox" layoutX="382.0" layoutY="167.0" prefHeight="26.0" prefWidth="240.0" />
    </children>
 </AnchorPane>

@@ -29,7 +29,7 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <ImageView fitHeight="110.0" fitWidth="108.0" layoutX="235.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="134.0" fitWidth="137.0" layoutX="206.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../img/Logo.png" />
          </image>
@@ -100,45 +100,51 @@
             </RadialGradient>
          </fill>
       </Circle>
-      <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="449.0" prefHeight="23.0" prefWidth="451.0" textAlignment="CENTER">
+      <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="470.0" prefHeight="23.0" prefWidth="451.0" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Text fill="#1b1b1b" layoutX="363.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Exhibition" wrappingWidth="258.0">
+      <Text fill="#1b1b1b" layoutX="363.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Exhibition" wrappingWidth="258.0">
          <font>
             <Font name="Papyrus" size="36.0" />
          </font>
       </Text>
-      <TextField fx:id="descriptionTextField" layoutX="381.0" layoutY="278.0" prefHeight="30.0" prefWidth="240.0" />
-      <Text layoutX="204.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <TextField fx:id="descriptionTextField" layoutX="381.0" layoutY="335.0" prefHeight="30.0" prefWidth="240.0" />
+      <Text layoutX="204.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="206.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="206.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="205.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="location" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="205.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="location" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="nameTextField" layoutX="382.0" layoutY="181.0" prefHeight="30.0" prefWidth="240.0" />
-      <Text layoutX="206.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="start date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <TextField fx:id="nameTextField" layoutX="382.0" layoutY="238.0" prefHeight="30.0" prefWidth="240.0" />
+      <Text layoutX="206.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="start date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <DatePicker fx:id="startDatePicker" layoutX="383.0" layoutY="331.0" prefHeight="26.0" prefWidth="240.0" />
-      <DatePicker fx:id="endDatePicker" layoutX="383.0" layoutY="379.0" prefHeight="26.0" prefWidth="240.0" />
-      <Text layoutX="206.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="end date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <DatePicker fx:id="startDatePicker" layoutX="383.0" layoutY="388.0" prefHeight="26.0" prefWidth="240.0" />
+      <DatePicker fx:id="endDatePicker" layoutX="383.0" layoutY="436.0" prefHeight="26.0" prefWidth="240.0" />
+      <Text layoutX="206.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="end date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="locationChoiceBox" layoutX="383.0" layoutY="229.0" prefHeight="26.0" prefWidth="240.0" />
+      <ChoiceBox fx:id="locationChoiceBox" layoutX="383.0" layoutY="286.0" prefHeight="26.0" prefWidth="240.0" />
+      <Text layoutX="206.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose exhibition" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+         <font>
+            <Font name="Microsoft JhengHei UI Light" size="18.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="exhibitionChoiceBox" layoutX="381.0" layoutY="199.0" prefHeight="26.0" prefWidth="240.0" />
    </children>
 </AnchorPane>

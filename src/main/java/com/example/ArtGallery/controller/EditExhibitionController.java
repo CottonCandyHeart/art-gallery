@@ -12,6 +12,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class EditExhibitionController implements Initializable {
+
+    @FXML
+    private ChoiceBox exhibitionChoiceBox;
     @FXML
     private Button confirmButton;
     @FXML
