@@ -81,6 +81,7 @@ public class EditArtworkController implements Initializable {
                 String description = descriptionTextField.getText();
                 String location = locationTextField.getText();
                 String status = statusTextField.getText();
+                String path = picturePathTextField.getText();
 
                 if (!titleTextField.getText().isEmpty()){
                     artwork.setTitle(title);
@@ -112,6 +113,10 @@ public class EditArtworkController implements Initializable {
                 if (!statusTextField.getText().isEmpty()){
                     artwork.setStatus(status);
                     db.executeUpdate(db.getSt(), "UPDATE Artworks SET status = \"" + status + "\" WHERE artwork_id = " + artwork.getID());
+                }
+                if (!picturePathTextField.getText().isEmpty()){
+                    artwork.setPicturePath(path);
+                    db.executeUpdate(db.getSt(), "UPDATE Artworks SET picturePath = \"" + path + "\" WHERE artwork_id = " + artwork.getID());
                 }
 
 

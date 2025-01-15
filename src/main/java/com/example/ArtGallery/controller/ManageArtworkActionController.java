@@ -48,7 +48,9 @@ public class ManageArtworkActionController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 db.executeUpdate(db.getSt(), "DELETE FROM Artworks WHERE artwork_id = " + artwork.getID() + ";");
-                sc.changeSceneWithUserAndArtwork(event, "/com/example/ArtGallery/EditArtwork.fxml", "Edit Artwork - Art Curator", user, artwork);
+                db.executeUpdate(db.getSt(), "DELETE FROM ArtworkForSale WHERE artwork_id = " + artwork.getID() + ";");
+                db.executeUpdate(db.getSt(), "UPDATE roomLayout SET artwork_id = 0 WHERE artwork_id = " + artwork.getID() + ";");
+                sc.changeSceneWithUserAndArtwork(event, "/com/example/ArtGallery/ChooseArtwork.fxml", "Choose artwork to edit", user, artwork);
             }
         });
 

@@ -490,8 +490,12 @@ public class MapDetailsController implements Initializable {
         imageButton.setLayoutY(positions[i][1]);
 
         imageButton.setOnAction(event -> {
-            db.executeUpdate(db.getSt(), "UPDATE roomLayout SET artwork_id = 0 WHERE place_no = " + (i+1) + " AND room_no = " + room + ";");
-            sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, room);
+            if (user != null && user.getID().substring(0,3).equals("CRT")){
+                db.executeUpdate(db.getSt(), "UPDATE roomLayout SET artwork_id = 0 WHERE place_no = " + (i+1) + " AND room_no = " + room + ";");
+                sc.changeSceneUserAndRoom(event, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, room);
+            } else {
+                sc.changeSceneMap(event, "/com/example/ArtGallery/MapArtworkDetails.fxml", "Map Details", user, artwork_id, room);
+            }
         });
 
         return imageButton;

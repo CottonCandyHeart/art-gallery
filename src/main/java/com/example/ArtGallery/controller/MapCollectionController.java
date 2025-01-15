@@ -87,10 +87,12 @@ public class MapCollectionController implements Initializable {
                 imageButton.setStyle("-fx-background-color: transparent;");
 
                 imageButton.setOnAction(e -> {
-                    System.out.println("UPDATE roomLayout SET artwork_id = " + artwork.getID() + " WHERE place_no = " + place + " AND room_no = " + room + ";");
-                    db.executeUpdate(db.getSt(), "UPDATE roomLayout SET artwork_id = " + artwork.getID() + " WHERE place_no = " + place + " AND room_no = " + room + ";");
-                    sc.changeSceneUserAndRoom(e, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, room);
+                       System.out.println("UPDATE roomLayout SET artwork_id = " + artwork.getID() + " WHERE place_no = " + place + " AND room_no = " + room + ";");
+                       db.executeUpdate(db.getSt(), "UPDATE roomLayout SET artwork_id = " + artwork.getID() + " WHERE place_no = " + place + " AND room_no = " + room + ";");
+                       sc.changeSceneUserAndRoom(e, "/com/example/ArtGallery/MapDetails.fxml", "Map Details", user, room);
                 });
+
+
 
 
                 galleryPanel.getChildren().add(imageButton);
