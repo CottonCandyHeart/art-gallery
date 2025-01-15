@@ -24,6 +24,8 @@ public class CuratorWindowController implements Initializable {
     @FXML
     private Button manageArtistsButton;
     @FXML
+    private Button manageExhibitionButton;
+    @FXML
     private Button collectionButton3;
     @FXML
     private Button artistsButton3;
@@ -54,6 +56,13 @@ public class CuratorWindowController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ManageArtists.fxml", "Manage Artists - Art Curator", user);
+            }
+        });
+
+        manageExhibitionButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                sc.changeSceneUser(event, "/com/example/ArtGallery/ManageExhibition.fxml", "Manage Exhibition - Art Curator", user);
             }
         });
 

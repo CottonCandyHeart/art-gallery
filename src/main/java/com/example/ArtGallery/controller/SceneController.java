@@ -140,6 +140,22 @@ public class SceneController {
                 DeleteArtistController controller = loader.getController();
                 controller.setUser(user);
             }
+            else if(fxmlFile.equals("/com/example/ArtGallery/AddExhibition.fxml")) {
+                AddExhibitionController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/EditExhibition.fxml")) {
+                EditExhibitionController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/DeleteExhibition.fxml")) {
+                DeleteExhibitionController controller = loader.getController();
+                controller.setUser(user);
+            }
+            else if(fxmlFile.equals("/com/example/ArtGallery/ManageExhibition.fxml")) {
+                ManageExhibitionController controller = loader.getController();
+                controller.setUser(user);
+            }
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
             stage.setScene(new Scene(root));

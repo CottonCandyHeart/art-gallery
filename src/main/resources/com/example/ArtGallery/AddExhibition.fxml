@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.AddExhibitionController">
+   <children>
+      <Rectangle fill="#eaeaea" height="586.0" layoutX="176.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="475.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.26443764567375183" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Rectangle>
+      <ImageView fitHeight="123.0" fitWidth="151.0" layoutX="207.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/Logo.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="descriptionTextField" layoutX="376.0" layoutY="313.0" prefHeight="30.0" prefWidth="240.0" />
+      <Button fx:id="cancelButton" layoutX="250.0" layoutY="522.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: #e576a2;" text="Cancel">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.21580550074577332" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="confirmButton" layoutX="434.0" layoutY="522.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: #9babd9;" text="Confirm">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.21580550074577332" />
+               </color>
+            </DropShadow>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Circle blendMode="SRC_ATOP" layoutX="802.0" layoutY="441.0" opacity="0.37" radius="129.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0">
+         <effect>
+            <GaussianBlur radius="63.0" />
+         </effect>
+         <fill>
+            <RadialGradient centerX="0.6283185249936265" centerY="0.3295454906694817" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="0.759005069732666" blue="0.11999999731779099" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6365000009536743" green="0.7007383108139038" blue="0.949999988079071" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Circle>
+      <Circle blendMode="SRC_ATOP" layoutY="130.0" opacity="0.37" radius="148.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0">
+         <effect>
+            <GaussianBlur radius="63.0" />
+         </effect>
+         <fill>
+            <RadialGradient centerX="0.38495567203623016" centerY="0.6098485426469282" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9300000071525574" green="0.4092000126838684" blue="0.7095631957054138" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9399999976158142" green="0.841718316078186" blue="0.63919997215271" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Circle>
+      <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="478.0" prefHeight="23.0" prefWidth="451.0" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Text layoutX="199.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+         <font>
+            <Font name="Microsoft JhengHei UI Light" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="201.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+         <font>
+            <Font name="Microsoft JhengHei UI Light" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="200.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="location" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+         <font>
+            <Font name="Microsoft JhengHei UI Light" size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="nameTextField" layoutX="377.0" layoutY="216.0" prefHeight="30.0" prefWidth="240.0" />
+      <Text fill="#1b1b1b" layoutX="330.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Exhibition" wrappingWidth="289.20001220703125">
+         <font>
+            <Font name="Papyrus" size="48.0" />
+         </font>
+      </Text>
+      <Text layoutX="201.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="start date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+         <font>
+            <Font name="Microsoft JhengHei UI Light" size="18.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="startDatePicker" layoutX="378.0" layoutY="366.0" prefHeight="26.0" prefWidth="240.0" />
+      <DatePicker fx:id="endDatePicker" layoutX="378.0" layoutY="414.0" prefHeight="26.0" prefWidth="240.0" />
+      <Text layoutX="201.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="end date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+         <font>
+            <Font name="Microsoft JhengHei UI Light" size="18.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="locationChoiceBox" layoutX="378.0" layoutY="264.0" prefHeight="26.0" prefWidth="240.0" />
+   </children>
+</AnchorPane>
