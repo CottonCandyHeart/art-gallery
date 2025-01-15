@@ -11,15 +11,15 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ManageEventsController implements Initializable {
+public class ManageArtistsController implements Initializable {
     @FXML
-    private Button editEventButton;
+    private Button editArtistsDataButton;
     @FXML
-    private Button addEventButton;
+    private Button addArtistButton;
     @FXML
-    private Button deleteEventButton;
+    private Button deleteArtistButton;
     @FXML
-    private Button cancelButton12;
+    private Button cancelButton;
 
     private DB db = new DB();
     private SceneController sc = new SceneController();
@@ -30,28 +30,28 @@ public class ManageEventsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cancelButton12.setOnAction(new EventHandler<ActionEvent>() {
+        cancelButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/ManagerWindow.fxml", "Art Haven - Manager", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/CuratorWindow.fxml", "Art Haven - Art Curator", user);
             }
         });
-        editEventButton.setOnAction(new EventHandler<ActionEvent>() {
+        editArtistsDataButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/EditEvent.fxml", "Edit event - Manager", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/EditArtistData.fxml", "Edit artists data - Art Curator", user);
             }
         });
-        addEventButton.setOnAction(new EventHandler<ActionEvent>() {
+        addArtistButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/AddEvent.fxml", "Edit Event- Manager", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/AddArtist.fxml", "Add artist - Art Curator", user);
             }
         });
-        deleteEventButton.setOnAction(new EventHandler<ActionEvent>() {
+        deleteArtistButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/DeleteEvent.fxml", "Delete Event- Manager", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/DeleteArtist.fxml", "Delete artist - Art Curator", user);
             }
         });
 

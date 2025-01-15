@@ -44,7 +44,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="mapButton3" layoutX="100.0" layoutY="444.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Map" textAlignment="CENTER">
+                  <Button fx:id="mapButton3" layoutX="99.0" layoutY="439.0" mnemonicParsing="false" style="-fx-background-color: EBEAE6;" text="Map" textAlignment="CENTER">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>
@@ -71,7 +71,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="manageArtworksButton" layoutX="65.0" layoutY="491.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Manage Artworks">
+                  <Button fx:id="manageArtworksButton" layoutX="64.0" layoutY="481.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Manage Artworks">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>
@@ -80,7 +80,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="LogOutButton2" layoutX="91.0" layoutY="592.0" mnemonicParsing="false" style="-fx-background-color: #e576a2;" text="Log out" textAlignment="CENTER">
+                  <Button fx:id="LogOutButton2" layoutX="90.0" layoutY="606.0" mnemonicParsing="false" style="-fx-background-color: #e576a2;" text="Log out" textAlignment="CENTER">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>
@@ -89,7 +89,16 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button fx:id="generateRaportsButton" layoutX="67.0" layoutY="538.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Generate raports">
+                  <Button fx:id="generateRaportsButton" layoutX="66.0" layoutY="565.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Generate raports">
+                     <effect>
+                        <DropShadow offsetY="2.0">
+                           <color>
+                              <Color red="0.6315789222717285" green="0.5801169872283936" blue="0.5801169872283936" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="manageArtistsButton" layoutX="71.0" layoutY="524.0" mnemonicParsing="false" style="-fx-background-color: ebeae6;" text="Manage Artists">
                      <effect>
                         <DropShadow offsetY="2.0">
                            <color>

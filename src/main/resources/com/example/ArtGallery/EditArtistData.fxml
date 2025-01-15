@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.EditEventController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ArtGallery.controller.EditArtistDataController">
    <children>
       <Rectangle fill="#eaeaea" height="586.0" layoutX="176.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="475.0">
          <effect>
@@ -28,17 +28,12 @@
             </DropShadow>
          </effect>
       </Rectangle>
-      <ImageView fitHeight="116.0" fitWidth="128.0" layoutX="200.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="110.0" fitWidth="108.0" layoutX="214.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../img/Logo.png" />
          </image>
       </ImageView>
-      <Text layoutX="200.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" textAlignment="CENTER" wrappingWidth="169.44332885742188">
-         <font>
-            <Font name="Microsoft JhengHei UI Light" size="18.0" />
-         </font>
-      </Text>
-      <Button fx:id="cancelButton14" layoutX="256.0" layoutY="534.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: #e576a2;" text="Cancel">
+      <Button fx:id="cancelButton" layoutX="277.0" layoutY="510.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="108.0" style="-fx-background-color: #e576a2;" text="Cancel">
          <effect>
             <DropShadow>
                <color>
@@ -50,7 +45,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="confirmButton5" layoutX="418.0" layoutY="534.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="128.0" style="-fx-background-color: #9babd9;" text="Confirm">
+      <Button fx:id="confirmButton" layoutX="438.0" layoutY="510.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="108.0" style="-fx-background-color: #9babd9;" text="Confirm">
          <effect>
             <DropShadow>
                <color>
@@ -104,46 +99,45 @@
             </RadialGradient>
          </fill>
       </Circle>
-      <Label fx:id="warningLabel7" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="483.0" prefHeight="23.0" prefWidth="451.0" textAlignment="CENTER">
+      <Label fx:id="warningLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="462.0" prefHeight="23.0" prefWidth="451.0" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Text layoutX="199.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="event date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="204.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="199.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose event" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text fill="#1b1b1b" layoutX="331.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Artist Data" wrappingWidth="289.199951171875">
+         <font>
+            <Font name="Papyrus" size="36.0" />
+         </font>
+      </Text>
+      <Text layoutX="204.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="surname" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <Text fill="#1b1b1b" layoutX="337.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Event" wrappingWidth="289.199951171875">
-         <font>
-            <Font name="Papyrus" size="48.0" />
-         </font>
-      </Text>
-      <Text layoutX="199.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="exhibition" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="204.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bio" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="199.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="capacity" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <Text layoutX="204.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="birth date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="199.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type" textAlignment="CENTER" wrappingWidth="169.44332885742188">
+      <TextField fx:id="nameTextField" layoutX="381.0" layoutY="166.0" prefHeight="30.0" prefWidth="240.0" />
+      <TextField fx:id="surnameTextField" layoutX="381.0" layoutY="216.0" prefHeight="30.0" prefWidth="240.0" />
+      <TextField fx:id="bioTextField" layoutX="382.0" layoutY="265.0" prefHeight="30.0" prefWidth="240.0" />
+      <Text layoutX="205.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="death date" textAlignment="CENTER" wrappingWidth="169.44332885742188">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="eventNameTextField1" layoutX="377.0" layoutY="220.0" prefHeight="30.0" prefWidth="240.0" />
-      <TextField fx:id="eventDateField1" layoutX="376.0" layoutY="269.0" prefHeight="30.0" prefWidth="240.0" />
-      <TextField fx:id="exhibitionTextField1" layoutX="376.0" layoutY="319.0" prefHeight="30.0" prefWidth="240.0" />
-      <TextField fx:id="capacityTextField1" layoutX="377.0" layoutY="368.0" prefHeight="30.0" prefWidth="240.0" />
-      <ChoiceBox fx:id="chooseEventChoiceBox" layoutX="376.0" layoutY="176.0" prefHeight="26.0" prefWidth="240.0" />
-      <ChoiceBox fx:id="typeChoiceBox" layoutX="377.0" layoutY="422.0" prefHeight="26.0" prefWidth="240.0" />
+      <DatePicker fx:id="birthDatePicker" layoutX="380.0" layoutY="320.0" prefHeight="26.0" prefWidth="240.0" />
+      <DatePicker fx:id="deathDatePicker" layoutX="380.0" layoutY="364.0" prefHeight="26.0" prefWidth="240.0" />
    </children>
 </AnchorPane>

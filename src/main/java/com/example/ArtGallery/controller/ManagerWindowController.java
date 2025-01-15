@@ -36,7 +36,7 @@ public class ManagerWindowController implements Initializable {
         manageEventsButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sc.changeSceneUser(event, "/com/example/ArtGallery/ManageUsers.fxml", "Manage Users - Manager", user);
+                sc.changeSceneUser(event, "/com/example/ArtGallery/ManageEvents.fxml", "Manage Events - Manager", user);
             }
         });
 
