@@ -21,9 +21,9 @@ public class AddArtworkController implements Initializable {
     @FXML
     private TextField titleTextField;
     @FXML
-    private TextField artistTextField;
+    private ChoiceBox artistChoiceBox;
     @FXML
-    private TextField ownerTextField;
+    private ChoiceBox ownerChoiceBox;
     @FXML
     private TextField creationDateTextField;
     @FXML
