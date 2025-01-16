@@ -9,6 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -49,18 +52,68 @@ public class    EditEventController implements Initializable {
             chooseEventChoiceBox.getItems().addAll(events);
             chooseEventChoiceBox.setValue(events.get(0));
         }
+
+        List<String> exhibitions = db.getDataStringList("SELECT name FROM exhibitions;");
+        exhibitionChoiceBox.getItems().addAll(exhibitions);
+
+        List<String> types = Arrays.asList("warsztat","oprowadzanie");
+        typeChoiceBox.getItems().addAll(types);
         confirmButton5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                /*
-                String name = eventNameTextField1.getText();
-                Integer capacity = Integer.parseInt(capacityTextField1.getText());
-                 */
+                Integer id = db.getDataInt("SELECT event_id FROM events WHERE name = '" + chooseEventChoiceBox.getValue() + "';");
 
-                //obsługa edycji eventu
-                sc.changeSceneUser(event, "/com/example/ArtGallery/ManageEvents.fxml", "Manage events - Manager", user);
-            }
-        });
+                if (!eventNameTextField1.getText().isEmpty()) {
+                    db.executeUpdate(db.getSt(), "UPDATE events SET name = '" + eventNameTextField1.getText() + "' WHERE event_id = " + id + ";");
+                }
+
+                if (eventDatePicker.getValue() != null) {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    LocalDate eventDate = eventDatePicker.getValue();
+                    String formattedEventDate = eventDate.format(formatter);
+                    if (exhibitionChoiceBox.getValue() == null) {
+                        Integer exhibitionID = db.getDataInt("SELECT exhibition_id FROM events WHERE event_id = '" + id + "';");
+                        LocalDate StartDate = db.getDataDate("SELECT start_date FROM exhibitions WHERE exhibition_id = '" + exhibitionID + "';").toLocalDate();
+                        LocalDate EndDate = db.getDataDate("SELECT end_date FROM exhibitions WHERE exhibition_id = '" + exhibitionID + "';").toLocalDate();
+                        if (eventDatePicker.getValue().isBefore(StartDate) || eventDatePicker.getValue().isAfter(EndDate)) {
+                            warningLabel7.setText("Event date must be between exhibition start and end date");
+                        } else {
+                            db.executeUpdate(db.getSt(), "UPDATE events SET event_date = '" + formattedEventDate + "' WHERE event_id = " + id + ";");
+                        }
+
+                    }
+                }
+
+                    if (exhibitionChoiceBox.getValue() != null) {
+                        Integer exhibitionID = db.getDataInt("SELECT exhibition_id FROM exhibitions WHERE name = '" + exhibitionChoiceBox.getValue() + "';");
+                        LocalDate StartDate = db.getDataDate("SELECT start_date FROM exhibitions WHERE exhibition_id = '" + exhibitionID + "';").toLocalDate();
+                        LocalDate EndDate = db.getDataDate("SELECT end_date FROM exhibitions WHERE exhibition_id = '" + exhibitionID + "';").toLocalDate();
+                        if (eventDatePicker.getValue() == null) {
+                            warningLabel7.setText("Event date must be between exhibition start and end date");
+                            System.out.println("Event date must be between exhibition start and end date");
+                        } else if (eventDatePicker.getValue().isBefore(StartDate) || eventDatePicker.getValue().isAfter(EndDate)) {
+                            warningLabel7.setText("Event date must be between exhibition start and end date");
+                            System.out.println("Event date must be between exhibition start and end date");
+                        } else {
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                            LocalDate eventDate1 = eventDatePicker.getValue();
+                            String formattedEventDate1 = eventDate1.format(formatter);
+                            db.executeUpdate(db.getSt(), "UPDATE events SET exhibition_id = '" + exhibitionID + "' WHERE event_id = " + id + ";");
+                            db.executeUpdate(db.getSt(), "UPDATE events SET event_date = '" + formattedEventDate1 + "' WHERE event_id = " + id + ";");
+                        }
+                    }
+
+                    if (!capacityTextField1.getText().isEmpty()) {
+                        db.executeUpdate(db.getSt(), "UPDATE events SET capacity = '" + capacityTextField1.getText() + "' WHERE event_id = " + id + ";");
+                    }
+
+                    if (typeChoiceBox.getValue() != null) {
+                        db.executeUpdate(db.getSt(), "UPDATE events SET event_type = '" + typeChoiceBox.getValue() + "' WHERE event_id = " + id + ";");
+                    }
+                    //obsługa edycji eventu
+                    sc.changeSceneUser(event, "/com/example/ArtGallery/ManageEvents.fxml", "Manage events - Manager", user);
+                }
+            });
         cancelButton14.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

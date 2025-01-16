@@ -56,17 +56,17 @@ public class AddArtistController implements Initializable {
                     String bio = bioTextField.getText();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                     LocalDate birthDate = birthDatePicker.getValue();
-                    String formattedStartDate = birthDate.format(formatter);
+                    String formattedBirthDate = birthDate.format(formatter);
                     LocalDate deathDate = deathDatePicker.getValue();
-                    String formattedEndDate = deathDate.format(formatter);
+                    String formattedDeathDate = deathDate.format(formatter);
                     if(deathDate == null) {
-                        Artist artist = new Artist(-1, name, surname, bio, formattedStartDate, null);
+                        Artist artist = new Artist(-1, name, surname, bio, formattedBirthDate, null);
                         artist.addArtist(db);
                         sc.changeSceneUser(event, "/com/example/ArtGallery/ManageArtists.fxml", "Manage artists - Art Curator", user);
                     }else if (birthDate.isAfter(deathDate)) {
                         warningLabel.setText("Start date must be before end date");
                     } else {
-                        Artist artist = new Artist(-1, name, surname, bio, formattedStartDate, formattedEndDate);
+                        Artist artist = new Artist(-1, name, surname, bio, formattedBirthDate, formattedDeathDate);
                         artist.addArtist(db);
                         sc.changeSceneUser(event, "/com/example/ArtGallery/ManageArtists.fxml", "Manage artists - Art Curator", user);
                     }
