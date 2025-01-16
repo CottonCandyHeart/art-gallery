@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -67,11 +69,49 @@ public class EditExhibitionController implements Initializable {
                 }
 
                 if(startDatePicker.getValue() != null){
-                    db.executeUpdate(db.getSt(),"UPDATE exhibitions SET start_date = '" + startDatePicker.getValue() + "' WHERE exhibition_id = " + id + ";");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    if(endDatePicker.getValue() == null ){
+                        LocalDate endDate = db.getDataDate("SELECT end_date FROM exhibitions WHERE exhibition_id = " + id + ";").toLocalDate();
+                        if(startDatePicker.getValue().isAfter(endDate)){
+                            warningLabel.setText("Start date must be before end date");
+                            return;
+                        }else{
+                            String startDate = startDatePicker.getValue().format(formatter);
+                            db.executeUpdate(db.getSt(),"UPDATE exhibitions SET start_date = '" + startDate + "' WHERE exhibition_id = " + id + ";");
+                        }
+                        warningLabel.setText("Start date must be before end date");
+                        return;
+                    }else {
+                        if (startDatePicker.getValue().isAfter(endDatePicker.getValue())) {
+                            warningLabel.setText("Start date must be before end date");
+                        } else {
+                            String startDate = startDatePicker.getValue().format(formatter);
+                            db.executeUpdate(db.getSt(), "UPDATE exhibitions SET start_date = '" + startDate + "' WHERE exhibition_id = " + id + ";");
+                        }
+                    }
                 }
 
                 if(endDatePicker.getValue() != null){
-                    db.executeUpdate(db.getSt(),"UPDATE exhibitions SET end_date = '" + endDatePicker.getValue() + "' WHERE exhibition_id = " + id + ";");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    if(startDatePicker.getValue() == null ){
+                        LocalDate startDate = db.getDataDate("SELECT start_date FROM exhibitions WHERE exhibition_id = " + id + ";").toLocalDate();
+                        if(endDatePicker.getValue().isBefore(startDate)){
+                            warningLabel.setText("End date must be after start date");
+                            return;
+                        }else{
+                            String endDate = endDatePicker.getValue().format(formatter);
+                            db.executeUpdate(db.getSt(),"UPDATE exhibitions SET end_date = '" + endDate + "' WHERE exhibition_id = " + id + ";");
+                        }
+                        warningLabel.setText("End date must be after start date");
+                        return;
+                    }else {
+                        if (endDatePicker.getValue().isBefore(startDatePicker.getValue())) {
+                            warningLabel.setText("End date must be after start date");
+                        } else {
+                            String endDate = endDatePicker.getValue().format(formatter);
+                            db.executeUpdate(db.getSt(), "UPDATE exhibitions SET end_date = '" + endDate + "' WHERE exhibition_id = " + id + ";");
+                        }
+                    }
                 }
 
                 if(locationChoiceBox.getValue() != null){
