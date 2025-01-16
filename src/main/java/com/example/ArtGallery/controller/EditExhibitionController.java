@@ -43,13 +43,13 @@ public class EditExhibitionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<String> types = db.getDataStringList("SELECT name FROM exhibitions;");
-        if(types.isEmpty()) {
+        List<String> exhibitions = db.getDataStringList("SELECT name FROM exhibitions;");
+        if(exhibitions.isEmpty()) {
             warningLabel.setText("No exhibitions to edit");
             confirmButton.setDisable(true);
         }else{
-            exhibitionChoiceBox.getItems().addAll(types);
-            exhibitionChoiceBox.setValue(types.get(0));
+            exhibitionChoiceBox.getItems().addAll(exhibitions);
+            exhibitionChoiceBox.setValue(exhibitions.get(0));
         }
         List<String> location = Arrays.asList("Sala 1", "Sala 2", "Sala 3", "Sala 4", "Sala 5", "Sala 6", "Sala 7", "Sala 8");
         locationChoiceBox.getItems().addAll(location);

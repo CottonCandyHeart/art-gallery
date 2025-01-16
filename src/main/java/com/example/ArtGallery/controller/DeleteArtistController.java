@@ -33,6 +33,14 @@ public class DeleteArtistController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<String> artists = db.getDataStringList("SELECT CONCAT(name, ' ' , surname) FROM artists;");
+        if(artists.isEmpty()) {
+            warningLabel.setText("No artists to delete");
+            confirmButton.setDisable(true);
+        }else{
+            artistChoiceBox.getItems().addAll(artists);
+            artistChoiceBox.setValue(artists.get(0));
+        }
         artistChoiceBox.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
@@ -44,6 +52,11 @@ public class DeleteArtistController implements Initializable {
         confirmButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                String artist = artistChoiceBox.getValue().toString();
+                String name = artist.substring(0,artist.indexOf(" "));
+                String surname = artist.substring(artist.indexOf(" ")+1);
+                Integer id = db.getDataInt("SELECT artist_id FROM artists WHERE name LIKE '" + name + "' AND surname LIKE '"+ surname +"';");
+                db.executeUpdate(db.getSt(),"DELETE FROM artists WHERE artist_id = " + id + ";");
                 sc.changeSceneUser(event, "/com/example/ArtGallery/ManageArtists.fxml", "Manage artist - Art Curator", user);
             }
         });
