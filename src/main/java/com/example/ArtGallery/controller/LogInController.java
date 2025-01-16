@@ -66,6 +66,7 @@ public class LogInController implements Initializable {
                             user = new Client(ID, username, name, surname, phoneNo);
                             sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
                         } else {
+                            System.out.println("LOGIN: " + ID.substring(0,3));
                             String role = db.getDataString("SELECT role FROM Users WHERE username LIKE \"" + usernameTextField.getText() + "\";");
                             user = new Worker(ID, username, name, surname, role);
                             if (ID.substring(0,3).equals("ADM")){

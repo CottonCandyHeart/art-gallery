@@ -110,7 +110,12 @@ public class    EditEventController implements Initializable {
                     if (typeChoiceBox.getValue() != null) {
                         db.executeUpdate(db.getSt(), "UPDATE events SET event_type = '" + typeChoiceBox.getValue() + "' WHERE event_id = " + id + ";");
                     }
-                    //obsługa edycji eventu
+                    warningLabel7.setText("Event modified!");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                     sc.changeSceneUser(event, "/com/example/ArtGallery/ManageEvents.fxml", "Manage events - Manager", user);
                 }
             });
