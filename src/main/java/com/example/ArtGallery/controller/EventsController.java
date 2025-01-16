@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -184,17 +185,26 @@ public class EventsController implements Initializable {
             text.setWrappingWidth(rectangleWidth * 0.8);
             calendarEventsBox.getChildren().add(text);
             text.setOnMouseClicked(mouseEvent -> {
-                //tekst po naciśnięciu przycisku
-                /*
-                System.out.println("Event: " + event.getName());
-                System.out.println("\nDate: " + event.getEventDate());
-                System.out.println("\nExhibition: " + event.getExhibition().getName());
-                System.out.println("\nExhibition description: " + event.getExhibition().getDescription());
-                System.out.println("\nCapacity: " + event.getCapacity());
-                System.out.println("\nType: " + event.getType());*/
-                //System.out.println(text.getText());
-
                 Info.setText("Event: " + event.getName()+"\nDate: " + event.getEventDate()+"\nExhibition: " + event.getExhibition().getName()+"\nExhibition description: " + event.getExhibition().getDescription()+"\nCapacity: " + event.getCapacity()+"\nType: " + event.getType());
+                if (user != null && user.getID().substring(0,3).equals("CLI")){
+                    int allUsersCount = db.getDataInt("SELECT COUNT(*) FROM EventReservations WHERE event_id = " + event.getID() + ";");
+                    int userCount = db.getDataInt("SELECT COUNT(*) FROM EventReservations WHERE event_id = " + event.getID() + " AND user_id = \"" + user.getID() + "\";");
+
+                    if (allUsersCount < event.getCapacity() && userCount == 0){
+                        Button buyButton = new Button("Zarezerwuj");
+                        buyButton.setStyle("-fx-background-color: #e576a2;");
+                        buyButton.setOnAction(e -> {
+                            db.executeUpdate(db.getSt(), "INSERT INTO EventReservations VALUES(" + event.getID() + ", \"" + user.getID() + "\", CURDATE());");
+                            buyButton.setText("Zarezerwowano!");
+                            buyButton.setDisable(true);
+                            buyButton.setStyle("-fx-opacity: 0.5; -fx-cursor: default; -fx-background-color: #e576a2;" );
+                        });
+                        EventDetailsPanel.getChildren().add(buyButton);
+                        EventDetailsPanel.setAlignment(Pos.BOTTOM_LEFT);
+                    }
+
+                }
+
             });
         }
 
