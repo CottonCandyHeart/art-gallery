@@ -56,49 +56,31 @@ public class GenerateRaportsController implements Initializable {
                 String formattedStartDate = startDate.format(formatter);
                 String formattedEndDate = endDate.format(formatter);
 
+                String reportsDetails = "NULL";
+
                 switch(r){
                     case "Raport finansowy":
-                        report.generateFinancialReport(db, formattedStartDate, formattedEndDate, user.getID());
+                        reportsDetails = report.generateFinancialReport(db, formattedStartDate, formattedEndDate, user.getID());
                         break;
                     case "Raport wydarzeń":
-                        report.generateEventReport(db, formattedStartDate, formattedEndDate, user.getID());
+                        reportsDetails = report.generateEventReport(db, formattedStartDate, formattedEndDate, user.getID());
                         break;
                     case "Raport z wystaw":
-                        report.generateExhibitionReport(db, formattedStartDate, formattedEndDate, user.getID());
+                        reportsDetails = report.generateExhibitionReport(db, formattedStartDate, formattedEndDate, user.getID());
                 }
 
                 warningLabel.setText("Report generated!");
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
 
-                String type = "LOG";
-                if(user != null){
-                    type = db.getDataString("SELECT user_type FROM users WHERE user_id = \"" + user.getID() + "\";");
-                }
+                System.out.println("reportName: " + r);
+                System.out.println("reportDetails: " + reportsDetails);
+                System.out.println("------------------------------------------------");
+                sc.changeSceneReport(event, "/com/example/ArtGallery/ReportDetails.fxml", "Report details", user, r, reportsDetails);
 
-                switch (type){
-                    case "ADM":
-                        sc.changeSceneUser(event, "/com/example/ArtGallery/AdminWindow.fxml", "Art Haven - Admin", user);
-                        break;
-                    case "CLI":
-                        sc.changeSceneUser(event, "/com/example/ArtGallery/ClientWindow.fxml", "Art Haven", user);
-                        break;
-                    case "CRT":
-                        sc.changeSceneUser(event, "/com/example/ArtGallery/CuratorWindow.fxml", "Art Haven - Art Curator", user);
-                        break;
-                    case "MNG":
-                        sc.changeSceneUser(event, "/com/example/ArtGallery/ManagerWindow.fxml", "Art Haven - Manager", user);
-                        break;
-                    case "MRT":
-                        sc.changeSceneUser(event, "/com/example/ArtGallery/MarketingWindow.fxml", "Art Haven - Marketing", user);
-                        break;
-                    default:
-                        sc.changeSceneUser(event, "/com/example/ArtGallery/hello-view.fxml", "Art Haven", user);
-                        break;
-                }
             }
         });
         cancelButton.setOnAction(new EventHandler<ActionEvent>() {

@@ -251,4 +251,31 @@ public class SceneController {
             e.printStackTrace();
         }
     }
+
+    public static void changeSceneReport(ActionEvent event, String fxmlFile, String title, User user, String reportName, String reportDetails) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneController.class.getResource(fxmlFile));
+            Parent root = loader.load();
+
+            System.out.println("reportName: " + reportName);
+            System.out.println("reportDetails: " + reportDetails);
+            System.out.println("----------------------------------------------");
+
+            if(fxmlFile.equals("/com/example/ArtGallery/ReportDetails.fxml")) {
+                System.out.println("WESZŁO DO ZMIANY");
+                ReportDetailsController controller = loader.getController();
+                controller.setUser(user);
+                controller.setReportName(reportName);
+                controller.setReportDetails(reportDetails);
+
+            }
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
